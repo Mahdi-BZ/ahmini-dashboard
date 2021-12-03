@@ -1,7 +1,11 @@
-import {toAbsoluteUrl} from '../../../../_metronic/helpers'
-import {UserModel} from '../models/UserModel'
+import { toAbsoluteUrl } from '../../../../_metronic/helpers'
+import { UserModel } from '../models/UserModel'
+import { fetchData } from './fetchData'
+ 
 
 export class UsersTableMock {
+ 
+
   public static table: Array<UserModel> = [
     {
       id: 1,
@@ -174,3 +178,4 @@ export class UsersTableMock {
     },
   ]
 }
+
