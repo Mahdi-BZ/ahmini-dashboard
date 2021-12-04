@@ -24,8 +24,8 @@ const loginSchema = Yup.object().shape({
 })
 
 const initialValues = {
-  email: 'admin@demo.com',
-  password: 'demo',
+  email: 'siraj@gmqil.com',
+  password: '123123123',
 }
 
 /*
@@ -36,42 +36,36 @@ const initialValues = {
 
 export function Login() {
   const [loading, setLoading] = useState(false)
-  const axiosInstance = axios.create({
-    baseURL: 'https://ahmini-backend.azurewebsites.net',
-    headers: {'Content-Type': 'application/json'},
-  })
+  // const axiosInstance = axios.create({
+  //   baseURL: 'https://ahmini-backend.azurewebsites.net',
+  //   headers: {'Content-Type': 'application/json'},
+  // })
   const dispatch = useDispatch()
   const formik = useFormik({
     initialValues,
     validationSchema: loginSchema,
-    onSubmit: async (values, {setStatus, setSubmitting}) => {
-      console.log('wadhah')
-      axiosInstance
-        .post('/admin/login', {
-          email: 'siraj@gmqil.com',
-          password: '123123123',
-        })
-        .then(function (response) {
-          console.log(response)
-        })
-        .catch((e) => console.log(e))
-      // await axios.post("https://ahmini-backend.azurewebsites.net/admin/login", { email: values.email, password: values.password }).then(function (response) {
-      //   console.log(response);
-      // }).catch((e) =>console.log(e));
-      // setLoading(false);
-      // setTimeout(() => {
-      //   login(values.email, values.password)
-      //     .then(({data: {accessToken}}) => {
-      //       setLoading(false)
-      //       dispatch(auth.actions.login(accessToken))
-
-      //     })
-      //     .catch(() => {
-      //       setLoading(false)
-      //       setSubmitting(false)
-      //       setStatus('The login detail is incorrect')
-      //     })
-      // }, 1000)
+    onSubmit: (values, {setStatus, setSubmitting}) => {
+      // await axiosInstance
+      //   .post('/admin/login', {email: values.email, password: values.password})
+      //   .then((response) => {
+      //     console.log(response)
+      //   })
+      //   .catch((err) => {
+      //     console.log(err)
+      //   })
+      setLoading(true)
+      setTimeout(() => {
+        login(values.email, values.password)
+          .then(({data: {accessToken}}) => {
+            setLoading(false)
+            dispatch(auth.actions.login(accessToken))
+          })
+          .catch(() => {
+            setLoading(false)
+            setSubmitting(false)
+            setStatus('The login detail is incorrect')
+          })
+      }, 1000)
     },
   })
 
