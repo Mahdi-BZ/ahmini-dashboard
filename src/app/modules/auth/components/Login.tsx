@@ -7,7 +7,9 @@ import {Link} from 'react-router-dom'
 import {useFormik} from 'formik'
 import * as auth from '../redux/AuthRedux'
 import {login} from '../redux/AuthCRUD'
-import {toAbsoluteUrl} from '../../../../_metronic/helpers'
+// import {toAbsoluteUrl} from '../../../../_metronic/helpers'
+import axios from 'axios'
+import {fetchData} from '../__mocks__/fetchData'
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -22,8 +24,8 @@ const loginSchema = Yup.object().shape({
 })
 
 const initialValues = {
-  email: 'admin@demo.com',
-  password: 'demo',
+  email: 'siraj@gmqil.com',
+  password: '123123123',
 }
 
 /*
@@ -34,11 +36,23 @@ const initialValues = {
 
 export function Login() {
   const [loading, setLoading] = useState(false)
+  // const axiosInstance = axios.create({
+  //   baseURL: 'https://ahmini-backend.azurewebsites.net',
+  //   headers: {'Content-Type': 'application/json'},
+  // })
   const dispatch = useDispatch()
   const formik = useFormik({
     initialValues,
     validationSchema: loginSchema,
     onSubmit: (values, {setStatus, setSubmitting}) => {
+      // await axiosInstance
+      //   .post('/admin/login', {email: values.email, password: values.password})
+      //   .then((response) => {
+      //     console.log(response)
+      //   })
+      //   .catch((err) => {
+      //     console.log(err)
+      //   })
       setLoading(true)
       setTimeout(() => {
         login(values.email, values.password)
@@ -58,7 +72,7 @@ export function Login() {
   return (
     <form
       className='form w-100'
-      onSubmit={formik.handleSubmit}  
+      onSubmit={formik.handleSubmit}
       noValidate
       id='kt_login_signin_form'
     >
@@ -78,8 +92,7 @@ export function Login() {
         <div className='mb-lg-15 alert alert-danger'>
           <div className='alert-text font-weight-bold'>{formik.status}</div>
         </div>
-      )
-      : (
+      ) : (
         <div></div>
         // <div className='mb-10 bg-light-info p-8 rounded'>
         //   <div className='text-info'>
@@ -87,8 +100,7 @@ export function Login() {
         //     continue.
         //   </div>
         // </div>
-      )
-      }
+      )}
 
       {/* begin::Form group */}
       <div className='fv-row mb-10'>
