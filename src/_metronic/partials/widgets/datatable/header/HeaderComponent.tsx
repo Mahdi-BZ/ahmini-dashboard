@@ -1,9 +1,9 @@
 import React from "react";
 type Props = {
-    headers: [{
+    headers: {
         name: string,
         field: string
-    }]
+    }[]
   }
 const HeaderComponent : React.FC<Props> = ({ headers }) => {
 
