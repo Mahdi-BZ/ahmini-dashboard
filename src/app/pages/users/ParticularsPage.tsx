@@ -1,7 +1,5 @@
-import React, {useEffect, useMemo, useState} from 'react'
-import { number } from 'yup'
-import { string } from 'yup/lib/locale'
-import {KTSVG, toAbsoluteUrl} from '../../../_metronic/helpers'
+import React, { useEffect, useMemo, useState} from 'react'
+import { KTSVG } from '../../../_metronic/helpers'
 import HeaderComponent from '../../../_metronic/partials/widgets/datatable/header/HeaderComponent'
 import PaginationComponent from '../../../_metronic/partials/widgets/datatable/pagination/PaginationComponent'
 
@@ -9,18 +7,21 @@ type Props = {
   className: string
 }
 const ParticularsPage: React.FC<Props> = ({className}) => {
-  const [particular, setParticular] = useState([{id: number, name: string, email: string, body: string}])
-  // const [loader, showLoader, hideLoader] = useFullPageLoader();
+  const [particular, setParticular] = useState([{id: 0, name:"", email: "", body: ""}])
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
 
   const ITEMS_PER_PAGE = 5
 
   const headers = [
-    { name: "No#", field: "id" },
-    { name: "Name", field: "name" },
+    { name: "ID", field: "id" },
+    { name: "First Name", field: "firstName" },
+    { name: "Last Name", field: "lastName" },
+    { name: "User Name", field: "userName" },
     { name: "Email", field: "email" },
-    { name: "Comment", field: "body" }
+    { name: "Password", field: "password" },
+    { name: "Roles", field: "roles" },
+    { name: "Account Type", field: "acountType" },
 ];
 
   useEffect(() => {
@@ -38,6 +39,85 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
 
     getData()
   }, [])
+
+  // var data = [{"id": "2 minutes ago",
+  //             "name": "2 minutes ago",
+  //             "email": "Jill Dupre",
+  //             "body": "Created new account",
+              
+  //           },
+  //           {
+  //             "id": "2 minutes ago",
+  //             "name": "1 hour ago",
+  //             "email": "Lose White",
+  //             "body": "Added fist chapter"
+  //           },
+  //           {
+  //             "id": "2 minutes ago",
+  //             "name": "2 hours ago",
+  //             "email": "Jordan Whash",
+  //             "body": "Created new account"
+  //           },
+  //           {
+  //             "id": "2 minutes ago",
+  //             "name": "2 hours ago",
+  //             "email": "Jordan Whash",
+  //             "body": "Created new account"
+  //           },
+  //           {
+  //             "id": "2 minutes ago",
+  //             "name": "2 hours ago",
+  //             "email": "Jordan Whash",
+  //             "body": "Created new account"
+  //           },
+  //           {
+  //             "id": "2 minutes ago",
+  //             "name": "2 hours ago",
+  //             "email": "Jordan Whash",
+  //             "body": "Created new account"
+  //           },
+  //           {
+  //             "id": "2 minutes ago",
+  //             "name": "2 hours ago",
+  //             "email": "Jordan Whash",
+  //             "body": "Created new account"
+  //           },
+  //           {
+  //             "id": "2 minutes ago",
+  //             "name": "2 hours ago",
+  //             "email": "Jordan Whash",
+  //             "body": "Created new account"
+  //           },
+  //           {
+  //             "id": "2 minutes ago",
+  //             "name": "2 hours ago",
+  //             "email": "Jordan Whash",
+  //             "body": "Created new account"
+  //           },
+  //           {
+  //             "id": "2 minutes ago",
+  //             "name": "2 hours ago",
+  //             "email": "Jordan Whash",
+  //             "body": "Created new account"
+  //           },
+  //           {
+  //             "id": "2 minutes ago",
+  //             "name": "2 hours ago",
+  //             "email": "Jordan Whash",
+  //             "body": "Created new account"
+  //           },
+  //           {
+  //             "id": "2 minutes ago",
+  //             "name": "2 hours ago",
+  //             "email": "Jordan Whash",
+  //             "body": "Created new account"
+  //           },
+  //           {
+  //             "id": "2 minutes ago",
+  //             "name": "2 hours ago",
+  //             "email": "Jordan Whash",
+  //             "body": "Created new account"
+  //           }];
 
   const particularsData = useMemo(() => {
     let computedParticulars = particular
@@ -99,24 +179,24 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
             {/* begin::Table body */}
 
             <tbody>
-              {particularsData.map((particular) => (
+              {particular.map((particular) => (
                 <tr>
                   <th scope='row'>
                     {particular.id}
                   </th>
-                  <td>
-                    <span className='text-dark fw-bold text-muted d-block fs-7'>
+                  <td >
+                    {/* <span > */}
                       {particular.name}
-                    </span>
+                    {/* </span> */}
                   </td>
-                  <td>
-                    <span className='text-dark fw-bold text-muted d-block fs-7'>
+                  <td className='text-dark fw-bold text-muted d-block fs-7'>
+                    {/* <span > */}
                       {particular.email}
-                    </span>
-                    <td>
-                      <span className='text-dark fw-bold text-muted d-block fs-7'>
+                    {/* </span> */}
+                    <td className='text-dark fw-bold text-muted d-block fs-7'>
+                      {/* <span > */}
                         {particular.body}
-                      </span>
+                      {/* </span> */}
                     </td>
                   </td>
                 </tr>
