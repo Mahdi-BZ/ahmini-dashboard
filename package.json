@@ -2,7 +2,6 @@
   "name": "demo1",
   "version": "8.0.30",
   "private": true,
-  "homepage": "/metronic8/react/demo1",
   "dependencies": {
     "@formatjs/intl-pluralrules": "^4.0.28",
     "@formatjs/intl-relativetimeformat": "^9.1.7",
@@ -67,7 +66,7 @@
     "lint": "prettier --check .",
     "format": "prettier --write .",
     "rtl": "webpack --config webpack-rtl.config.js",
-    "pretty": "prettier --write \"./**/*.{ts,tsx,json}\"" 
+    "pretty": "prettier --write \"./**/*.{ts,tsx,json}\""
   },
   "eslintConfig": {
     "extends": [
