@@ -94,9 +94,9 @@ export function AsideMenuMain() {
         icon='/media/icons/duotune/communication/com006.svg'
         fontIcon='bi-person'
       >
-        <AsideMenuItem to='/crafted/users/admin' title='Admin' hasBullet={true} />
-        <AsideMenuItem to='/crafted/users/particular' title='Particular' hasBullet={true} />
-        <AsideMenuItem to='/crafted/users/ambassador' title='Ambassador' hasBullet={true} />
+        <AsideMenuItem to='/crafted/users/admin' title='Admin List' hasBullet={true} />
+        <AsideMenuItem to='/crafted/users/particular' title='Particular List' hasBullet={true} />
+        <AsideMenuItem to='/crafted/users/ambassador' title='Ambassador List' hasBullet={true} />
         {/* <AsideMenuItem to='/crafted/users/association' title='Association' hasBullet={true} /> */}
       </AsideMenuItemWithSub>
 
@@ -106,7 +106,11 @@ export function AsideMenuMain() {
         icon='/media/icons/duotune/communication/com006.svg'
         fontIcon='bi-person'
       >
-        <AsideMenuItem to='/crafted/adhesion/demands' title='Adhesion Demand' hasBullet={true} />
+        <AsideMenuItem
+          to='/crafted/adhesion/demands'
+          title='Adhesion Demand List'
+          hasBullet={true}
+        />
         {/* <AsideMenuItem to='/crafted/users/particular' title='Particular' hasBullet={true} /> */}
       </AsideMenuItemWithSub>
 
@@ -116,8 +120,22 @@ export function AsideMenuMain() {
         icon='/media/icons/duotune/communication/com006.svg'
         fontIcon='bi-person'
       >
-        <AsideMenuItem to='/crafted/registered-woman' title='registered Woman' hasBullet={true} />
+        <AsideMenuItem
+          to='/crafted/registered-woman'
+          title='registered Woman List'
+          hasBullet={true}
+        />
       </AsideMenuItemWithSub>
+
+      <AsideMenuItemWithSub
+        to='/crafted/sinister'
+        title='Sinisters'
+        icon='/media/icons/duotune/communication/com006.svg'
+        fontIcon='bi-person'
+      >
+        <AsideMenuItem to='/crafted/sinister' title='sinister' hasBullet={true} />
+      </AsideMenuItemWithSub>
+
       {/* <div className='menu-item'>
         <div className='menu-content pt-8 pb-2'>
           <span className='menu-section text-muted text-uppercase fs-8 ls-1'>Apps</span>
