@@ -24,10 +24,10 @@ export function AsideMenuMain() {
       />
       <div className='menu-item'>
         <div className='menu-content pt-8 pb-2'>
-          <span className='menu-section text-muted text-uppercase fs-8 ls-1'>Crafted</span>
+          <span className='menu-section text-muted text-uppercase fs-8 ls-1'>Application</span>
         </div>
       </div>
-      <AsideMenuItemWithSub
+      {/* <AsideMenuItemWithSub
         to='/crafted/pages'
         title='Pages'
         fontIcon='bi-archive'
@@ -85,7 +85,21 @@ export function AsideMenuMain() {
         <AsideMenuItem to='/crafted/widgets/tables' title='Tables' hasBullet={true} />
         <AsideMenuItem to='/crafted/widgets/feeds' title='Feeds' hasBullet={true} />
       </AsideMenuItemWithSub>
-      <div className='menu-item'>
+     
+      */}
+
+      <AsideMenuItemWithSub
+        to='/crafted/users'
+        title='Users'
+        icon='/media/icons/duotune/communication/com006.svg'
+        fontIcon='bi-person'
+      >
+        <AsideMenuItem to='/crafted/users/admin' title='Admin' hasBullet={true} />
+        <AsideMenuItem to='/crafted/users/particular' title='Particular' hasBullet={true} />
+        <AsideMenuItem to='/crafted/users/ambassador' title='Ambassador' hasBullet={true} />
+        <AsideMenuItem to='/crafted/users/association' title='Association' hasBullet={true} />
+      </AsideMenuItemWithSub>
+      {/* <div className='menu-item'>
         <div className='menu-content pt-8 pb-2'>
           <span className='menu-section text-muted text-uppercase fs-8 ls-1'>Apps</span>
         </div>
@@ -99,7 +113,8 @@ export function AsideMenuMain() {
         <AsideMenuItem to='/apps/chat/private-chat' title='Private Chat' hasBullet={true} />
         <AsideMenuItem to='/apps/chat/group-chat' title='Group Chart' hasBullet={true} />
         <AsideMenuItem to='/apps/chat/drawer-chat' title='Drawer Chart' hasBullet={true} />
-      </AsideMenuItemWithSub>
+      </AsideMenuItemWithSub> */}
+
       <div className='menu-item'>
         <div className='menu-content'>
           <div className='separator mx-1 my-4'></div>
