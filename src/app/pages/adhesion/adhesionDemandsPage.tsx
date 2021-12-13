@@ -1,15 +1,14 @@
 import axios from 'axios'
 import React, {useEffect, useMemo, useState} from 'react'
-import {KTSVG} from '../../../_metronic/helpers'
 import HeaderComponent from '../../../_metronic/partials/widgets/datatable/header/HeaderComponent'
 import PaginationComponent from '../../../_metronic/partials/widgets/datatable/pagination/PaginationComponent'
-import {ParticularPagination} from './ParticularPaginationInterface'
+import {AdhesionDemandPagination} from './AdhesionDemandPagination'
 
 type Props = {
   className: string
 }
-const ParticularsPage: React.FC<Props> = ({className}) => {
-  const [particularsApiData, setParticulars] = useState<ParticularPagination>(null as any)
+const AdhesionDemandPage: React.FC<Props> = ({className}) => {
+  const [apiData, setApiData] = useState<AdhesionDemandPagination>(null as any)
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -19,13 +18,13 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
     {name: 'ID', field: 'id'},
     {name: 'First Name', field: 'firstName'},
     {name: 'Last Name', field: 'lastName'},
-    {name: 'User Name', field: 'userName'},
-    {name: 'Email', field: 'email'},
+    {name: 'Phone Number', field: 'phone'},
+    {name: 'Processing State', field: 'processingState'},
   ]
 
   useEffect(() => {
     axios
-      .get('/particular', {
+      .get('/adhesion-demand', {
         params: {
           page: currentPage,
           perPage: ITEMS_PER_PAGE,
@@ -33,38 +32,27 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
           orderBy: 'id',
         },
       })
-      .then((e) => setParticulars(e.data))
+      .then((e) => setApiData(e.data))
   }, [currentPage])
 
   const particularsTableData = useMemo(() => {
-    if (!particularsApiData) return []
+    if (!apiData) return []
 
-    const {totalElements} = particularsApiData
+    const {totalElements} = apiData
 
     setTotalItems(totalElements)
-    return particularsApiData.data
-  }, [particularsApiData])
+    return apiData.data
+  }, [apiData])
 
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
         <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Particulars</span>
-          <span className='text-muted mt-1 fw-bold fs-7'> Particular acocunt list </span>
+          <span className='card-label fw-bolder fs-3 mb-1'>Adhesion Demands</span>
+          <span className='text-muted mt-1 fw-bold fs-7'> Adhesion Demands list</span>
         </h3>
-        <div className='card-toolbar'>
-          <a
-            href='#'
-            className='btn btn-sm btn-light-primary'
-            data-bs-toggle='modal'
-            data-bs-target='#kt_modal_create_app'
-            id='kt_toolbar_primary_button'
-          >
-            <KTSVG path='/media/icons/duotune/arrows/arr075.svg' className='svg-icon-2' />
-            New Particular
-          </a>
-        </div>
+        <div className='card-toolbar'></div>
       </div>
       {/* end::Header */}
       {/* begin::Body */}
@@ -81,10 +69,10 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
               {particularsTableData.map((particular) => (
                 <tr key={particular.id}>
                   <th scope='row'>{particular.id}</th>
-                  <td>{particular.firstName}</td>
-                  <td className=''>{particular.lastName}</td>
-                  <td className=''>{particular.userName}</td>
-                  <td className=''>{particular.email}</td>
+                  <td>{particular.data.firstName}</td>
+                  <td className=''>{particular.data.lastName}</td>
+                  <td className=''>{particular.data.phone}</td>
+                  <td className=''>{particular.processingState}</td>
                 </tr>
               ))}
             </tbody>
@@ -103,4 +91,4 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
     </div>
   )
 }
-export default ParticularsPage
+export default AdhesionDemandPage

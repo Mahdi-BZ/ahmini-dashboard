@@ -39,8 +39,6 @@ const AdminPage: React.FC<Props> = ({className}) => {
   const particularsTableData = useMemo(() => {
     if (!particularsApiData) return []
 
-    console.log(JSON.stringify(particularsApiData))
-
     const {totalElements} = particularsApiData
 
     setTotalItems(totalElements)

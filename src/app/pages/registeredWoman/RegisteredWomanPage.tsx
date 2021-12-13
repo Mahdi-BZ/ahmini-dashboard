@@ -1,31 +1,35 @@
 import axios from 'axios'
 import React, {useEffect, useMemo, useState} from 'react'
-import {KTSVG} from '../../../_metronic/helpers'
+import {Button} from 'react-bootstrap-v5'
 import HeaderComponent from '../../../_metronic/partials/widgets/datatable/header/HeaderComponent'
 import PaginationComponent from '../../../_metronic/partials/widgets/datatable/pagination/PaginationComponent'
-import {ParticularPagination} from './ParticularPaginationInterface'
+import {RegisteredWomanPagination} from './RegisteredWomanPagination'
 
 type Props = {
   className: string
 }
-const ParticularsPage: React.FC<Props> = ({className}) => {
-  const [particularsApiData, setParticulars] = useState<ParticularPagination>(null as any)
+const RegisteredWomanPage: React.FC<Props> = ({className}) => {
+  const [particularsApiData, setParticulars] = useState<RegisteredWomanPagination>(null as any)
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
 
   const ITEMS_PER_PAGE = 10
 
+  const exportData = () => {
+    axios.get('/registered-woman/excel')
+  }
+
   const headers = [
     {name: 'ID', field: 'id'},
     {name: 'First Name', field: 'firstName'},
     {name: 'Last Name', field: 'lastName'},
-    {name: 'User Name', field: 'userName'},
-    {name: 'Email', field: 'email'},
+    {name: 'Cin', field: 'cin'},
+    {name: 'Work', field: 'work'},
   ]
 
   useEffect(() => {
     axios
-      .get('/particular', {
+      .get('/registered-woman', {
         params: {
           page: currentPage,
           perPage: ITEMS_PER_PAGE,
@@ -50,20 +54,11 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
         <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Particulars</span>
-          <span className='text-muted mt-1 fw-bold fs-7'> Particular acocunt list </span>
+          <span className='card-label fw-bolder fs-3 mb-1'>Adhesion Demands</span>
+          <span className='text-muted mt-1 fw-bold fs-7'> Adhesion Demands list</span>
         </h3>
         <div className='card-toolbar'>
-          <a
-            href='#'
-            className='btn btn-sm btn-light-primary'
-            data-bs-toggle='modal'
-            data-bs-target='#kt_modal_create_app'
-            id='kt_toolbar_primary_button'
-          >
-            <KTSVG path='/media/icons/duotune/arrows/arr075.svg' className='svg-icon-2' />
-            New Particular
-          </a>
+          <Button onClick={() => exportData()}> Export Current List </Button>
         </div>
       </div>
       {/* end::Header */}
@@ -83,8 +78,8 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
                   <th scope='row'>{particular.id}</th>
                   <td>{particular.firstName}</td>
                   <td className=''>{particular.lastName}</td>
-                  <td className=''>{particular.userName}</td>
-                  <td className=''>{particular.email}</td>
+                  <td className=''>{particular.cin}</td>
+                  <td className=''>{particular.work}</td>
                 </tr>
               ))}
             </tbody>
@@ -103,4 +98,4 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
     </div>
   )
 }
-export default ParticularsPage
+export default RegisteredWomanPage

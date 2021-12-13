@@ -99,6 +99,25 @@ export function AsideMenuMain() {
         <AsideMenuItem to='/crafted/users/ambassador' title='Ambassador' hasBullet={true} />
         {/* <AsideMenuItem to='/crafted/users/association' title='Association' hasBullet={true} /> */}
       </AsideMenuItemWithSub>
+
+      <AsideMenuItemWithSub
+        to='/crafted/adhesion'
+        title='Adhesions'
+        icon='/media/icons/duotune/communication/com006.svg'
+        fontIcon='bi-person'
+      >
+        <AsideMenuItem to='/crafted/adhesion/demands' title='Adhesion Demand' hasBullet={true} />
+        {/* <AsideMenuItem to='/crafted/users/particular' title='Particular' hasBullet={true} /> */}
+      </AsideMenuItemWithSub>
+
+      <AsideMenuItemWithSub
+        to='/crafted/registered-woman'
+        title='Registered-woman'
+        icon='/media/icons/duotune/communication/com006.svg'
+        fontIcon='bi-person'
+      >
+        <AsideMenuItem to='/crafted/registered-woman' title='registered Woman' hasBullet={true} />
+      </AsideMenuItemWithSub>
       {/* <div className='menu-item'>
         <div className='menu-content pt-8 pb-2'>
           <span className='menu-section text-muted text-uppercase fs-8 ls-1'>Apps</span>
