@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useState} from 'react'
+import {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import * as Yup from 'yup'
 import clsx from 'clsx'
@@ -8,8 +8,6 @@ import {useFormik} from 'formik'
 import * as auth from '../redux/AuthRedux'
 import {login} from '../redux/AuthCRUD'
 // import {toAbsoluteUrl} from '../../../../_metronic/helpers'
-import axios from 'axios'
-import {fetchData} from '../__mocks__/fetchData'
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()

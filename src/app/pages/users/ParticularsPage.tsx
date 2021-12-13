@@ -8,7 +8,7 @@ type Props = {
   className: string
 }
 const ParticularsPage: React.FC<Props> = ({className}) => {
-  const [particular, setParticular] = useState([{id: 0, name: '', email: '', body: ''}])
+  const [particulars, setParticulars] = useState([{id: 0, name: '', email: '', body: ''}])
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -23,108 +23,16 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
   ]
 
   useEffect(() => {
-    const t = axios.create()
-
-    t.get(
-      "'https://ahmini-backend.azurewebsites.net/particular?page=0&perPage=0&sort=desc&orderBy=userName'"
-    ).then((e) => console.log(e))
-
-    const getData = () => {
-      // showLoader();
-
-      fetch('https://jsonplaceholder.typicode.com/comments')
-        .then((response) => response.json())
-        .then((json) => {
-          // hideLoader();
-          setParticular(json)
-          console.log(json)
-        })
-    }
+    axios
+      .get('/particular')
+      .then((e) => console.log(e))
+      .catch((e) => console.log(e))
 
     // getData()
   }, [])
 
-  // var data = [{"id": "2 minutes ago",
-  //             "name": "2 minutes ago",
-  //             "email": "Jill Dupre",
-  //             "body": "Created new account",
-
-  //           },
-  //           {
-  //             "id": "2 minutes ago",
-  //             "name": "1 hour ago",
-  //             "email": "Lose White",
-  //             "body": "Added fist chapter"
-  //           },
-  //           {
-  //             "id": "2 minutes ago",
-  //             "name": "2 hours ago",
-  //             "email": "Jordan Whash",
-  //             "body": "Created new account"
-  //           },
-  //           {
-  //             "id": "2 minutes ago",
-  //             "name": "2 hours ago",
-  //             "email": "Jordan Whash",
-  //             "body": "Created new account"
-  //           },
-  //           {
-  //             "id": "2 minutes ago",
-  //             "name": "2 hours ago",
-  //             "email": "Jordan Whash",
-  //             "body": "Created new account"
-  //           },
-  //           {
-  //             "id": "2 minutes ago",
-  //             "name": "2 hours ago",
-  //             "email": "Jordan Whash",
-  //             "body": "Created new account"
-  //           },
-  //           {
-  //             "id": "2 minutes ago",
-  //             "name": "2 hours ago",
-  //             "email": "Jordan Whash",
-  //             "body": "Created new account"
-  //           },
-  //           {
-  //             "id": "2 minutes ago",
-  //             "name": "2 hours ago",
-  //             "email": "Jordan Whash",
-  //             "body": "Created new account"
-  //           },
-  //           {
-  //             "id": "2 minutes ago",
-  //             "name": "2 hours ago",
-  //             "email": "Jordan Whash",
-  //             "body": "Created new account"
-  //           },
-  //           {
-  //             "id": "2 minutes ago",
-  //             "name": "2 hours ago",
-  //             "email": "Jordan Whash",
-  //             "body": "Created new account"
-  //           },
-  //           {
-  //             "id": "2 minutes ago",
-  //             "name": "2 hours ago",
-  //             "email": "Jordan Whash",
-  //             "body": "Created new account"
-  //           },
-  //           {
-  //             "id": "2 minutes ago",
-  //             "name": "2 hours ago",
-  //             "email": "Jordan Whash",
-  //             "body": "Created new account"
-  //           },
-  //           {
-  //             "id": "2 minutes ago",
-  //             "name": "2 hours ago",
-  //             "email": "Jordan Whash",
-  //             "body": "Created new account"
-  //           }];
-
   const particularsData = useMemo(() => {
-    let computedParticulars = particular
+    let computedParticulars = particulars
 
     setTotalItems(computedParticulars.length)
 
@@ -133,7 +41,7 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
       (currentPage - 1) * ITEMS_PER_PAGE,
       (currentPage - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE
     )
-  }, [particular, currentPage])
+  }, [particulars, currentPage])
 
   return (
     <div className={`card ${className}`}>
@@ -166,25 +74,9 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
             {/* begin::Table head */}
             <HeaderComponent headers={headers} />
 
-            {/*<thead>
-              <tr className='fw-bolder text-muted bg-light'>
-                <th className='min-w-200px'>First Name</th>
-                 <th className='min-w-200px'>Last Name</th>
-                <th className='min-w-200px'>User Name</th>
-                <th className='min-w-200px'>Phone Number</th>
-                <th className='min-w-200px'>Email</th>
-                <th className='min-w-200px'>Password</th>
-                <th className='min-w-200px'>Account Type</th>
-                <th className='min-w-200px'>Roles</th>
-                <th className='min-w-200px text-end rounded-end'></th> 
-              </tr>
-            </thead>*/}
-            {/* end::Table head */}
-            {/* begin::Table body */}
-
             <tbody>
-              {particular.map((particular) => (
-                <tr>
+              {particulars.map((particular) => (
+                <tr key={particular.id}>
                   <th scope='row'>{particular.id}</th>
                   <td>
                     {/* <span > */}
@@ -195,11 +87,11 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
                     {/* <span > */}
                     {particular.email}
                     {/* </span> */}
-                    <td className='text-dark fw-bold text-muted d-block fs-7'>
-                      {/* <span > */}
-                      {particular.body}
-                      {/* </span> */}
-                    </td>
+                  </td>
+                  <td className='text-dark fw-bold text-muted d-block fs-7'>
+                    {/* <span > */}
+                    {particular.body}
+                    {/* </span> */}
                   </td>
                 </tr>
               ))}
