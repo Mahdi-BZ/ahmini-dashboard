@@ -97,7 +97,7 @@ export function AsideMenuMain() {
         <AsideMenuItem to='/crafted/users/admin' title='Admin' hasBullet={true} />
         <AsideMenuItem to='/crafted/users/particular' title='Particular' hasBullet={true} />
         <AsideMenuItem to='/crafted/users/ambassador' title='Ambassador' hasBullet={true} />
-        <AsideMenuItem to='/crafted/users/association' title='Association' hasBullet={true} />
+        {/* <AsideMenuItem to='/crafted/users/association' title='Association' hasBullet={true} /> */}
       </AsideMenuItemWithSub>
       {/* <div className='menu-item'>
         <div className='menu-content pt-8 pb-2'>

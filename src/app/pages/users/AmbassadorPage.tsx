@@ -3,13 +3,13 @@ import React, {useEffect, useMemo, useState} from 'react'
 import {KTSVG} from '../../../_metronic/helpers'
 import HeaderComponent from '../../../_metronic/partials/widgets/datatable/header/HeaderComponent'
 import PaginationComponent from '../../../_metronic/partials/widgets/datatable/pagination/PaginationComponent'
-import {ParticularPagination} from './ParticularPaginationInterface'
+import {AmbassadorPagination} from './AmbassadorPaginationModal'
 
 type Props = {
   className: string
 }
-const ParticularsPage: React.FC<Props> = ({className}) => {
-  const [particularsApiData, setParticulars] = useState<ParticularPagination>(null as any)
+const AmbassadorPage: React.FC<Props> = ({className}) => {
+  const [particularsApiData, setParticulars] = useState<AmbassadorPagination>(null as any)
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -19,18 +19,18 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
     {name: 'ID', field: 'id'},
     {name: 'First Name', field: 'firstName'},
     {name: 'Last Name', field: 'lastName'},
-    {name: 'User Name', field: 'userName'},
     {name: 'Email', field: 'email'},
+    {name: 'Valid Account', field: 'hasValidAccount'},
   ]
 
   useEffect(() => {
     axios
-      .get('/particular', {
+      .get('/ambassador', {
         params: {
           page: currentPage,
           perPage: ITEMS_PER_PAGE,
           sort: 'desc',
-          orderBy: 'userName',
+          orderBy: 'id',
         },
       })
       .then((e) => setParticulars(e.data))
@@ -50,8 +50,8 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
         <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Particulars</span>
-          <span className='text-muted mt-1 fw-bold fs-7'> Particular acocunt list </span>
+          <span className='card-label fw-bolder fs-3 mb-1'>Ambassadors</span>
+          <span className='text-muted mt-1 fw-bold fs-7'> Ambassador acocunt list</span>
         </h3>
         <div className='card-toolbar'>
           <a
@@ -62,7 +62,7 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
             id='kt_toolbar_primary_button'
           >
             <KTSVG path='/media/icons/duotune/arrows/arr075.svg' className='svg-icon-2' />
-            New Particular
+            New Administrator
           </a>
         </div>
       </div>
@@ -83,8 +83,8 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
                   <th scope='row'>{particular.id}</th>
                   <td>{particular.firstName}</td>
                   <td className=''>{particular.lastName}</td>
-                  <td className=''>{particular.userName}</td>
                   <td className=''>{particular.email}</td>
+                  <td className=''>{particular.hasValidAccount ? 'Yes' : 'No'}</td>
                 </tr>
               ))}
             </tbody>
@@ -103,4 +103,4 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
     </div>
   )
 }
-export default ParticularsPage
+export default AmbassadorPage

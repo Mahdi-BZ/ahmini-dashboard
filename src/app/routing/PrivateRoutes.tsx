@@ -3,6 +3,8 @@ import {Redirect, Route, Switch} from 'react-router-dom'
 import {FallbackView} from '../../_metronic/partials'
 import {DashboardWrapper} from '../pages/dashboard/DashboardWrapper'
 import {MenuTestPage} from '../pages/MenuTestPage'
+import AdminPage from '../pages/users/AdminPage'
+import AmbassadorPage from '../pages/users/AmbassadorPage'
 import ParticularsPage from '../pages/users/ParticularsPage'
 
 export function PrivateRoutes() {
@@ -23,9 +25,8 @@ export function PrivateRoutes() {
         <Route path='/crafted/widgets' component={WidgetsPage} />
         <Route path='/crafted/account' component={AccountPage} />
         <Route path='/crafted/users/particular' component={ParticularsPage} />
-        {/* <Route path='/crafted/users/ambassador' component={AmbassadorsPage} />
-        <Route path='/crafted/users/admin' component={AdminsPage} />
-        <Route path='/crafted/users/association' component={AssociationsPage} /> */}
+        <Route path='/crafted/users/admin' component={AdminPage} />
+        <Route path='/crafted/users/ambassador' component={AmbassadorPage} />
         <Route path='/apps/chat' component={ChatPage} />
         <Route path='/menu-test' component={MenuTestPage} />
         <Redirect from='/auth' to='/dashboard' />
