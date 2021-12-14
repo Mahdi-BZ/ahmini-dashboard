@@ -3,6 +3,8 @@ import React, {useEffect, useMemo, useState} from 'react'
 import {Button} from 'react-bootstrap-v5'
 import {useParams} from 'react-router-dom'
 import {AdhesionDemand} from './AdhesionDemandPagination'
+import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
+import {Carousel} from 'react-responsive-carousel'
 
 type Props = {
   className: string
@@ -70,9 +72,43 @@ const SingleAdhesionDemandPage: React.FC<Props> = ({className}) => {
             <h4> Client code ahmini </h4>
             <p> {data.data.clientCodeAhmini} </p>
 
-            <h4> Documents </h4>
+            <h4 style={{}}>
+              Documents <Button> Download all Document </Button>
+            </h4>
 
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))'}}>
+            <Carousel>
+              {/* <div>
+    <img src="assets/1.jpeg" />
+    <p className="legend">Legend 1</p>
+</div>
+<div>
+    <img src="assets/2.jpeg" />
+    <p className="legend">Legend 2</p>
+</div>
+<div>
+    <img src="assets/3.jpeg" />
+    <p className="legend">Legend 3</p>
+</div> */}
+              {data.documents.map((e) => (
+                <div style={{display: 'flex', justifyContent: 'center'}} key={e.id}>
+                  <a
+                    rel='noreferrer'
+                    target='_blank'
+                    href={`${process.env.REACT_APP_FILE_SERVER_URL}/images/${e.filename}${process.env.REACT_APP_FILE_SERVER_TOKEN}`}
+                  >
+                    <img
+                      height={500}
+                      width={500}
+                      style={{objectFit: 'cover'}}
+                      alt='document'
+                      src={`${process.env.REACT_APP_FILE_SERVER_URL}/images/${e.filename}${process.env.REACT_APP_FILE_SERVER_TOKEN}`}
+                    ></img>
+                  </a>
+                </div>
+              ))}
+            </Carousel>
+
+            {/* <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))'}}>
               {data.documents.map((e) => (
                 <div key={e.id}>
                   <a
@@ -89,7 +125,7 @@ const SingleAdhesionDemandPage: React.FC<Props> = ({className}) => {
                   </a>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       )
