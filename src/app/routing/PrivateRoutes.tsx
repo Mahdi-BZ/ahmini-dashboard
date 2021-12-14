@@ -2,6 +2,7 @@ import React, {Suspense, lazy} from 'react'
 import {Redirect, Route, Switch} from 'react-router-dom'
 import {FallbackView} from '../../_metronic/partials'
 import AdhesionDemandPage from '../pages/adhesion/adhesionDemandsPage'
+import SingleAdhesionDemandPage from '../pages/adhesion/SingleAdhesionDemandPage'
 import {DashboardWrapper} from '../pages/dashboard/DashboardWrapper'
 import {MenuTestPage} from '../pages/MenuTestPage'
 import RegisteredWomanPage from '../pages/registeredWoman/RegisteredWomanPage'
@@ -33,6 +34,7 @@ export function PrivateRoutes() {
         <Route exact path='/crafted/users/ambassador' component={AmbassadorPage} />
         <Route path='/crafted/users/ambassador/:id' component={SingleAmbassadorPage} />
         <Route exact path='/crafted/adhesion/demands' component={AdhesionDemandPage} />
+        <Route path='/crafted/adhesion/demands/:id' component={SingleAdhesionDemandPage} />
         <Route exact path='/crafted/registered-woman' component={RegisteredWomanPage} />
         <Route exact path='/crafted/sinister' component={SinisterPage} />
         <Route path='/apps/chat' component={ChatPage} />

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, {useEffect, useMemo, useState} from 'react'
+import {useHistory} from 'react-router-dom'
 import HeaderComponent from '../../../_metronic/partials/widgets/datatable/header/HeaderComponent'
 import PaginationComponent from '../../../_metronic/partials/widgets/datatable/pagination/PaginationComponent'
 import {AdhesionDemandPagination} from './AdhesionDemandPagination'
@@ -11,6 +12,7 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
   const [apiData, setApiData] = useState<AdhesionDemandPagination>(null as any)
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
+  const history = useHistory()
 
   const ITEMS_PER_PAGE = 10
 
@@ -66,13 +68,17 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
             {/* text-dark fw-bold text-muted d-block fs-7 */}
 
             <tbody>
-              {particularsTableData.map((particular) => (
-                <tr key={particular.id}>
-                  <th scope='row'>{particular.id}</th>
-                  <td>{particular.data.firstName}</td>
-                  <td className=''>{particular.data.lastName}</td>
-                  <td className=''>{particular.data.phone}</td>
-                  <td className=''>{particular.processingState}</td>
+              {particularsTableData.map((e) => (
+                <tr
+                  style={{cursor: 'pointer'}}
+                  onClick={() => history.push(`/crafted/adhesion/demands/${e.id}`)}
+                  key={e.id}
+                >
+                  <th scope='row'>{e.id}</th>
+                  <td>{e.data.firstName}</td>
+                  <td className=''>{e.data.lastName}</td>
+                  <td className=''>{e.data.phone}</td>
+                  <td className=''>{e.processingState}</td>
                 </tr>
               ))}
             </tbody>

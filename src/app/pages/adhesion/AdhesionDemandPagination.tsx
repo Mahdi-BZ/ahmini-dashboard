@@ -33,7 +33,7 @@ export interface Meta {
   createdDate: Date
 }
 
-export interface Datum {
+export interface AdhesionDemand {
   id: number
   processingState: string
   data: Data
@@ -41,7 +41,7 @@ export interface Datum {
 }
 
 export interface AdhesionDemandPagination {
-  data: Datum[]
+  data: AdhesionDemand[]
   totalElements: number
   page: number
   pageNumber: number

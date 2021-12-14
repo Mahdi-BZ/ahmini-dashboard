@@ -38,7 +38,6 @@ const SinisterPage: React.FC<Props> = ({className}) => {
     if (!apiData) return []
 
     const {totalElements} = apiData
-    console.log(apiData)
 
     setTotalItems(totalElements)
     return apiData.data
