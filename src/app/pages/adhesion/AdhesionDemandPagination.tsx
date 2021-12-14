@@ -33,11 +33,27 @@ export interface Meta {
   createdDate: Date
 }
 
+interface Document {
+  id: number
+  mimetype: string
+  originalname: string
+  filename: string
+  size: number
+  meta: Meta2
+}
+
+export interface Meta2 {
+  deletedDate?: any
+  updatedDate: Date
+  createdDate: Date
+}
+
 export interface AdhesionDemand {
   id: number
   processingState: string
   data: Data
   meta: Meta
+  documents: Document[]
 }
 
 export interface AdhesionDemandPagination {

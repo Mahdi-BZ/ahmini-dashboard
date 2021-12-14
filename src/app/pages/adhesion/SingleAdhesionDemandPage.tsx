@@ -12,6 +12,8 @@ const SingleAdhesionDemandPage: React.FC<Props> = ({className}) => {
   const [validateApi, setValidateApi] = useState(null)
   const {id} = useParams<{id: string}>()
 
+  console.log(apiData)
+
   useEffect(() => {
     if (!id) return
     axios.get(`/adhesion-demand/${id}`).then((e) => setParticulars(e.data))
@@ -69,7 +71,25 @@ const SingleAdhesionDemandPage: React.FC<Props> = ({className}) => {
             <p> {data.data.clientCodeAhmini} </p>
 
             <h4> Documents </h4>
-            <p> TODO </p>
+
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))'}}>
+              {data.documents.map((e) => (
+                <div key={e.id}>
+                  <a
+                    rel='noreferrer'
+                    target='_blank'
+                    href={`${process.env.REACT_APP_FILE_SERVER_URL}/images/${e.filename}${process.env.REACT_APP_FILE_SERVER_TOKEN}`}
+                  >
+                    <img
+                      width={300}
+                      height={300}
+                      alt='document'
+                      src={`${process.env.REACT_APP_FILE_SERVER_URL}/images/${e.filename}${process.env.REACT_APP_FILE_SERVER_TOKEN}`}
+                    ></img>
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )
