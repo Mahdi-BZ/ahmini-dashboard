@@ -63,7 +63,7 @@ export function Login() {
             setSubmitting(false)
             setStatus('The login detail is incorrect')
           })
-      }, 1000)
+      }, 500)
     },
   })
 
