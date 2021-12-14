@@ -10,7 +10,7 @@ export function AsideMenuMain() {
 
   return (
     <>
-      <AsideMenuItem
+      {/* <AsideMenuItem
         to='/dashboard'
         icon='/media/icons/duotune/art/art002.svg'
         title={intl.formatMessage({id: 'MENU.DASHBOARD'})}
@@ -21,10 +21,10 @@ export function AsideMenuMain() {
         icon='/media/icons/duotune/general/gen019.svg'
         title='Layout Builder'
         fontIcon='bi-layers'
-      />
+      /> */}
       <div className='menu-item'>
         <div className='menu-content pt-8 pb-2'>
-          <span className='menu-section text-muted text-uppercase fs-8 ls-1'>Application</span>
+          <span className='menu-section text-muted text-uppercase fs-8 ls-1'> Tabs </span>
         </div>
       </div>
       {/* <AsideMenuItemWithSub
@@ -157,7 +157,7 @@ export function AsideMenuMain() {
           <div className='separator mx-1 my-4'></div>
         </div>
       </div>
-      <div className='menu-item'>
+      {/* <div className='menu-item'>
         <a
           target='_blank'
           className='menu-link'
@@ -168,7 +168,7 @@ export function AsideMenuMain() {
           </span>
           <span className='menu-title'>Changelog {process.env.REACT_APP_VERSION}</span>
         </a>
-      </div>
+      </div> */}
     </>
   )
 }
