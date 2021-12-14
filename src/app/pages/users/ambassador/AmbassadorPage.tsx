@@ -1,9 +1,11 @@
 import axios from 'axios'
 import React, {useEffect, useMemo, useState} from 'react'
-import {KTSVG} from '../../../_metronic/helpers'
-import HeaderComponent from '../../../_metronic/partials/widgets/datatable/header/HeaderComponent'
-import PaginationComponent from '../../../_metronic/partials/widgets/datatable/pagination/PaginationComponent'
+import {Link} from 'react-router-dom'
+import {KTSVG} from '../../../../_metronic/helpers'
+import HeaderComponent from '../../../../_metronic/partials/widgets/datatable/header/HeaderComponent'
+import PaginationComponent from '../../../../_metronic/partials/widgets/datatable/pagination/PaginationComponent'
 import {AmbassadorPagination} from './AmbassadorPaginationModal'
+import {useHistory} from 'react-router-dom'
 
 type Props = {
   className: string
@@ -12,6 +14,8 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
   const [particularsApiData, setParticulars] = useState<AmbassadorPagination>(null as any)
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
+
+  const history = useHistory()
 
   const ITEMS_PER_PAGE = 10
 
@@ -62,7 +66,7 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
             id='kt_toolbar_primary_button'
           >
             <KTSVG path='/media/icons/duotune/arrows/arr075.svg' className='svg-icon-2' />
-            New Administrator
+            New Ambassador
           </a>
         </div>
       </div>
@@ -79,7 +83,12 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
 
             <tbody>
               {particularsTableData.map((particular) => (
-                <tr key={particular.id}>
+                <tr
+                  style={{cursor: 'pointer'}}
+                  onClick={() => history.push(`/crafted/users/ambassador/${particular.id}`)}
+                  key={particular.id}
+                  className=''
+                >
                   <th scope='row'>{particular.id}</th>
                   <td>{particular.firstName}</td>
                   <td className=''>{particular.lastName}</td>

@@ -4,7 +4,7 @@ export interface ModificationMeta {
   createdDate: Date
 }
 
-export interface Datum {
+export interface Ambassador {
   id: number
   phoneNumber: string
   email: string
@@ -20,7 +20,7 @@ export interface Datum {
 }
 
 export interface AmbassadorPagination {
-  data: Datum[]
+  data: Ambassador[]
   totalElements: number
   page: number
   pageNumber: number
