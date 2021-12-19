@@ -61,7 +61,7 @@ export function AsideMenuMain() {
 
       <AsideMenuItemWithSub
         to='/crafted/sinister'
-        title='Sinitres'
+        title='Sinistres'
         icon='/media/icons/duotune/communication/com006.svg'
         fontIcon='bi-person'
       >
