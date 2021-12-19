@@ -16,9 +16,9 @@ const SinisterPage: React.FC<Props> = ({className}) => {
 
   const headers = [
     {name: 'ID', field: 'id'},
-    {name: 'Name', field: 'name'},
+    {name: 'Nom', field: 'name'},
     {name: 'Type', field: 'type'},
-    {name: 'Declared by', field: 'declaredBy'},
+    {name: 'Declare par', field: 'declaredBy'},
   ]
 
   useEffect(() => {
@@ -48,8 +48,8 @@ const SinisterPage: React.FC<Props> = ({className}) => {
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
         <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Adhesion Demands</span>
-          <span className='text-muted mt-1 fw-bold fs-7'> Adhesion Demands list</span>
+          <span className='card-label fw-bolder fs-3 mb-1'>Sinistres</span>
+          <span className='text-muted mt-1 fw-bold fs-7'> liste de sinitres</span>
         </h3>
         <div className='card-toolbar'></div>
       </div>

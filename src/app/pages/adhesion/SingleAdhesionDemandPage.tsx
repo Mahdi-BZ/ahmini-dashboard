@@ -33,43 +33,43 @@ const SingleAdhesionDemandPage: React.FC<Props> = ({className}) => {
             <h4> State </h4>
             <p> {data.processingState} </p>
 
-            <h4> first name </h4>
+            <h4> nom </h4>
             <p> {data.data.firstName} </p>
 
-            <h4> last name </h4>
+            <h4> Prenom </h4>
             <p> {data.data.lastName} </p>
 
-            <h4> phone </h4>
+            <h4> Telephone </h4>
             <p> {data.data.phone} </p>
 
-            <h4> activity </h4>
+            <h4> Activite </h4>
             <p> {data.data.activity} </p>
 
-            <h4> child count </h4>
+            <h4> Nombre d'enfants </h4>
             <p> {data.data.childCount} </p>
 
-            <h4> Birth Date </h4>
+            <h4> Date de naissance </h4>
             <p> {data.data.birthDate} </p>
 
-            <h4> governorate </h4>
+            <h4> Gouvernorat </h4>
             <p> {data.data.governorate} </p>
 
-            <h4> identity card delivery date </h4>
+            <h4> Fate de livraison de la carte d'identité</h4>
             <p> {data.data.identityCardDeliveryDate} </p>
 
-            <h4> family situation </h4>
+            <h4> Situation familiale </h4>
             <p> {data.data.familtySituation} </p>
 
-            <h4> postal code </h4>
+            <h4> Code postale </h4>
             <p> {data.data.postalCode} </p>
 
-            <h4> street </h4>
+            <h4> Rue </h4>
             <p> {data.data.street} </p>
 
-            <h4> town </h4>
+            <h4> Ville </h4>
             <p> {data.data.town} </p>
 
-            <h4> Client code ahmini </h4>
+            <h4> Code client Ahmini </h4>
             <p> {data.data.clientCodeAhmini} </p>
 
             <h4 style={{display: 'flex'}}>

@@ -22,7 +22,7 @@ const registrationSchema = Yup.object().shape({
   firstname: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
-    .required('First name is required'),
+    .required('nom is required'),
   email: Yup.string()
     .email('Wrong email format')
     .min(3, 'Minimum 3 symbols')
@@ -31,7 +31,7 @@ const registrationSchema = Yup.object().shape({
   lastname: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
-    .required('Last name is required'),
+    .required('Prenom is required'),
   password: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
@@ -118,9 +118,9 @@ export function Registration() {
       {/* begin::Form group Firstname */}
       <div className='row fv-row mb-7'>
         <div className='col-xl-6'>
-          <label className='class="form-label fw-bolder text-dark fs-6'>First name</label>
+          <label className='class="form-label fw-bolder text-dark fs-6'>nom</label>
           <input
-            placeholder='First name'
+            placeholder='nom'
             type='text'
             autoComplete='off'
             {...formik.getFieldProps('firstname')}
@@ -145,9 +145,9 @@ export function Registration() {
         <div className='col-xl-6'>
           {/* begin::Form group Lastname */}
           <div className='fv-row mb-5'>
-            <label className='form-label fw-bolder text-dark fs-6'>Last name</label>
+            <label className='form-label fw-bolder text-dark fs-6'>Prenom</label>
             <input
-              placeholder='Last name'
+              placeholder='Prenom'
               type='text'
               autoComplete='off'
               {...formik.getFieldProps('lastname')}

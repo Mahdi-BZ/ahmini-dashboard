@@ -46,7 +46,7 @@ export function Overview() {
               <i
                 className='fas fa-exclamation-circle ms-1 fs-7'
                 data-bs-toggle='tooltip'
-                title='Phone number must be active'
+                title='Telephone must be active'
               ></i>
             </label>
 

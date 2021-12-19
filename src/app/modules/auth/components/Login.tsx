@@ -26,31 +26,14 @@ const initialValues = {
   password: '123123123',
 }
 
-/*
-  Formik+YUP+Typescript:
-  https://jaredpalmer.com/formik/docs/tutorial#getfieldprops
-  https://medium.com/@maurice.de.beijer/yup-validation-and-typescript-and-formik-6c342578a20e
-*/
-
 export function Login() {
   const [loading, setLoading] = useState(false)
-  // const axiosInstance = axios.create({
-  //   baseURL: 'https://ahmini-backend.azurewebsites.net',
-  //   headers: {'Content-Type': 'application/json'},
-  // })
+
   const dispatch = useDispatch()
   const formik = useFormik({
     initialValues,
     validationSchema: loginSchema,
     onSubmit: (values, {setStatus, setSubmitting}) => {
-      // await axiosInstance
-      //   .post('/admin/login', {email: values.email, password: values.password})
-      //   .then((response) => {
-      //     console.log(response)
-      //   })
-      //   .catch((err) => {
-      //     console.log(err)
-      //   })
       setLoading(true)
       setTimeout(() => {
         login(values.email, values.password)
@@ -76,11 +59,11 @@ export function Login() {
     >
       {/* begin::Heading */}
       <div className='text-center mb-10'>
-        <h1 className='text-dark mb-3'>Sign In to Ahmini</h1>
+        <h1 className='text-dark mb-3'>Connectez-vous à ahmini</h1>
         <div className='text-gray-400 fw-bold fs-4'>
-          New Here?{' '}
+          Nouveau ici?{' '}
           <Link to='/auth/registration' className='link-primary fw-bolder'>
-            Create an Account
+            Creer un compte
           </Link>
         </div>
       </div>
@@ -130,7 +113,7 @@ export function Login() {
         <div className='d-flex justify-content-between mt-n5'>
           <div className='d-flex flex-stack mb-2'>
             {/* begin::Label */}
-            <label className='form-label fw-bolder text-dark fs-6 mb-0'>Password</label>
+            <label className='form-label fw-bolder text-dark fs-6 mb-0'> Mot de passe</label>
             {/* end::Label */}
             {/* begin::Link */}
             <Link
@@ -138,7 +121,7 @@ export function Login() {
               className='link-primary fs-6 fw-bolder'
               style={{marginLeft: '5px'}}
             >
-              Forgot Password ?
+              Oublier mot de passe?
             </Link>
             {/* end::Link */}
           </div>

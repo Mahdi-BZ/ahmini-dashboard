@@ -675,7 +675,7 @@ export function Account() {
               </div>
 
               <div className='form-text py-2'>
-                For extra security, this requires you to confirm your email or phone number when you
+                For extra security, this requires you to confirm your email or Telephone when you
                 reset your password.
                 <a href='#' className='fw-boldk'>
                   Learn more

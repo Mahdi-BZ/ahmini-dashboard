@@ -21,10 +21,10 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
 
   const headers = [
     {name: 'ID', field: 'id'},
-    {name: 'First Name', field: 'firstName'},
-    {name: 'Last Name', field: 'lastName'},
+    {name: 'nom', field: 'firstName'},
+    {name: 'Prenom', field: 'lastName'},
     {name: 'Email', field: 'email'},
-    {name: 'Valid Account', field: 'hasValidAccount'},
+    {name: 'Compte Valide', field: 'hasValidAccount'},
   ]
 
   useEffect(() => {
@@ -54,8 +54,8 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
         <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Ambassadors</span>
-          <span className='text-muted mt-1 fw-bold fs-7'> Ambassador acocunt list</span>
+          <span className='card-label fw-bolder fs-3 mb-1'>Ambassadeur</span>
+          <span className='text-muted mt-1 fw-bold fs-7'> Liste d'ambassadeur</span>
         </h3>
         <div className='card-toolbar'>
           <a
@@ -66,7 +66,7 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
             id='kt_toolbar_primary_button'
           >
             <KTSVG path='/media/icons/duotune/arrows/arr075.svg' className='svg-icon-2' />
-            New Ambassador
+            Nouveau Ambassadeur
           </a>
         </div>
       </div>

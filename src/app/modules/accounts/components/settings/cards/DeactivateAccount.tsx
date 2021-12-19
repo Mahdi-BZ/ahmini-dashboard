@@ -53,7 +53,7 @@ const DeactivateAccount: React.FC = () => {
                 <div className='fw-bold'>
                   <h4 className='text-gray-800 fw-bolder'>You Are Deactivating Your Account</h4>
                   <div className='fs-6 text-gray-600'>
-                    For extra security, this requires you to confirm your email or phone number when
+                    For extra security, this requires you to confirm your email or Telephone when
                     you reset yousignr password.
                     <br />
                     <a className='fw-bolder' href='#'>

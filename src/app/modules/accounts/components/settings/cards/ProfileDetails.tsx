@@ -5,8 +5,8 @@ import * as Yup from 'yup'
 import {useFormik} from 'formik'
 
 const profileDetailsSchema = Yup.object().shape({
-  fName: Yup.string().required('First name is required'),
-  lName: Yup.string().required('Last name is required'),
+  fName: Yup.string().required('nom is required'),
+  lName: Yup.string().required('Prenom is required'),
   company: Yup.string().required('Company name is required'),
   contactPhone: Yup.string().required('Contact phone is required'),
   companySite: Yup.string().required('Company site is required'),
@@ -83,7 +83,7 @@ const ProfileDetails: React.FC = () => {
                     <input
                       type='text'
                       className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
-                      placeholder='First name'
+                      placeholder='nom'
                       {...formik.getFieldProps('fName')}
                     />
                     {formik.touched.fName && formik.errors.fName && (
@@ -97,7 +97,7 @@ const ProfileDetails: React.FC = () => {
                     <input
                       type='text'
                       className='form-control form-control-lg form-control-solid'
-                      placeholder='Last name'
+                      placeholder='Prenom'
                       {...formik.getFieldProps('lName')}
                     />
                     {formik.touched.lName && formik.errors.lName && (
@@ -137,7 +137,7 @@ const ProfileDetails: React.FC = () => {
                 <input
                   type='tel'
                   className='form-control form-control-lg form-control-solid'
-                  placeholder='Phone number'
+                  placeholder='Telephone'
                   {...formik.getFieldProps('contactPhone')}
                 />
                 {formik.touched.contactPhone && formik.errors.contactPhone && (

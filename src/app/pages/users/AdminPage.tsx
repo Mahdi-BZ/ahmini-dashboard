@@ -17,9 +17,9 @@ const AdminPage: React.FC<Props> = ({className}) => {
 
   const headers = [
     {name: 'ID', field: 'id'},
-    {name: 'First Name', field: 'firstName'},
-    {name: 'Last Name', field: 'lastName'},
-    {name: 'Phone number', field: 'phonrnumber'},
+    {name: 'nom', field: 'firstName'},
+    {name: 'Prenom', field: 'lastName'},
+    {name: 'Telephone', field: 'phonrnumber'},
     {name: 'Email', field: 'email'},
   ]
 
@@ -62,7 +62,7 @@ const AdminPage: React.FC<Props> = ({className}) => {
             id='kt_toolbar_primary_button'
           >
             <KTSVG path='/media/icons/duotune/arrows/arr075.svg' className='svg-icon-2' />
-            New Administrator
+            Nouveau administrateur
           </a>
         </div>
       </div>
