@@ -59,7 +59,10 @@ const SinisterPage: React.FC<Props> = ({className}) => {
         {/* begin::Table container */}
         <div className='dataTables_wrapper dataTables_paginate table-responsive'>
           {/* begin::Table */}
-          <table id='kt_datatable' className='table align-middle gs-0 gy-4'>
+          <table
+            id='kt_datatable'
+            className='border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative'
+          >
             {/* begin::Table head */}
             <HeaderComponent headers={headers} />
             {/* text-dark fw-bold text-muted d-block fs-7 */}
@@ -68,9 +71,15 @@ const SinisterPage: React.FC<Props> = ({className}) => {
               {particularsTableData.map((particular) => (
                 <tr key={particular.id}>
                   <th scope='row'>{particular.id}</th>
-                  <td>{particular.name}</td>
-                  <td className=''> TODO </td>
-                  <td className=''> TODO </td>
+                  <td className='border-dashed border-t border-gray-200 px-3'>
+                    TODO
+                  </td>
+                  <td className='border-dashed border-t border-gray-200 px-3'>
+                    TODO
+                  </td>
+                  <td className='border-dashed border-t border-gray-200 px-3'>
+                    TODO
+                  </td>
                 </tr>
               ))}
             </tbody>

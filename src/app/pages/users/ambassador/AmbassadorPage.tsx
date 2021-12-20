@@ -76,24 +76,31 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
         {/* begin::Table container */}
         <div className='dataTables_wrapper dataTables_paginate table-responsive'>
           {/* begin::Table */}
-          <table id='kt_datatable' className='table align-middle gs-0 gy-4'>
+          <table
+            id='kt_datatable'
+            className='border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative'
+          >
             {/* begin::Table head */}
             <HeaderComponent headers={headers} />
             {/* text-dark fw-bold text-muted d-block fs-7 */}
 
             <tbody>
               {particularsTableData.map((particular) => (
-                <tr
-                  style={{cursor: 'pointer'}}
-                  onClick={() => history.push(`/crafted/users/ambassador/${particular.id}`)}
-                  key={particular.id}
-                  className=''
-                >
+                <tr key={particular.id}>
                   <th scope='row'>{particular.id}</th>
-                  <td>{particular.firstName}</td>
-                  <td className=''>{particular.lastName}</td>
-                  <td className=''>{particular.email}</td>
-                  <td className=''>{particular.hasValidAccount ? 'Yes' : 'No'}</td>
+                  <td className='border-dashed border-t border-gray-200 px-3'>
+                    {particular.firstName}
+                  </td>
+                  <td className='border-dashed border-t border-gray-200 px-3'>
+                    {particular.lastName}
+                  </td>
+                  <td className='border-dashed border-t border-gray-200 px-3'>
+                    {particular.phoneNumber}
+                  </td>
+
+                  <td className='border-dashed border-t border-gray-200 px-3'>
+                    {particular.email}
+                  </td>
                 </tr>
               ))}
             </tbody>

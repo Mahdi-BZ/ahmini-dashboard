@@ -4,12 +4,13 @@ import {MenuInnerWithSub} from './MenuInnerWithSub'
 export function MenuInner() {
   return (
     <>
-      <MenuItem title='Acceuil' to='/dashboard' />
+      <MenuItem title='Acceuil' to='/dashboard' icon='/media/new/home.svg' />
 
       <MenuInnerWithSub
         isMega={true}
         title='Ahmini assurance'
         to='/mega-menu'
+        icon='/media/new/guarantee.svg'
         menuPlacement='bottom-start'
         menuTrigger='click'
       >

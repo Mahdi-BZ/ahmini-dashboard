@@ -9,7 +9,7 @@ const HeaderComponent : React.FC<Props> = ({ headers }) => {
 
 
     return (
-        <thead>
+        <thead className="text-left">
             <tr className='fw-bolder text-muted bg-light'>
                 {headers.map(({ name }) => (
                     <th 

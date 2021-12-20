@@ -13,8 +13,8 @@ export function AsideMenuMain() {
 
       <AsideMenuItemWithSub
         to='/crafted/sinister'
-        title='Finiancement'
-        icon='/media/icons/duotune/communication/com006.svg'
+        title='Financement'
+        icon='/media/new/financement.svg'
         fontIcon='bi-person'
       >
         <AsideMenuItem to='/dashboard' title='Financement' hasBullet={true} />
@@ -23,7 +23,7 @@ export function AsideMenuMain() {
       <AsideMenuItemWithSub
         to='/crafted/users'
         title='Utilisateur'
-        icon='/media/icons/duotune/communication/com006.svg'
+        icon='/media/new/utilisateur.svg'
         fontIcon='bi-person'
       >
         <AsideMenuItem to='/crafted/users/admin' title='Liste Administrateurs' hasBullet={true} />
@@ -35,7 +35,7 @@ export function AsideMenuMain() {
       <AsideMenuItemWithSub
         to='/crafted/adhesion'
         title='Adhesions'
-        icon='/media/icons/duotune/communication/com006.svg'
+        icon='/media/new/adhesion.svg'
         fontIcon='bi-person'
       >
         <AsideMenuItem
@@ -49,7 +49,7 @@ export function AsideMenuMain() {
       <AsideMenuItemWithSub
         to='/crafted/registered-woman'
         title='Femme inscrite'
-        icon='/media/icons/duotune/communication/com006.svg'
+        icon='/media/new/woman.svg'
         fontIcon='bi-person'
       >
         <AsideMenuItem
@@ -62,7 +62,7 @@ export function AsideMenuMain() {
       <AsideMenuItemWithSub
         to='/crafted/sinister'
         title='Sinistres'
-        icon='/media/icons/duotune/communication/com006.svg'
+        icon='/media/new/alert.svg'
         fontIcon='bi-person'
       >
         <AsideMenuItem to='/crafted/sinister' title='Liste de sinistre' hasBullet={true} />
