@@ -6,7 +6,7 @@ import PaginationComponent from '../../../_metronic/partials/widgets/datatable/p
 import {AdhesionDemandPagination} from './AdhesionDemandPagination'
 
 type Props = {
-  className: string
+  className?: string
 }
 const AdhesionDemandPage: React.FC<Props> = ({className}) => {
   const [apiData, setApiData] = useState<AdhesionDemandPagination>(null as any)
