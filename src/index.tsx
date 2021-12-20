@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import './index.css'
 // Redux
 // https://github.com/rt2zz/redux-persist
 import {PersistGate} from 'redux-persist/integration/react'
@@ -37,7 +38,7 @@ const {PUBLIC_URL} = process.env
  * @see https://github.com/ctimmerm/axios-mock-adapter
  */
 
-/* const mock = */ 
+/* const mock = */
 // _redux.mockAxios(axios)
 /**
  * Inject Metronic interceptors for axios.
