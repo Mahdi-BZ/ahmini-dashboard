@@ -22,25 +22,25 @@ export function AsideMenuMain() {
 
       <AsideMenuItemWithSub
         to='/crafted/users'
-        title='Utilisateur'
+        title='Utilisateurs'
         icon='/media/new/utilisateur.svg'
         fontIcon='bi-person'
       >
-        <AsideMenuItem to='/crafted/users/admin' title='Liste Administrateurs' hasBullet={true} />
-        <AsideMenuItem to='/crafted/users/particular' title='Liste particuliers' hasBullet={true} />
-        <AsideMenuItem to='/crafted/users/ambassador' title='Liste ambassadeur' hasBullet={true} />
+        <AsideMenuItem to='/crafted/users/admin' title='Liste des administrateurs' hasBullet={true} />
+        <AsideMenuItem to='/crafted/users/particular' title='Liste des particuliers' hasBullet={true} />
+        <AsideMenuItem to='/crafted/users/ambassador' title='Liste des ambassadeurs' hasBullet={true} />
         {/* <AsideMenuItem to='/crafted/users/association' title='Association' hasBullet={true} /> */}
       </AsideMenuItemWithSub>
 
       <AsideMenuItemWithSub
         to='/crafted/adhesion'
-        title='Adhesions'
+        title='Adhèsions'
         icon='/media/new/adhesion.svg'
         fontIcon='bi-person'
       >
         <AsideMenuItem
           to='/crafted/adhesion/demands'
-          title={`liste de demande d'adhesion`}
+          title={`Liste de demandes d'adhèsion`}
           hasBullet={true}
         />
         {/* <AsideMenuItem to='/crafted/users/particular' title='Particular' hasBullet={true} /> */}
@@ -48,13 +48,13 @@ export function AsideMenuMain() {
 
       <AsideMenuItemWithSub
         to='/crafted/registered-woman'
-        title='Femme inscrite'
+        title='Femmes inscrites'
         icon='/media/new/woman.svg'
         fontIcon='bi-person'
       >
         <AsideMenuItem
           to='/crafted/registered-woman'
-          title='List de femme inscrite'
+          title='Liste de femmes inscrites'
           hasBullet={true}
         />
       </AsideMenuItemWithSub>
@@ -65,7 +65,7 @@ export function AsideMenuMain() {
         icon='/media/new/alert.svg'
         fontIcon='bi-person'
       >
-        <AsideMenuItem to='/crafted/sinister' title='Liste de sinistre' hasBullet={true} />
+        <AsideMenuItem to='/crafted/sinister' title='Liste de sinistres' hasBullet={true} />
       </AsideMenuItemWithSub>
 
       {/* <div className='menu-item'>

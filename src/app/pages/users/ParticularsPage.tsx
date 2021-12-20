@@ -50,8 +50,8 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
         <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Particulier</span>
-          <span className='text-muted mt-1 fw-bold fs-7'> Liste de particulier </span>
+          <span className='card-label fw-bolder fs-3 mb-1'>Particuliers</span>
+          <span className='text-muted mt-1 fw-bold fs-7'> Liste des particuliers </span>
         </h3>
         <div className='card-toolbar'>
           <a
@@ -68,7 +68,7 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
       </div>
       {/* end::Header */}
       {/* begin::Body */}
-      <div className='card-body py-4'>
+      <div className='card-body py-3'>
         {/* begin::Table container */}
         <div className='dataTables_wrapper dataTables_paginate table-responsive'>
           {/* begin::Table */}
@@ -84,17 +84,16 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
               {particularsTableData.map((particular) => (
                 <tr key={particular.id}>
                   <th scope='row'>{particular.id}</th>
-                  <td className='border-dashed border-t border-gray-200 px-3'>
-                    {particular.firstName}
-                  </td>
-                  <td className='border-dashed border-t border-gray-200 px-3'>
+                  <td className='border-dashed border-t border-gray-50 py-5'>
                     {particular.lastName}
                   </td>
-                  <td className='border-dashed border-t border-gray-200 px-3'>
-                    {particular.phoneNumber}
+                  <td className='border-dashed border-t border-gray-200 '>
+                    {particular.firstName}
                   </td>
-
-                  <td className='border-dashed border-t border-gray-200 px-3'>
+                  <td className='border-dashed border-t border-gray-50 '>
+                    {particular.userName}
+                  </td>
+                  <td className='border-dashed border-t border-gray-200 '>
                     {particular.email}
                   </td>
                 </tr>

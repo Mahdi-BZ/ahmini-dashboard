@@ -54,8 +54,8 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
         <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Ambassadeur</span>
-          <span className='text-muted mt-1 fw-bold fs-7'> Liste d'ambassadeur</span>
+          <span className='card-label fw-bolder fs-3 mb-1'>Ambassadeurs</span>
+          <span className='text-muted mt-1 fw-bold fs-7'> Liste des ambassadeurs</span>
         </h3>
         <div className='card-toolbar'>
           <a
@@ -88,18 +88,17 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
               {particularsTableData.map((particular) => (
                 <tr key={particular.id}>
                   <th scope='row'>{particular.id}</th>
-                  <td className='border-dashed border-t border-gray-200 px-3'>
-                    {particular.firstName}
-                  </td>
-                  <td className='border-dashed border-t border-gray-200 px-3'>
+                  <td className='border-dashed border-t border-gray-50 py-5'>
                     {particular.lastName}
                   </td>
-                  <td className='border-dashed border-t border-gray-200 px-3'>
-                    {particular.phoneNumber}
+                  <td className='border-dashed border-t border-gray-200'>
+                    {particular.firstName}
                   </td>
-
-                  <td className='border-dashed border-t border-gray-200 px-3'>
+                  <td className='border-dashed border-t border-gray-50'>
                     {particular.email}
+                  </td>
+                  <td className='border-dashed border-t border-gray-200'>
+                    {particular.hasValidAccount ? 'Yes' : 'No'}
                   </td>
                 </tr>
               ))}

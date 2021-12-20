@@ -62,7 +62,10 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
         {/* begin::Table container */}
         <div className='dataTables_wrapper dataTables_paginate table-responsive'>
           {/* begin::Table */}
-          <table id='kt_datatable' className='table align-middle gs-0 gy-4'>
+          <table
+            id='kt_datatable'
+            className='border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative'
+          >
             {/* begin::Table head */}
             <HeaderComponent headers={headers} />
             {/* text-dark fw-bold text-muted d-block fs-7 */}
@@ -75,10 +78,10 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
                   key={e.id}
                 >
                   <th scope='row'>{e.id}</th>
-                  <td>{e.data.firstName}</td>
-                  <td className=''>{e.data.lastName}</td>
-                  <td className=''>{e.data.phone}</td>
-                  <td className=''>{e.processingState}</td>
+                  <td className='border-dashed border-t border-gray-50 py-5'>{e.data.firstName}</td>
+                  <td className='border-dashed border-t border-gray-200'>{e.data.lastName}</td>
+                  <td className='border-dashed border-t border-gray-50'>{e.data.phone}</td>
+                  <td className='border-dashed border-t border-gray-200'>{e.processingState}</td>
                 </tr>
               ))}
             </tbody>
@@ -93,6 +96,7 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
         </div>
         {/* end::Table container */}
       </div>
+
       {/* begin::Body */}
     </div>
   )

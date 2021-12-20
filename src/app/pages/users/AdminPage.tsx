@@ -50,8 +50,8 @@ const AdminPage: React.FC<Props> = ({className}) => {
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
         <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Administrators</span>
-          <span className='text-muted mt-1 fw-bold fs-7'> Administrator acocunt list</span>
+          <span className='card-label fw-bolder fs-3 mb-1'>Administrateurs</span>
+          <span className='text-muted mt-1 fw-bold fs-7'> Liste des administrateurs</span>
         </h3>
         <div className='card-toolbar'>
           <a
@@ -84,17 +84,17 @@ const AdminPage: React.FC<Props> = ({className}) => {
               {particularsTableData.map((particular) => (
                 <tr key={particular.id}>
                   <th scope='row'>{particular.id}</th>
-                  <td className='border-dashed border-t border-gray-200 px-3'>
+                  <td className='border-dashed border-t border-gray-50 py-5'>
                     {particular.firstName}
                   </td>
-                  <td className='border-dashed border-t border-gray-200 px-3'>
+                  <td className='border-dashed border-t border-gray-50'>
                     {particular.lastName}
                   </td>
-                  <td className='border-dashed border-t border-gray-200 px-3'>
+                  <td className='border-dashed border-t border-gray-200'>
                     {particular.phoneNumber}
                   </td>
 
-                  <td className='border-dashed border-t border-gray-200 px-3'>
+                  <td className='border-dashed border-t border-gray-50'>
                     {particular.email}
                   </td>
                 </tr>
