@@ -51,8 +51,8 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
         <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Demande d'adhesion</span>
-          <span className='text-muted mt-1 fw-bold fs-7'> Liste demande d'adhesion </span>
+          <span className='card-label fw-bolder fs-3 mb-1'>Demandes d'adhèsion</span>
+          <span className='text-muted mt-1 fw-bold fs-7'> Liste des demandes d'adhèsion </span>
         </h3>
         <div className='card-toolbar'></div>
       </div>
@@ -62,10 +62,7 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
         {/* begin::Table container */}
         <div className='dataTables_wrapper dataTables_paginate table-responsive'>
           {/* begin::Table */}
-          <table
-            id='kt_datatable'
-            className='border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative'
-          >
+          <table id='kt_datatable' className='table table-borderless table-striped gy-7 gs-7'>
             {/* begin::Table head */}
             <HeaderComponent headers={headers} />
             {/* text-dark fw-bold text-muted d-block fs-7 */}

@@ -9,19 +9,16 @@ const HeaderComponent : React.FC<Props> = ({ headers }) => {
 
 
     return (
-        <thead className="text-left">
-            <tr className='fw-bolder text-muted bg-light'>
-                {headers.map(({ name }) => (
-                    <th 
-                        className='min-w-200px'
-                        key={name}
-                    >
-                        {name}
-                    </th>
-                ))}
-            </tr>
-        </thead>
-    );
+      <thead>
+        <tr className='fw-bold fs-6 text-gray-800 border-bottom border-gray-200'>
+          {headers.map(({name}) => (
+            <th className='min-w-200px' key={name}>
+              {name}
+            </th>
+          ))}
+        </tr>
+      </thead>
+    )
 };
 
 export default HeaderComponent;
