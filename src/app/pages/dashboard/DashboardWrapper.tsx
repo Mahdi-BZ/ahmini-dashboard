@@ -8,13 +8,15 @@ import HeaderComponent from '../../../_metronic/partials/widgets/datatable/heade
 import PaginationComponent from '../../../_metronic/partials/widgets/datatable/pagination/PaginationComponent'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import { AdhesionDemandPagination } from '../adhesion/AdhesionDemandPagination'
-
+import {AdhesionDemandPagination} from '../adhesion/AdhesionDemandPagination'
 
 // const DashboardPage: FC = () => (
-  // <>
-    {/* begin::Row */}
-    {/* <div className='row gy-5 g-xl-8'>
+// <>
+{
+  /* begin::Row */
+}
+{
+  /* <div className='row gy-5 g-xl-8'>
       <div className='col-xxl-4'>
         <MixedWidget2
           className='card-xl-stretch mb-xl-8'
@@ -39,21 +41,31 @@ import { AdhesionDemandPagination } from '../adhesion/AdhesionDemandPagination'
         />
       </div>
     </div>
-    {/* end::Row */}
+    {/* end::Row */
+}
 
-    {/* begin::Row */}
-    {/* <div className='row gy-5 gx-xl-8'>
+{
+  /* begin::Row */
+}
+{
+  /* <div className='row gy-5 gx-xl-8'>
       <div className='col-xxl-4'>
         <ListsWidget3 className='card-xxl-stretch mb-xl-3' />
       </div>
       <div className='col-xl-8'>
         <TablesWidget10 className='card-xxl-stretch mb-5 mb-xl-8' />
       </div>
-    </div> */}
-    {/* end::Row */}
+    </div> */
+}
+{
+  /* end::Row */
+}
 
-    {/* begin::Row */}
-    {/* <div className='row gy-5 g-xl-8'>
+{
+  /* begin::Row */
+}
+{
+  /* <div className='row gy-5 g-xl-8'>
       <div className='col-xl-4'>
         <ListsWidget2 className='card-xl-stretch mb-xl-8' />
       </div>
@@ -62,12 +74,18 @@ import { AdhesionDemandPagination } from '../adhesion/AdhesionDemandPagination'
       </div>
       <div className='col-xl-4'>
         <ListsWidget4 className='card-xl-stretch mb-5 mb-xl-8' items={5} />
-        {/* partials/widgets/lists/_widget-4', 'class' => 'card-xl-stretch mb-5 mb-xl-8', 'items' => '5' */}
-    {/* </div>
-    </div>  */}
-    {/* end::Row */}
+        {/* partials/widgets/lists/_widget-4', 'class' => 'card-xl-stretch mb-5 mb-xl-8', 'items' => '5' */
+}
+{
+  /* </div>
+    </div>  */
+}
+{
+  /* end::Row */
+}
 
-    {/* <div className='row g-5 gx-xxl-8'>
+{
+  /* <div className='row g-5 gx-xxl-8'>
       <div className='col-xxl-4'>
         <MixedWidget8
           className='card-xxl-stretch mb-xl-3'
@@ -78,18 +96,15 @@ import { AdhesionDemandPagination } from '../adhesion/AdhesionDemandPagination'
       <div className='col-xxl-8'>
         <TablesWidget5 className='card-xxl-stretch mb-5 mb-xxl-8' />
       </div>
-    </div>  */}
+    </div>  */
+}
 //   </>
 // )
-
-
-
 
 type Props = {
   className?: string
 }
 const AdhesionDemandPage: React.FC<Props> = ({className}) => {
-  
   const [apiData, setApiData] = useState<AdhesionDemandPagination>(null as any)
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
@@ -189,11 +204,6 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
         {/* end::Table container */}
       </div>
       <div className='d-flex flex-row-reverse' style={{margin: '10px'}}>
-        <div className='p-2'>
-          <button type='button' className='btn btn-primary btn-sm'>
-            Hahah
-          </button>
-        </div>
         <div className='p-2'>
           <button type='button' className='btn btn-primary btn-sm'>
             Export
