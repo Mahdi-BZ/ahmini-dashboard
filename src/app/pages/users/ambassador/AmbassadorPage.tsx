@@ -21,10 +21,10 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
 
   const headers = [
     {name: 'ID', field: 'id'},
-    {name: 'nom', field: 'firstName'},
-    {name: 'Prenom', field: 'lastName'},
+    {name: 'Nom', field: 'firstName'},
+    {name: 'Prénom', field: 'lastName'},
     {name: 'Email', field: 'email'},
-    {name: 'Compte Valide', field: 'hasValidAccount'},
+    {name: 'Compte Validé', field: 'hasValidAccount'},
   ]
 
   useEffect(() => {
@@ -76,10 +76,7 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
         {/* begin::Table container */}
         <div className='dataTables_wrapper dataTables_paginate table-responsive'>
           {/* begin::Table */}
-          <table
-            id='kt_datatable'
-            className='border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative'
-          >
+          <table id='kt_datatable' className='table table-striped gy-7 gs-7'>
             {/* begin::Table head */}
             <HeaderComponent headers={headers} />
             {/* text-dark fw-bold text-muted d-block fs-7 */}
@@ -91,12 +88,8 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
                   <td className='border-dashed border-t border-gray-50 py-5'>
                     {particular.lastName}
                   </td>
-                  <td className='border-dashed border-t border-gray-200'>
-                    {particular.firstName}
-                  </td>
-                  <td className='border-dashed border-t border-gray-50'>
-                    {particular.email}
-                  </td>
+                  <td className='border-dashed border-t border-gray-200'>{particular.firstName}</td>
+                  <td className='border-dashed border-t border-gray-50'>{particular.email}</td>
                   <td className='border-dashed border-t border-gray-200'>
                     {particular.hasValidAccount ? 'Yes' : 'No'}
                   </td>

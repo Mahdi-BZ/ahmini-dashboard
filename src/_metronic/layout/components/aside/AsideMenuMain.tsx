@@ -34,13 +34,13 @@ export function AsideMenuMain() {
 
       <AsideMenuItemWithSub
         to='/crafted/adhesion'
-        title='Adhèsions'
+        title='Adhèsion'
         icon='/media/new/adhesion.svg'
         fontIcon='bi-person'
       >
         <AsideMenuItem
           to='/crafted/adhesion/demands'
-          title={`Liste de demandes d'adhèsion`}
+          title={`Liste des demandes d'adhèsion`}
           hasBullet={true}
         />
         {/* <AsideMenuItem to='/crafted/users/particular' title='Particular' hasBullet={true} /> */}

@@ -18,7 +18,7 @@ const SinisterPage: React.FC<Props> = ({className}) => {
     {name: 'ID', field: 'id'},
     {name: 'Nom', field: 'name'},
     {name: 'Type', field: 'type'},
-    {name: 'Declare par', field: 'declaredBy'},
+    {name: 'Declaré par', field: 'declaredBy'},
   ]
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const SinisterPage: React.FC<Props> = ({className}) => {
       <div className='card-header border-0 pt-5'>
         <h3 className='card-title align-items-start flex-column'>
           <span className='card-label fw-bolder fs-3 mb-1'>Sinistres</span>
-          <span className='text-muted mt-1 fw-bold fs-7'> liste de sinistres</span>
+          <span className='text-muted mt-1 fw-bold fs-7'> Liste des sinistres</span>
         </h3>
         <div className='card-toolbar'></div>
       </div>
@@ -59,10 +59,7 @@ const SinisterPage: React.FC<Props> = ({className}) => {
         {/* begin::Table container */}
         <div className='dataTables_wrapper dataTables_paginate table-responsive'>
           {/* begin::Table */}
-          <table
-            id='kt_datatable'
-            className='border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative'
-          >
+          <table id='kt_datatable' className='table table-striped gy-7 gs-7'>
             {/* begin::Table head */}
             <HeaderComponent headers={headers} />
             {/* text-dark fw-bold text-muted d-block fs-7 */}
@@ -71,15 +68,9 @@ const SinisterPage: React.FC<Props> = ({className}) => {
               {particularsTableData.map((particular) => (
                 <tr key={particular.id}>
                   <th scope='row'>{particular.id}</th>
-                  <td className='border-dashed border-t border-gray-200 px-3'>
-                    TODO
-                  </td>
-                  <td className='border-dashed border-t border-gray-200 px-3'>
-                    TODO
-                  </td>
-                  <td className='border-dashed border-t border-gray-200 px-3'>
-                    TODO
-                  </td>
+                  <td className='border-dashed border-t border-gray-200 px-3'>TODO</td>
+                  <td className='border-dashed border-t border-gray-200 px-3'>TODO</td>
+                  <td className='border-dashed border-t border-gray-200 px-3'>TODO</td>
                 </tr>
               ))}
             </tbody>

@@ -27,11 +27,11 @@ const SingleAmbassadorPage: React.FC<Props> = ({className}) => {
             <p> {data.id} </p>
           </div>
           <div>
-            <h4> nom</h4>
+            <h4> Nom</h4>
             <p> {data.firstName} </p>
           </div>
           <div>
-            <h4> Prenom</h4>
+            <h4> Prénom</h4>
             <p> {data.lastName} </p>
           </div>
           <div>
@@ -39,7 +39,7 @@ const SingleAmbassadorPage: React.FC<Props> = ({className}) => {
             <p> {data.email} </p>
           </div>
           <div>
-            <h4> Telephone</h4>
+            <h4> Téléphone</h4>
             <p> {data.phoneNumber} </p>
           </div>
           <div>
@@ -48,7 +48,7 @@ const SingleAmbassadorPage: React.FC<Props> = ({className}) => {
           </div>
 
           <div>
-            <h4> Compte valide </h4>
+            <h4> Compte validé </h4>
             <p> {data.hasValidAccount ? 'Yes' : 'No'} </p>
           </div>
         </div>

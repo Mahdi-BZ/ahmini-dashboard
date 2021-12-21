@@ -72,10 +72,7 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
         {/* begin::Table container */}
         <div className='dataTables_wrapper dataTables_paginate table-responsive'>
           {/* begin::Table */}
-          <table
-            id='kt_datatable'
-            className='border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative'
-          >
+          <table id='kt_datatable' className='table table-striped gy-7 gs-7'>
             {/* begin::Table head */}
             <HeaderComponent headers={headers} />
             {/* text-dark fw-bold text-muted d-block fs-7 */}
@@ -90,12 +87,8 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
                   <td className='border-dashed border-t border-gray-200 '>
                     {particular.firstName}
                   </td>
-                  <td className='border-dashed border-t border-gray-50 '>
-                    {particular.userName}
-                  </td>
-                  <td className='border-dashed border-t border-gray-200 '>
-                    {particular.email}
-                  </td>
+                  <td className='border-dashed border-t border-gray-50 '>{particular.userName}</td>
+                  <td className='border-dashed border-t border-gray-200 '>{particular.email}</td>
                 </tr>
               ))}
             </tbody>

@@ -17,9 +17,9 @@ const AdminPage: React.FC<Props> = ({className}) => {
 
   const headers = [
     {name: 'ID', field: 'id'},
-    {name: 'nom', field: 'firstName'},
-    {name: 'Prenom', field: 'lastName'},
-    {name: 'Telephone', field: 'phonrnumber'},
+    {name: 'Nom', field: 'firstName'},
+    {name: 'Prènom', field: 'lastName'},
+    {name: 'Téléphone', field: 'phoneNumber'},
     {name: 'Email', field: 'email'},
   ]
 
@@ -72,10 +72,7 @@ const AdminPage: React.FC<Props> = ({className}) => {
         {/* begin::Table container */}
         <div className='dataTables_wrapper dataTables_paginate table-responsive'>
           {/* begin::Table */}
-          <table
-            id='kt_datatable'
-            className='border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative'
-          >
+          <table id='kt_datatable' className='table table-striped gy-7 gs-7'>
             {/* begin::Table head */}
             <HeaderComponent headers={headers} />
             {/* text-dark fw-bold text-muted d-block fs-7 */}
@@ -87,16 +84,12 @@ const AdminPage: React.FC<Props> = ({className}) => {
                   <td className='border-dashed border-t border-gray-50 py-5'>
                     {particular.firstName}
                   </td>
-                  <td className='border-dashed border-t border-gray-50'>
-                    {particular.lastName}
-                  </td>
+                  <td className='border-dashed border-t border-gray-50'>{particular.lastName}</td>
                   <td className='border-dashed border-t border-gray-200'>
                     {particular.phoneNumber}
                   </td>
 
-                  <td className='border-dashed border-t border-gray-50'>
-                    {particular.email}
-                  </td>
+                  <td className='border-dashed border-t border-gray-50'>{particular.email}</td>
                 </tr>
               ))}
             </tbody>
