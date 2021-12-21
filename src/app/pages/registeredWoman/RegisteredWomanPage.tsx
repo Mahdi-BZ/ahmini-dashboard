@@ -55,7 +55,7 @@ const RegisteredWomanPage: React.FC<Props> = ({className}) => {
       <div className='card-header border-0 pt-5'>
         <h3 className='card-title align-items-start flex-column'>
           <span className='card-label fw-bolder fs-3 mb-1'>Femmes inscrites</span>
-          <span className='text-muted mt-1 fw-bold fs-7'>Liste de femmes inscrites</span>
+          <span className='text-muted mt-1 fw-bold fs-7'>Liste des femmes inscrites</span>
         </h3>
         <div className='card-toolbar'>
           <Button onClick={() => exportData()}>Exporter la liste actuelle </Button>
@@ -67,7 +67,7 @@ const RegisteredWomanPage: React.FC<Props> = ({className}) => {
         {/* begin::Table container */}
         <div className='dataTables_wrapper dataTables_paginate table-responsive'>
           {/* begin::Table */}
-          <table id='kt_datatable' className='table align-middle gs-0 gy-4'>
+          <table id='kt_datatable' className='table table-borderless table-striped gy-7 gs-7'>
             {/* begin::Table head */}
             <HeaderComponent headers={headers} />
             {/* text-dark fw-bold text-muted d-block fs-7 */}

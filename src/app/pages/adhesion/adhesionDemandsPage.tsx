@@ -62,7 +62,7 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
         {/* begin::Table container */}
         <div className='dataTables_wrapper dataTables_paginate table-responsive'>
           {/* begin::Table */}
-          <table id='kt_datatable' className='table table-striped gy-7 gs-7'>
+          <table id='kt_datatable' className='table table-borderless table-striped gy-7 gs-7'>
             {/* begin::Table head */}
             <HeaderComponent headers={headers} />
             {/* text-dark fw-bold text-muted d-block fs-7 */}
