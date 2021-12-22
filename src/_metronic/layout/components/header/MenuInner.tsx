@@ -4,13 +4,13 @@ import {MenuInnerWithSub} from './MenuInnerWithSub'
 export function MenuInner() {
   return (
     <>
-      <MenuItem title='Acceuil' to='/dashboard' icon='/media/new/home.svg' />
+      <MenuItem title='Acceuil' to='/dashboard' icon='/media/icons/duotune/general/gen001.svg' />
 
       <MenuInnerWithSub
         isMega={true}
         title='Ahmini assurance'
         to='/mega-menu'
-        icon='/media/new/guarantee.svg'
+        icon='/media/icons/duotune/ecommerce/ecm008.svg'
         menuPlacement='bottom-start'
         menuTrigger='click'
       >

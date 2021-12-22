@@ -14,7 +14,7 @@ export function AsideMenuMain() {
       <AsideMenuItemWithSub
         to='/crafted/sinister'
         title='Financement'
-        icon='/media/new/financement.svg'
+        icon='/media/icons/duotune/ecommerce/ecm011.svg'
         fontIcon='bi-person'
       >
         <AsideMenuItem to='/dashboard' title='Financement' hasBullet={true} />
@@ -23,19 +23,31 @@ export function AsideMenuMain() {
       <AsideMenuItemWithSub
         to='/crafted/users'
         title='Utilisateurs'
-        icon='/media/new/utilisateur.svg'
+        icon='/media/icons/duotune/communication/com006.svg'
         fontIcon='bi-person'
       >
-        <AsideMenuItem to='/crafted/users/admin' title='Liste des administrateurs' hasBullet={true} />
-        <AsideMenuItem to='/crafted/users/particular' title='Liste des particuliers' hasBullet={true} />
-        <AsideMenuItem to='/crafted/users/ambassador' title='Liste des ambassadeurs' hasBullet={true} />
+        <AsideMenuItem
+          to='/crafted/users/admin'
+          title='Liste des administrateurs'
+          hasBullet={true}
+        />
+        <AsideMenuItem
+          to='/crafted/users/particular'
+          title='Liste des particuliers'
+          hasBullet={true}
+        />
+        <AsideMenuItem
+          to='/crafted/users/ambassador'
+          title='Liste des ambassadeurs'
+          hasBullet={true}
+        />
         {/* <AsideMenuItem to='/crafted/users/association' title='Association' hasBullet={true} /> */}
       </AsideMenuItemWithSub>
 
       <AsideMenuItemWithSub
         to='/crafted/adhesion'
         title='Adhèsion'
-        icon='/media/new/adhesion.svg'
+        icon='/media/icons/duotune/files/fil012.svg'
         fontIcon='bi-person'
       >
         <AsideMenuItem
@@ -49,7 +61,7 @@ export function AsideMenuMain() {
       <AsideMenuItemWithSub
         to='/crafted/registered-woman'
         title='Femmes inscrites'
-        icon='/media/new/woman.svg'
+        icon='/media/icons/duotune/general/gen049.svg'
         fontIcon='bi-person'
       >
         <AsideMenuItem
@@ -62,7 +74,7 @@ export function AsideMenuMain() {
       <AsideMenuItemWithSub
         to='/crafted/sinister'
         title='Sinistres'
-        icon='/media/new/alert.svg'
+        icon='/media/icons/duotune/general/gen044.svg'
         fontIcon='bi-person'
       >
         <AsideMenuItem to='/crafted/sinister' title='Liste de sinistres' hasBullet={true} />
