@@ -48,7 +48,7 @@ const DeclaredSinisterPage: React.FC<Props> = ({ className }) => {
             {/* begin::Header */}
             <div className='card-header border-0 pt-5'>
                 <h3 className='card-title align-items-start flex-column'>
-                    <span className='card-label fw-bolder fs-3 mb-1'>Sinistres</span>
+                    <span className='card-label fw-bolder fs-3 mb-1'>Sinistres déclarés</span>
                     <span className='text-muted mt-1 fw-bold fs-7'> Liste des sinistres déclarés</span>
                 </h3>
                 <div className='card-toolbar'></div>
