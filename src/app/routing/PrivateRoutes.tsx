@@ -6,6 +6,8 @@ import SingleAdhesionDemandPage from '../pages/adhesion/SingleAdhesionDemandPage
 import {DashboardWrapper} from '../pages/dashboard/DashboardWrapper'
 import {MenuTestPage} from '../pages/MenuTestPage'
 import RegisteredWomanPage from '../pages/registeredWoman/RegisteredWomanPage'
+import DeclaredSinisterPage from '../pages/sinister/DeclaredSinisterPage'
+import PaidSinisterPage from '../pages/sinister/PaidSinisterPage'
 import SinisterPage from '../pages/sinister/SinisterPage'
 import AdminPage from '../pages/users/AdminPage'
 import AmbassadorPage from '../pages/users/ambassador/AmbassadorPage'
@@ -37,6 +39,8 @@ export function PrivateRoutes() {
         <Route path='/crafted/adhesion/demands/:id' component={SingleAdhesionDemandPage} />
         <Route exact path='/crafted/registered-woman' component={RegisteredWomanPage} />
         <Route exact path='/crafted/sinister' component={SinisterPage} />
+        <Route exact path='/crafted/declaredsinister' component={DeclaredSinisterPage} />
+        <Route exact path='/crafted/paidsinister' component={PaidSinisterPage} />
         <Route path='/apps/chat' component={ChatPage} />
         <Route path='/menu-test' component={MenuTestPage} />
         <Redirect from='/auth' to='/crafted/users/ambassador' />
