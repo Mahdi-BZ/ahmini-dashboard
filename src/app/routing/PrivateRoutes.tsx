@@ -4,6 +4,7 @@ import {FallbackView} from '../../_metronic/partials'
 import AdhesionDemandPage from '../pages/adhesion/adhesionDemandsPage'
 import SingleAdhesionDemandPage from '../pages/adhesion/SingleAdhesionDemandPage'
 import {DashboardWrapper} from '../pages/dashboard/DashboardWrapper'
+import newItemPopup from '../pages/dashboard/NewItemPopup'
 import {MenuTestPage} from '../pages/MenuTestPage'
 import RegisteredWomanPage from '../pages/registeredWoman/RegisteredWomanPage'
 import DeclaredSinisterPage from '../pages/sinister/DeclaredSinisterPage'
@@ -41,6 +42,7 @@ export function PrivateRoutes() {
         <Route exact path='/crafted/sinister' component={SinisterPage} />
         <Route exact path='/crafted/declaredsinister' component={DeclaredSinisterPage} />
         <Route exact path='/crafted/paidsinister' component={PaidSinisterPage} />
+        <Route exact path='/crafted/newitempopup' component={newItemPopup} />
         <Route path='/apps/chat' component={ChatPage} />
         <Route path='/menu-test' component={MenuTestPage} />
         <Redirect from='/auth' to='/crafted/users/ambassador' />

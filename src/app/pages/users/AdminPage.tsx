@@ -55,7 +55,7 @@ const AdminPage: React.FC<Props> = ({className}) => {
         </h3>
         <div className='card-toolbar'>
           <a
-            href='#'
+            href='/crafted/newitempopup'
             className='btn btn-sm btn-light-primary'
             data-bs-toggle='modal'
             data-bs-target='#kt_modal_create_app'
