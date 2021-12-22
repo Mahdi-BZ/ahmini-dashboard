@@ -150,7 +150,7 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
         <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Demanyarnde d'adhèsion</span>
+          <span className='card-label fw-bolder fs-3 mb-1'>Demandes d'adhèsion</span>
           <span className='text-muted mt-1 fw-bold fs-7'> Liste des demandes d'adhèsion </span>
         </h3>
         <div className='card-toolbar'></div>
