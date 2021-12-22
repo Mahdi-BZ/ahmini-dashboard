@@ -83,7 +83,11 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
 
             <tbody>
               {particularsTableData.map((particular) => (
-                <tr key={particular.id}>
+                <tr
+                  onClick={() => history.push(`/crafted/users/ambassador/${particular.id}`)}
+                  className='cursor-pointer'
+                  key={particular.id}
+                >
                   <th scope='row'>{particular.id}</th>
                   <td className='border-dashed border-t border-gray-50 py-5'>
                     {particular.lastName}

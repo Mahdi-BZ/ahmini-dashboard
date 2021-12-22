@@ -67,10 +67,7 @@ const SingleAmbassadorPage: React.FC<Props> = ({className}) => {
       <div className='card-header border-0 pt-5'>
         <h3 className='card-title align-items-start flex-column'>
           <span className='card-label fw-bolder fs-3 mb-1'>Ambassadeur </span>
-          <span className='text-muted mt-1 fw-bold fs-7'>
-            {' '}
-            Informations d'ambassadeur détailées{' '}
-          </span>
+          <span className='text-muted mt-1 fw-bold fs-7'>Informations d'ambassadeur détailées</span>
         </h3>
         <div className='card-toolbar'>
           {particularsApiData && (
@@ -78,7 +75,7 @@ const SingleAmbassadorPage: React.FC<Props> = ({className}) => {
               onClick={() => validateApiFunc(!particularsApiData.hasValidAccount)}
               variant={particularsApiData.hasValidAccount ? 'danger' : 'success'}
             >
-              {particularsApiData.hasValidAccount ? 'unvalidate account' : 'Validate Account'}{' '}
+              {particularsApiData.hasValidAccount ? 'Annuler le compte' : 'Valider le compte'}{' '}
             </Button>
           )}
         </div>
