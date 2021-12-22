@@ -16,8 +16,8 @@ function newItemPopup() {
                 </label>
 
                 <div className='col-lg-8'>
-                    <span className='fw-bolder fs-6 text-dark'>5
-                    </span>
+                    <input className='fw-bolder fs-6 text-dark' />
+                    
                 </div>
             </div>
 
@@ -25,16 +25,14 @@ function newItemPopup() {
                 <label className='col-lg-4 fw-bold text-muted'>Nom</label>
 
                 <div className='col-lg-8 fv-row'>
-                    <span className='fw-bold fs-6'>Siraje</span>
+                    <input className='fw-bolder fs-6 text-dark' />
                 </div>
             </div>
             <div className='row mb-7'>
                 <label className='col-lg-4 fw-bold text-muted'>Prénom</label>
 
                 <div className='col-lg-8'>
-                    <a href='#' className='fw-bold fs-6 text-dark text-hover-primary'>
-                        Siraje
-                    </a>
+                    <input className='fw-bolder fs-6 text-dark' />
                 </div>
             </div>
             <div className='row mb-7'>
@@ -48,9 +46,9 @@ function newItemPopup() {
                 </label>
 
                 <div className='col-lg-8 d-flex align-items-center'>
-                    <span className='fw-bolder fs-6 me-2'>12121212</span>
+                    <input className='fw-bolder fs-6 text-dark' />
 
-                    <span className='badge badge-success'>Verified</span>
+                   
                 </div>
             </div>
 
@@ -67,15 +65,17 @@ function newItemPopup() {
                 </label>
 
                 <div className='col-lg-8'>
-                    <span className='fw-bolder fs-6 text-dark'>test@gmail.com
-                    </span>
+                    <input className='fw-bolder fs-6 text-dark' />
+                    
                 </div>
             </div>
             <div className='d-flex flex-row-reverse'>
                 <div className='p-5'>
+                    <a href="/crafted/users/admin">
                     <button type='button' className='btn btn-primary btn-sm'>
                         Add
                     </button>
+                    </a>
                 </div>
             </div>
         </div>
