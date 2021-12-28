@@ -1,6 +1,5 @@
 import axios from 'axios'
 import React, {useEffect, useMemo, useState} from 'react'
-import {Link} from 'react-router-dom'
 import {KTSVG} from '../../../../_metronic/helpers'
 import HeaderComponent from '../../../../_metronic/partials/widgets/datatable/header/HeaderComponent'
 import PaginationComponent from '../../../../_metronic/partials/widgets/datatable/pagination/PaginationComponent'
@@ -49,6 +48,7 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
     return particularsApiData.data
   }, [particularsApiData])
 
+
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
@@ -59,7 +59,7 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
         </h3>
         <div className='card-toolbar'>
           <a
-            href='#'
+            onClick={() => history.push('/crafted/users/ambassador/add')}
             className='btn btn-sm btn-light-primary'
             data-bs-toggle='modal'
             data-bs-target='#kt_modal_create_app'
@@ -97,6 +97,7 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
                   <td className='border-dashed border-t border-gray-200'>
                     {particular.hasValidAccount ? 'Yes' : 'No'}
                   </td>
+                  
                 </tr>
               ))}
             </tbody>

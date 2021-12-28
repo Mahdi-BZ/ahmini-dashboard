@@ -1,7 +1,8 @@
 import axios from 'axios'
 import React, {useEffect, useState} from 'react'
 import {Button} from 'react-bootstrap-v5'
-import {useParams} from 'react-router-dom'
+import {useHistory, useParams} from 'react-router-dom'
+import { deleteAmbassador } from './AmbassadorCRUD'
 import {Ambassador} from './AmbassadorPaginationModal'
 
 type Props = {
@@ -11,6 +12,7 @@ const SingleAmbassadorPage: React.FC<Props> = ({className}) => {
   const [particularsApiData, setParticulars] = useState<Ambassador>(null as any)
   const [validateApi, setValidateApi] = useState(null)
   const {id} = useParams<{id: string}>()
+  const history = useHistory();
 
   useEffect(() => {
     if (!id) return
@@ -60,6 +62,11 @@ const SingleAmbassadorPage: React.FC<Props> = ({className}) => {
       .patch(`/ambassador/${e ? 'verify' : 'deny'}/${id}`)
       .then((e) => setValidateApi(e.data.hasValidAccount))
   }
+  const deleteParticular = (id: number) => {
+    deleteAmbassador(id).then(response => {
+        history.push('/crafted/users/ambassador');
+    })
+  }
 
   return (
     <div className={`card ${className}`}>
@@ -69,14 +76,27 @@ const SingleAmbassadorPage: React.FC<Props> = ({className}) => {
           <span className='card-label fw-bolder fs-3 mb-1'>Ambassadeur </span>
           <span className='text-muted mt-1 fw-bold fs-7'>Informations d'ambassadeur détailées</span>
         </h3>
-        <div className='card-toolbar'>
+        <div className='card-toolbar w-75'>
           {particularsApiData && (
-            <Button
-              onClick={() => validateApiFunc(!particularsApiData.hasValidAccount)}
-              variant={particularsApiData.hasValidAccount ? 'danger' : 'success'}
-            >
-              {particularsApiData.hasValidAccount ? 'Annuler le compte' : 'Valider le compte'}{' '}
-            </Button>
+            <div className='d-flex w-100 justify-content-around'>
+              <Button
+                onClick={() => history.push(`/crafted/users/ambassador/update/${id}`)}
+              >
+                Modifier le compte
+              </Button>
+              <Button
+                onClick={() => validateApiFunc(!particularsApiData.hasValidAccount)}
+                variant={particularsApiData.hasValidAccount ? 'danger' : 'success'}
+              >
+                {particularsApiData.hasValidAccount ? 'Annuler le compte' : 'Valider le compte'}{' '}
+              </Button>
+              <Button
+                onClick={() => deleteParticular(particularsApiData.id)}
+                variant="danger"
+              >
+                Supprimer le compte
+              </Button>
+            </div>
           )}
         </div>
       </div>
