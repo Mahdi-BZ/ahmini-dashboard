@@ -78,8 +78,16 @@ export function AsideMenuMain() {
         fontIcon='bi-person'
       >
         <AsideMenuItem to='/crafted/sinister' title='Liste des sinistres' hasBullet={true} />
-        <AsideMenuItem to='/crafted/declaredsinister' title='Liste des sinistres déclarés' hasBullet={true} />
-        <AsideMenuItem to='/crafted/paidsinister' title='Liste des sinistres payés' hasBullet={true} />
+        <AsideMenuItem
+          to='/crafted/declaredsinister'
+          title='Liste des sinistres déclarés'
+          hasBullet={true}
+        />
+        <AsideMenuItem
+          to='/crafted/paidsinister'
+          title='Liste des sinistres payés'
+          hasBullet={true}
+        />
       </AsideMenuItemWithSub>
 
       {/* <div className='menu-item'>

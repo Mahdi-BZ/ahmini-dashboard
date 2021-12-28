@@ -3,55 +3,55 @@ import {SearchComponent} from '../../../assets/ts/components'
 import {KTSVG, toAbsoluteUrl} from '../../../helpers'
 
 const Search: FC = () => {
-  const [menuState, setMenuState] = useState<"main" | "advanced" | "preferences">("main");
-  const element = useRef<HTMLDivElement | null>(null);
-  const wrapperElement = useRef<HTMLDivElement | null>(null);
-  const resultsElement = useRef<HTMLDivElement | null>(null);
-  const suggestionsElement = useRef<HTMLDivElement | null>(null);
-  const emptyElement = useRef<HTMLDivElement | null>(null);
+  const [menuState, setMenuState] = useState<'main' | 'advanced' | 'preferences'>('main')
+  const element = useRef<HTMLDivElement | null>(null)
+  const wrapperElement = useRef<HTMLDivElement | null>(null)
+  const resultsElement = useRef<HTMLDivElement | null>(null)
+  const suggestionsElement = useRef<HTMLDivElement | null>(null)
+  const emptyElement = useRef<HTMLDivElement | null>(null)
 
   const processs = (search: SearchComponent) => {
-    setTimeout(function() {
-      const number = Math.floor(Math.random() * 6) + 1;
+    setTimeout(function () {
+      const number = Math.floor(Math.random() * 6) + 1
 
       // Hide recently viewed
-      suggestionsElement.current!.classList.add('d-none');
+      suggestionsElement.current!.classList.add('d-none')
 
       if (number === 3) {
         // Hide results
-        resultsElement.current!.classList.add('d-none');
+        resultsElement.current!.classList.add('d-none')
         // Show empty message
-        emptyElement.current!.classList.remove('d-none');
+        emptyElement.current!.classList.remove('d-none')
       } else {
         // Show results
-        resultsElement.current!.classList.remove('d-none');
+        resultsElement.current!.classList.remove('d-none')
         // Hide empty message
-        emptyElement.current!.classList.add('d-none');
+        emptyElement.current!.classList.add('d-none')
       }
 
       // Complete search
-      search.complete();
-    }, 1500);
+      search.complete()
+    }, 1500)
   }
 
   const clear = (search: SearchComponent) => {
     // Show recently viewed
-    suggestionsElement.current!.classList.remove('d-none');
+    suggestionsElement.current!.classList.remove('d-none')
     // Hide results
-    resultsElement.current!.classList.add('d-none');
+    resultsElement.current!.classList.add('d-none')
     // Hide empty message
-    emptyElement.current!.classList.add('d-none');
+    emptyElement.current!.classList.add('d-none')
   }
 
   useEffect(() => {
     // Initialize search handler
-    const searchObject = SearchComponent.createInsance('#kt_header_search');
+    const searchObject = SearchComponent.createInsance('#kt_header_search')
 
     // Search handler
-    searchObject!.on('kt.search.process', processs);
+    searchObject!.on('kt.search.process', processs)
 
     // Clear handler
-    searchObject!.on('kt.search.clear', clear);
+    searchObject!.on('kt.search.clear', clear)
   }, [])
 
   return (
@@ -83,7 +83,11 @@ const Search: FC = () => {
           data-kt-search-element='content'
           className='menu menu-sub menu-sub-dropdown p-7 w-325px w-md-375px'
         >
-          <div className={`${menuState === 'main' ? '' : 'd-none'}`} ref={wrapperElement} data-kt-search-element='wrapper'>
+          <div
+            className={`${menuState === 'main' ? '' : 'd-none'}`}
+            ref={wrapperElement}
+            data-kt-search-element='wrapper'
+          >
             <form
               data-kt-search-element='form'
               className='w-100 position-relative mb-3'
@@ -127,7 +131,9 @@ const Search: FC = () => {
                   data-kt-search-element='preferences-show'
                   className='btn btn-icon w-20px btn-sm btn-active-color-primary me-1'
                   data-bs-toggle='tooltip'
-                  onClick={()=>{setMenuState("preferences")}}
+                  onClick={() => {
+                    setMenuState('preferences')
+                  }}
                   title='Show search preferences'
                 >
                   <KTSVG path='/media/icons/duotune/coding/cod001.svg' className='svg-icon-1' />
@@ -137,7 +143,9 @@ const Search: FC = () => {
                   data-kt-search-element='advanced-options-form-show'
                   className='btn btn-icon w-20px btn-sm btn-active-color-primary'
                   data-bs-toggle='tooltip'
-                  onClick={()=>{setMenuState("advanced")}}
+                  onClick={() => {
+                    setMenuState('advanced')
+                  }}
                   title='Show more search options'
                 >
                   <KTSVG path='/media/icons/duotune/arrows/arr072.svg' className='svg-icon-2' />
@@ -151,7 +159,10 @@ const Search: FC = () => {
                   Users
                 </h3>
 
-                <a href='/#' className='d-flex text-dark text-hover-primary align-items-center mb-5'>
+                <a
+                  href='/#'
+                  className='d-flex text-dark text-hover-primary align-items-center mb-5'
+                >
                   <div className='symbol symbol-40px me-4'>
                     <img src={toAbsoluteUrl('/media/avatars/150-1.jpg')} alt='' />
                   </div>
@@ -162,7 +173,10 @@ const Search: FC = () => {
                   </div>
                 </a>
 
-                <a href='/#' className='d-flex text-dark text-hover-primary align-items-center mb-5'>
+                <a
+                  href='/#'
+                  className='d-flex text-dark text-hover-primary align-items-center mb-5'
+                >
                   <div className='symbol symbol-40px me-4'>
                     <img src={toAbsoluteUrl('/media/avatars/150-3.jpg')} alt='' />
                   </div>
@@ -173,7 +187,10 @@ const Search: FC = () => {
                   </div>
                 </a>
 
-                <a href='/#' className='d-flex text-dark text-hover-primary align-items-center mb-5'>
+                <a
+                  href='/#'
+                  className='d-flex text-dark text-hover-primary align-items-center mb-5'
+                >
                   <div className='symbol symbol-40px me-4'>
                     <img src={toAbsoluteUrl('/media/avatars/150-8.jpg')} alt='' />
                   </div>
@@ -184,7 +201,10 @@ const Search: FC = () => {
                   </div>
                 </a>
 
-                <a href='/#' className='d-flex text-dark text-hover-primary align-items-center mb-5'>
+                <a
+                  href='/#'
+                  className='d-flex text-dark text-hover-primary align-items-center mb-5'
+                >
                   <div className='symbol symbol-40px me-4'>
                     <img src={toAbsoluteUrl('/media/avatars/150-11.jpg')} alt='' />
                   </div>
@@ -195,7 +215,10 @@ const Search: FC = () => {
                   </div>
                 </a>
 
-                <a href='/#' className='d-flex text-dark text-hover-primary align-items-center mb-5'>
+                <a
+                  href='/#'
+                  className='d-flex text-dark text-hover-primary align-items-center mb-5'
+                >
                   <div className='symbol symbol-40px me-4'>
                     <img src={toAbsoluteUrl('/media/avatars/150-12.jpg')} alt='' />
                   </div>
@@ -213,7 +236,10 @@ const Search: FC = () => {
                   Customers
                 </h3>
 
-                <a href='/#' className='d-flex text-dark text-hover-primary align-items-center mb-5'>
+                <a
+                  href='/#'
+                  className='d-flex text-dark text-hover-primary align-items-center mb-5'
+                >
                   <div className='symbol symbol-40px me-4'>
                     <span className='symbol-label bg-light'>
                       <img
@@ -230,10 +256,17 @@ const Search: FC = () => {
                   </div>
                 </a>
 
-                <a href='/#' className='d-flex text-dark text-hover-primary align-items-center mb-5'>
+                <a
+                  href='/#'
+                  className='d-flex text-dark text-hover-primary align-items-center mb-5'
+                >
                   <div className='symbol symbol-40px me-4'>
                     <span className='symbol-label bg-light'>
-                      <img className='w-20px h-20px' src={toAbsoluteUrl('/media/svg/brand-logos/tvit.svg')} alt='' />
+                      <img
+                        className='w-20px h-20px'
+                        src={toAbsoluteUrl('/media/svg/brand-logos/tvit.svg')}
+                        alt=''
+                      />
                     </span>
                   </div>
 
@@ -243,10 +276,17 @@ const Search: FC = () => {
                   </div>
                 </a>
 
-                <a href='/#' className='d-flex text-dark text-hover-primary align-items-center mb-5'>
+                <a
+                  href='/#'
+                  className='d-flex text-dark text-hover-primary align-items-center mb-5'
+                >
                   <div className='symbol symbol-40px me-4'>
                     <span className='symbol-label bg-light'>
-                      <img className='w-20px h-20px' src={toAbsoluteUrl('/media/svg/misc/infography.svg')} alt='' />
+                      <img
+                        className='w-20px h-20px'
+                        src={toAbsoluteUrl('/media/svg/misc/infography.svg')}
+                        alt=''
+                      />
                     </span>
                   </div>
 
@@ -256,10 +296,17 @@ const Search: FC = () => {
                   </div>
                 </a>
 
-                <a href='/#' className='d-flex text-dark text-hover-primary align-items-center mb-5'>
+                <a
+                  href='/#'
+                  className='d-flex text-dark text-hover-primary align-items-center mb-5'
+                >
                   <div className='symbol symbol-40px me-4'>
                     <span className='symbol-label bg-light'>
-                      <img className='w-20px h-20px' src={toAbsoluteUrl('/media/svg/brand-logos/leaf.svg')} alt='' />
+                      <img
+                        className='w-20px h-20px'
+                        src={toAbsoluteUrl('/media/svg/brand-logos/leaf.svg')}
+                        alt=''
+                      />
                     </span>
                   </div>
 
@@ -269,7 +316,10 @@ const Search: FC = () => {
                   </div>
                 </a>
 
-                <a href='/#' className='d-flex text-dark text-hover-primary align-items-center mb-5'>
+                <a
+                  href='/#'
+                  className='d-flex text-dark text-hover-primary align-items-center mb-5'
+                >
                   <div className='symbol symbol-40px me-4'>
                     <span className='symbol-label bg-light'>
                       <img
@@ -293,7 +343,10 @@ const Search: FC = () => {
                   Projects
                 </h3>
 
-                <a href='/#' className='d-flex text-dark text-hover-primary align-items-center mb-5'>
+                <a
+                  href='/#'
+                  className='d-flex text-dark text-hover-primary align-items-center mb-5'
+                >
                   <div className='symbol symbol-40px me-4'>
                     <span className='symbol-label bg-light'>
                       <KTSVG
@@ -309,7 +362,10 @@ const Search: FC = () => {
                   </div>
                 </a>
 
-                <a href='/#' className='d-flex text-dark text-hover-primary align-items-center mb-5'>
+                <a
+                  href='/#'
+                  className='d-flex text-dark text-hover-primary align-items-center mb-5'
+                >
                   <div className='symbol symbol-40px me-4'>
                     <span className='symbol-label bg-light'>
                       <KTSVG
@@ -325,7 +381,10 @@ const Search: FC = () => {
                   </div>
                 </a>
 
-                <a href='/#' className='d-flex text-dark text-hover-primary align-items-center mb-5'>
+                <a
+                  href='/#'
+                  className='d-flex text-dark text-hover-primary align-items-center mb-5'
+                >
                   <div className='symbol symbol-40px me-4'>
                     <span className='symbol-label bg-light'>
                       <KTSVG
@@ -341,7 +400,10 @@ const Search: FC = () => {
                   </div>
                 </a>
 
-                <a href='/#' className='d-flex text-dark text-hover-primary align-items-center mb-5'>
+                <a
+                  href='/#'
+                  className='d-flex text-dark text-hover-primary align-items-center mb-5'
+                >
                   <div className='symbol symbol-40px me-4'>
                     <span className='symbol-label bg-light'>
                       <KTSVG
@@ -508,7 +570,7 @@ const Search: FC = () => {
             </div>
           </div>
 
-          <form className={`pt-1 ${menuState === 'advanced' ? '' : 'd-none'}`} >
+          <form className={`pt-1 ${menuState === 'advanced' ? '' : 'd-none'}`}>
             <h3 className='fw-bold text-dark mb-7'>Advanced Search</h3>
 
             <div className='mb-5'>
@@ -523,7 +585,13 @@ const Search: FC = () => {
             <div className='mb-5'>
               <div className='nav-group nav-group-fluid'>
                 <label>
-                  <input type='radio' className='btn-check' name='type' value='has' defaultChecked />
+                  <input
+                    type='radio'
+                    className='btn-check'
+                    name='type'
+                    value='has'
+                    defaultChecked
+                  />
                   <span className='btn btn-sm btn-color-muted btn-active btn-active-primary'>
                     All
                   </span>
@@ -573,7 +641,13 @@ const Search: FC = () => {
             <div className='mb-5'>
               <div className='nav-group nav-group-fluid'>
                 <label>
-                  <input type='radio' className='btn-check' name='attachment' value='has' defaultChecked />
+                  <input
+                    type='radio'
+                    className='btn-check'
+                    name='attachment'
+                    value='has'
+                    defaultChecked
+                  />
                   <span className='btn btn-sm btn-color-muted btn-active btn-active-primary'>
                     Has attachment
                   </span>
@@ -631,7 +705,10 @@ const Search: FC = () => {
 
             <div className='d-flex justify-content-end'>
               <button
-                onClick={(e)=>{ e.preventDefault(); setMenuState("main")}}
+                onClick={(e) => {
+                  e.preventDefault()
+                  setMenuState('main')
+                }}
                 className='btn btn-sm btn-light fw-bolder btn-active-light-primary me-2'
               >
                 Cancel
@@ -647,7 +724,7 @@ const Search: FC = () => {
             </div>
           </form>
 
-          <form className={`pt-1 ${menuState === 'preferences' ? '' : 'd-none'}`} >
+          <form className={`pt-1 ${menuState === 'preferences' ? '' : 'd-none'}`}>
             <h3 className='fw-bold text-dark mb-7'>Search Preferences</h3>
 
             <div className='pb-4 border-bottom'>
@@ -696,14 +773,15 @@ const Search: FC = () => {
 
             <div className='d-flex justify-content-end pt-7'>
               <button
-                  onClick={(e)=>{e.preventDefault(); setMenuState("main")}}
+                onClick={(e) => {
+                  e.preventDefault()
+                  setMenuState('main')
+                }}
                 className='btn btn-sm btn-light fw-bolder btn-active-light-primary me-2'
               >
                 Cancel
               </button>
-              <button className='btn btn-sm fw-bolder btn-primary'>
-                Save Changes
-              </button>
+              <button className='btn btn-sm fw-bolder btn-primary'>Save Changes</button>
             </div>
           </form>
         </div>
