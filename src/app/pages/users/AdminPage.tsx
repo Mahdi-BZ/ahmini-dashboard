@@ -12,7 +12,7 @@ const AdminPage: React.FC<Props> = ({className}) => {
   const [particularsApiData, setParticulars] = useState<AdminPaginationInterface>(null as any)
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
-  const [newAdmin, setNewAdmin] = useState('');
+  const [newAdmin, setNewAdmin] = useState('')
   const ITEMS_PER_PAGE = 10
 
   const headers = [

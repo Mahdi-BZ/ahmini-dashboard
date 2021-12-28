@@ -57,10 +57,7 @@ export function ExploreMain() {
                 <div className='d-flex flex-stack'>
                   <h3 className='mb-0'>{process.env.REACT_APP_THEME_NAME} Licenses</h3>
 
-                  <a
-                    href='https://themeforest.net/licenses/standard'
-                    className='fw-bold'
-                  >
+                  <a href='https://themeforest.net/licenses/standard' className='fw-bold'>
                     License FAQs
                   </a>
                 </div>
@@ -132,10 +129,7 @@ export function ExploreMain() {
                   </div>
 
                   <div className='text-nowrap'>
-                    <a
-                      href='https://keenthemes.com/contact/'
-                      className='btn btn-sm btn-success'
-                    >
+                    <a href='https://keenthemes.com/contact/' className='btn btn-sm btn-success'>
                       Contact Us
                     </a>
                   </div>
