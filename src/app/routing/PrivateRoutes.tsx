@@ -10,12 +10,15 @@ import RegisteredWomanPage from '../pages/registeredWoman/RegisteredWomanPage'
 import DeclaredSinisterPage from '../pages/sinister/DeclaredSinisterPage'
 import PaidSinisterPage from '../pages/sinister/PaidSinisterPage'
 import SinisterPage from '../pages/sinister/SinisterPage'
+import AddAdminPage from '../pages/users/AddAdminPage'
 import AdminPage from '../pages/users/AdminPage'
 import AddAmbassadorPage from '../pages/users/ambassador/AddAmbassadorPage'
 import AmbassadorPage from '../pages/users/ambassador/AmbassadorPage'
 import SingleAmbassadorPage from '../pages/users/ambassador/SingleAmbassadorPage'
 import UpdateAmbassadorPage from '../pages/users/ambassador/UpdateAmbassadorPage'
 import ParticularsPage from '../pages/users/ParticularsPage'
+import SingleAdminPage from '../pages/users/SingleAdminPage'
+import UpdateAdminPage from '../pages/users/UpdateAdminPage'
 
 export function PrivateRoutes() {
   const BuilderPageWrapper = lazy(() => import('../pages/layout-builder/BuilderPageWrapper'))
@@ -35,6 +38,9 @@ export function PrivateRoutes() {
         <Route path='/crafted/widgets' component={WidgetsPage} />
         <Route path='/crafted/account' component={AccountPage} />
         <Route exact path='/crafted/users/particular' component={ParticularsPage} />
+        <Route exact path='/crafted/users/admin/add' component={AddAdminPage} />
+        <Route exact path='/crafted/users/admin/update/:id' component={UpdateAdminPage} />
+        <Route exact path='/crafted/users/admin/:id' component={SingleAdminPage} />
         <Route exact path='/crafted/users/admin' component={AdminPage} />
         <Route exact path='/crafted/users/ambassador' component={AmbassadorPage} />
         <Route exact path='/crafted/users/ambassador/add' component={AddAmbassadorPage} />
