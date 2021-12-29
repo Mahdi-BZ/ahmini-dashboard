@@ -3,7 +3,9 @@ import {useFormik} from 'formik'
 import * as React from 'react'
 import {useState} from 'react'
 import * as Yup from 'yup'
-import {add} from './AmbassadorCRUD'
+import SubmitButton from '../../../shared/form-groups/SubmitButton'
+import TextInput from '../../../shared/form-groups/TextInput'
+import {add, update} from './AmbassadorCRUD'
 import {AmbassadorModel} from './AmbassadorModel'
 
 const ambassadorSchema = Yup.object().shape({
@@ -44,7 +46,7 @@ const AmbassadorForm: React.FunctionComponent<IAmbassadorFormProps> = (props) =>
 
   const applyChanges = (ambassador: AmbassadorModel) => {
     if (action === 'Ajouter') return add(ambassador)
-    if (action === 'Mettre à jour') return add(ambassador)
+    if (action === 'Mettre à jour') return update(ambassador)
   }
 
   const formik = useFormik({
@@ -58,10 +60,13 @@ const AmbassadorForm: React.FunctionComponent<IAmbassadorFormProps> = (props) =>
             setLoading(false);
             formik.resetForm();
           })
-          .catch(() => {
+          .catch((e) => {
             setLoading(false)
             setSubmitting(false)
-            setStatus('The ambassador detail is incorrect')
+            console.log(e.response.data);
+            const errors = e.response.data.errors.map(err => Object.values(err.constraints));
+            console.log(errors);
+            setStatus(errors);
           })
       }, 500)
     },
@@ -74,182 +79,35 @@ const AmbassadorForm: React.FunctionComponent<IAmbassadorFormProps> = (props) =>
     >
     {formik.status ? (
       <div className='mb-lg-15 alert alert-danger'>
-        <div className='alert-text font-weight-bold'>{formik.status}</div>
+        <ul>
+          {formik.status.map(err => <li className='alert-text font-weight-bold'>{err}</li>)}
+        </ul>
       </div>
     ) : (
       <div></div>
     )}
       <div className='card-body p-9'>
-        <div className='row mb-7'>
-          <label className='col-lg-4 fw-bold text-muted'>Nom</label>
-          <div className='col-lg-8 fv-row'>
-            <input
-              placeholder='Nom'
-              {...formik.getFieldProps('lastName')}
-              className={clsx(
-                'form-control form-control-lg form-control-solid',
-                {'is-invalid': formik.touched.lastName && formik.errors.lastName},
-                {
-                  'is-valid': formik.touched.lastName && !formik.errors.lastName,
-                }
-              )}
-              type='text'
-              name='lastName'
-              autoComplete='off'
-            />
-            {formik.touched.lastName && formik.errors.lastName && (
-              <div className='fv-plugins-message-container'>
-                <span role='alert'>{formik.errors.lastName}</span>
-              </div>
-            )}
-          </div>
-        </div>
-        <div className='row mb-7'>
-          <label className='col-lg-4 fw-bold text-muted'>Prénom</label>
-
-          <div className='col-lg-8 fv-row'>
-            <input
-              placeholder='Prénom'
-              {...formik.getFieldProps('firstName')}
-              className={clsx(
-                'form-control form-control-lg form-control-solid',
-                {'is-invalid': formik.touched.firstName && formik.errors.firstName},
-                {
-                  'is-valid': formik.touched.firstName && !formik.errors.firstName,
-                }
-              )}
-              type='text'
-              name='firstName'
-              autoComplete='off'
-            />
-            {formik.touched.firstName && formik.errors.firstName && (
-              <div className='fv-plugins-message-container '>
-                <span role='alert'>{formik.errors.firstName}</span>
-              </div>
-            )}
-          </div>
-        </div>
-        <div className='row mb-7'>
-          <label className='col-lg-4 fw-bold text-muted'>
-            Nom d'utilisateur
-          </label>
-
-          <div className='col-lg-8 fv-row'>
-            <input
-              placeholder="Nom d'utilisateur"
-              {...formik.getFieldProps('userName')}
-              className={clsx(
-                'form-control form-control-lg form-control-solid',
-                {'is-invalid': formik.touched.userName && formik.errors.userName},
-                {
-                  'is-valid': formik.touched.userName && !formik.errors.userName,
-                }
-              )}
-              type='text'
-              name='userName'
-              autoComplete='off'
-            />
-            {formik.touched.userName && formik.errors.userName && (
-              <div className='fv-plugins-message-container'>
-                <span role='alert'>{formik.errors.userName}</span>
-              </div>
-            )}
-          </div>
-        </div>
-        <div className='row mb-7'>
-          <label className='col-lg-4 fw-bold text-muted'>
-            Téléphone
-          </label>
-
-          <div className='col-lg-8 fv-row'>
-            <input
-              placeholder='Numéro de Téléphone'
-              {...formik.getFieldProps('phoneNumber')}
-              className={clsx(
-                'form-control form-control-lg form-control-solid',
-                {'is-invalid': formik.touched.phoneNumber && formik.errors.phoneNumber},
-                {
-                  'is-valid': formik.touched.phoneNumber && !formik.errors.phoneNumber,
-                }
-              )}
-              type='number'
-              name='phoneNumber'
-              autoComplete='off'
-            />
-            {formik.touched.phoneNumber && formik.errors.phoneNumber && (
-              <div className='fv-plugins-message-container'>
-                <span role='alert'>{formik.errors.phoneNumber}</span>
-              </div>
-            )}
-          </div>
-        </div>
-
-        <div className='row mb-7'>
-          <label className='col-lg-4 fw-bold text-muted'>
-            Email
-          </label>
-
-          <div className='col-lg-8 fv-row'>
-            <input
-              placeholder='Email'
-              {...formik.getFieldProps('email')}
-              className={clsx(
-                'form-control form-control-lg form-control-solid',
-                {'is-invalid': formik.touched.email && formik.errors.email},
-                {
-                  'is-valid': formik.touched.email && !formik.errors.email,
-                }
-              )}
-              type='email'
-              name='email'
-              autoComplete='off'
-            />
-            {formik.touched.email && formik.errors.email && (
-              <div className='fv-plugins-message-container'>
-                <span role='alert'>{formik.errors.email}</span>
-              </div>
-            )}
-          </div>
-        </div>
-        <div className='row mb-7'>
-          <label className='col-lg-4 fw-bold text-muted'>
-            Mot de passe
-          </label>
-
-          <div className='col-lg-8 fv-row'>
-            <input
-              placeholder='Mot de passe'
-              {...formik.getFieldProps('password')}
-              className={clsx(
-                'form-control form-control-lg form-control-solid',
-                {'is-invalid': formik.touched.password && formik.errors.password},
-                {
-                  'is-valid': formik.touched.password && !formik.errors.password,
-                }
-              )}
-              type='text'
-              name='password'
-              autoComplete='off'
-            />
-            {formik.touched.password && formik.errors.password && (
-              <div className='fv-plugins-message-container'>
-                <span role='alert'>{formik.errors.password}</span>
-              </div>
-            )}
-          </div>
-        </div>
-        <div className='d-flex flex-row-reverse'>
-          <div className='p-5'>
-            <a href='/crafted/users/admin'>
-              <button 
-                type='submit' 
-                className='btn btn-primary btn-sm'
-                disabled={formik.isSubmitting || !formik.isValid}>
-                {action}
-              </button>
-            </a>
-          </div>
-        </div>
+        <TextInput getFieldProps={formik.getFieldProps('lastName')} isTouched={formik.touched.lastName} 
+          validationError={formik.errors.lastName} type={'text'} name={'lastName'} 
+          placeHolder={"Nom"} label={"Nom"} />
+        <TextInput getFieldProps={formik.getFieldProps('firstName')} isTouched={formik.touched.firstName} 
+          validationError={formik.errors.firstName} type={'text'} name={'firstName'} 
+          placeHolder={"Prénom"} label={"Prénom"} />
+        <TextInput getFieldProps={formik.getFieldProps('userName')} isTouched={formik.touched.userName} 
+          validationError={formik.errors.userName} type={'text'} name={'userName'} 
+          placeHolder={"Nom d'utilisateur"} label={"Nom d'utilisateur"} />
+        <TextInput getFieldProps={formik.getFieldProps('phoneNumber')} isTouched={formik.touched.phoneNumber} 
+          validationError={formik.errors.phoneNumber} type={'number'} name={'phoneNumber'} 
+          placeHolder={'Numéro de Téléphone'} label={'Téléphone'} />
+        <TextInput getFieldProps={formik.getFieldProps('email')} isTouched={formik.touched.email} 
+          validationError={formik.errors.email} type={'text'} name={'email'} 
+          placeHolder={'Email'} label={'Email'} />
+        {action === 'Ajouter' && 
+          <TextInput getFieldProps={formik.getFieldProps('password')} isTouched={formik.touched.password} 
+          validationError={formik.errors.password} type={'text'} name={'password'} 
+          placeHolder={'Mot de passe'} label={'Mot de passe'} />
+        }
+        <SubmitButton content={action} isSubmitting={formik.isSubmitting} isValid={formik.isValid} />
       </div>
 
     </form>
