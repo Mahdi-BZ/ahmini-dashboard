@@ -15,7 +15,7 @@ export function add(ambassador: AmbassadorModel) {
 
 // Server should return AmbassadorModel
 export function update(ambassador: AmbassadorModel) {
-  return axios.post(BASE_URL + ambassador.id, ambassador)
+  return axios.put(BASE_URL + ambassador.id, ambassador)
 }
 // Server should return operation result
 export function deleteAmbassador(ambassadorId: number) {
