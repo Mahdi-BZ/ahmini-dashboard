@@ -1,8 +1,10 @@
 import React, {Suspense, lazy} from 'react'
 import {Redirect, Route, Switch} from 'react-router-dom'
 import {FallbackView} from '../../_metronic/partials'
+import AddAdhesionDemandPage from '../pages/adhesion/AddAdhesionDemandPage'
 import AdhesionDemandPage from '../pages/adhesion/adhesionDemandsPage'
 import SingleAdhesionDemandPage from '../pages/adhesion/SingleAdhesionDemandPage'
+import UpdateAdhesionDemandPage from '../pages/adhesion/UpdateAdhesionDemand'
 import {DashboardWrapper} from '../pages/dashboard/DashboardWrapper'
 import newItemPopup from '../pages/dashboard/NewItemPopup'
 import {MenuTestPage} from '../pages/MenuTestPage'
@@ -55,6 +57,8 @@ export function PrivateRoutes() {
         <Route exact path='/crafted/users/ambassador/add' component={AddAmbassadorPage} />
         <Route exact path='/crafted/users/ambassador/update/:id' component={UpdateAmbassadorPage} />
         <Route path='/crafted/users/ambassador/:id' component={SingleAmbassadorPage} />
+        <Route exact path='/crafted/adhesion/demands/add' component={AddAdhesionDemandPage} />
+        <Route exact path='/crafted/adhesion/demands/update/:id' component={UpdateAdhesionDemandPage} />
         <Route exact path='/crafted/adhesion/demands' component={AdhesionDemandPage} />
         <Route path='/crafted/adhesion/demands/:id' component={SingleAdhesionDemandPage} />
         <Route exact path='/crafted/registered-woman/add' component={AddRegisteredWomanPage} />

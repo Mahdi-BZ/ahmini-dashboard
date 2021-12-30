@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, {useEffect, useMemo, useState} from 'react'
 import {useHistory} from 'react-router-dom'
+import { KTSVG } from '../../../_metronic/helpers'
 import HeaderComponent from '../../../_metronic/partials/widgets/datatable/header/HeaderComponent'
 import PaginationComponent from '../../../_metronic/partials/widgets/datatable/pagination/PaginationComponent'
 import {AdhesionDemandPagination} from './AdhesionDemandPagination'
@@ -54,7 +55,18 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
           <span className='card-label fw-bolder fs-3 mb-1'>Demandes d'adhèsion</span>
           <span className='text-muted mt-1 fw-bold fs-7'> Liste des demandes d'adhèsion </span>
         </h3>
-        <div className='card-toolbar'></div>
+        <div className='card-toolbar'>
+          <a
+            onClick={() => history.push('/crafted/adhesion/demands/add')}
+            className='btn btn-sm btn-light-primary'
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_create_app'
+            id='kt_toolbar_primary_button'
+          >
+            <KTSVG path='/media/icons/duotune/arrows/arr075.svg' className='svg-icon-2' />
+            Nouvelle Demande d'adhèsion
+          </a>
+        </div>
       </div>
       {/* end::Header */}
       {/* begin::Body */}
