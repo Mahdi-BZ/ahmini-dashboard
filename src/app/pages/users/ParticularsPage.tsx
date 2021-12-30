@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, {useEffect, useMemo, useState} from 'react'
+import { useHistory } from 'react-router-dom'
 import {KTSVG} from '../../../_metronic/helpers'
 import HeaderComponent from '../../../_metronic/partials/widgets/datatable/header/HeaderComponent'
 import PaginationComponent from '../../../_metronic/partials/widgets/datatable/pagination/PaginationComponent'
@@ -14,6 +15,8 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
   const [currentPage, setCurrentPage] = useState(1)
 
   const ITEMS_PER_PAGE = 10
+
+  const history = useHistory()
 
   const headers = [
     {name: 'ID', field: 'id'},
@@ -55,7 +58,7 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
         </h3>
         <div className='card-toolbar'>
           <a
-            href='#'
+            onClick={() => history.push("/crafted/users/particular/add")}
             className='btn btn-sm btn-light-primary'
             data-bs-toggle='modal'
             data-bs-target='#kt_modal_create_app'
@@ -79,7 +82,10 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
 
             <tbody>
               {particularsTableData.map((particular) => (
-                <tr key={particular.id}>
+                <tr
+                  onClick={() => history.push(`/crafted/users/particular/${particular.id}`)}
+                  className='cursor-pointer'
+                  key={particular.id}>
                   <th scope='row'>{particular.id}</th>
                   <td className='border-dashed border-t border-gray-50 py-5'>
                     {particular.lastName}

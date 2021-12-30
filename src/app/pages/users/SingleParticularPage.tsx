@@ -2,24 +2,24 @@ import axios from 'axios'
 import React, {useEffect, useState} from 'react'
 import {Button} from 'react-bootstrap-v5'
 import {useHistory, useParams} from 'react-router-dom'
-import { deleteAdmin } from './AdminCRUD'
-import { Datum } from './AdminPaginationInterface'
+import { deleteParticular } from './ParticularCRUD'
+import {Particular} from './ParticularPaginationInterface'
 
 type Props = {
   className: string
 }
-const SingleAdminPage: React.FC<Props> = ({className}) => {
-  const [particularsApiData, setParticulars] = useState<Datum>(null as any)
+const SingleParticularPage: React.FC<Props> = ({className}) => {
+  const [particularsApiData, setParticulars] = useState<Particular>(null as any)
   const [validateApi, setValidateApi] = useState(null)
   const {id} = useParams<{id: string}>()
   const history = useHistory();
 
   useEffect(() => {
     if (!id) return
-    axios.get(`/admin/${id}`).then((e) => setParticulars(e.data))
+    axios.get(`/particular/${id}`).then((e) => setParticulars(e.data))
   }, [id, validateApi])
 
-  const Cmp: React.FC<{data: Datum}> = ({data}) => {
+  const Cmp: React.FC<{data: Particular}> = ({data}) => {
     if (!data) return null
     else
       return (
@@ -47,10 +47,9 @@ const SingleAdminPage: React.FC<Props> = ({className}) => {
         </div>
       )
   }
-
-  const deleteParticular = (id: number) => {
-    deleteAdmin(id).then(response => {
-        history.push('/crafted/users/admin');
+  const deleteParticularHandler = (id: number) => {
+    deleteParticular(id).then(response => {
+        history.push('/crafted/users/particular');
     })
   }
 
@@ -59,15 +58,15 @@ const SingleAdminPage: React.FC<Props> = ({className}) => {
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
         <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Admin </span>
-          <span className='text-muted mt-1 fw-bold fs-7'>Informations d'admin détailées</span>
+          <span className='card-label fw-bolder fs-3 mb-1'>Particulaire </span>
+          <span className='text-muted mt-1 fw-bold fs-7'>Informations de particulaire détailées</span>
         </h3>
-        <div className='card-toolbar w-25'>
+        <div className='card-toolbar' style={{width: '35%'}}>
           {particularsApiData && (
             <div className='d-flex w-100 justify-content-around'>
               {/* Begin Edit Button  */}
               <Button title='Modifier' 
-                onClick={() => history.push(`/crafted/users/admin/update/${id}`)}
+                onClick={() => history.push(`/crafted/users/particular/update/${id}`)}
               >
                 <span className="svg-icon svg-icon-muted svg-icon-2hx"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path opacity="0.3" fill-rule="evenodd" clip-rule="evenodd" d="M2 4.63158C2 3.1782 3.1782 2 4.63158 2H13.47C14.0155 2 14.278 2.66919 13.8778 3.04006L12.4556 4.35821C11.9009 4.87228 11.1726 5.15789 10.4163 5.15789H7.1579C6.05333 5.15789 5.15789 6.05333 5.15789 7.1579V16.8421C5.15789 17.9467 6.05333 18.8421 7.1579 18.8421H16.8421C17.9467 18.8421 18.8421 17.9467 18.8421 16.8421V13.7518C18.8421 12.927 19.1817 12.1387 19.7809 11.572L20.9878 10.4308C21.3703 10.0691 22 10.3403 22 10.8668V19.3684C22 20.8218 20.8218 22 19.3684 22H4.63158C3.1782 22 2 20.8218 2 19.3684V4.63158Z" fill="black"/>
@@ -78,7 +77,7 @@ const SingleAdminPage: React.FC<Props> = ({className}) => {
               {/* End Edit Button  */}
               {/* Begin Delete Button  */}
               <Button title='Supprimer' 
-                onClick={() => deleteParticular(particularsApiData.id)}
+                onClick={() => deleteParticularHandler(particularsApiData.id)}
                 variant="danger"
               >
                 <span className="svg-icon svg-icon-muted svg-icon-2hx"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -102,4 +101,4 @@ const SingleAdminPage: React.FC<Props> = ({className}) => {
     </div>
   )
 }
-export default SingleAdminPage
+export default SingleParticularPage
