@@ -11,6 +11,7 @@ import DeclaredSinisterPage from '../pages/sinister/DeclaredSinisterPage'
 import PaidSinisterPage from '../pages/sinister/PaidSinisterPage'
 import SinisterPage from '../pages/sinister/SinisterPage'
 import AddAdminPage from '../pages/users/AddAdminPage'
+import AddParticularPage from '../pages/users/AddParticularPage'
 import AdminPage from '../pages/users/AdminPage'
 import AddAmbassadorPage from '../pages/users/ambassador/AddAmbassadorPage'
 import AmbassadorPage from '../pages/users/ambassador/AmbassadorPage'
@@ -18,7 +19,9 @@ import SingleAmbassadorPage from '../pages/users/ambassador/SingleAmbassadorPage
 import UpdateAmbassadorPage from '../pages/users/ambassador/UpdateAmbassadorPage'
 import ParticularsPage from '../pages/users/ParticularsPage'
 import SingleAdminPage from '../pages/users/SingleAdminPage'
+import SingleParticularPage from '../pages/users/SingleParticularPage'
 import UpdateAdminPage from '../pages/users/UpdateAdminPage'
+import UpdateParticularPage from '../pages/users/UpdateParticularPage'
 
 export function PrivateRoutes() {
   const BuilderPageWrapper = lazy(() => import('../pages/layout-builder/BuilderPageWrapper'))
@@ -37,7 +40,10 @@ export function PrivateRoutes() {
         <Route path='/crafted/pages/wizards' component={WizardsPage} />
         <Route path='/crafted/widgets' component={WidgetsPage} />
         <Route path='/crafted/account' component={AccountPage} />
+        <Route exact path='/crafted/users/particular/update/:id' component={UpdateParticularPage} />
+        <Route exact path='/crafted/users/particular/add' component={AddParticularPage} />
         <Route exact path='/crafted/users/particular' component={ParticularsPage} />
+        <Route exact path='/crafted/users/particular/:id' component={SingleParticularPage} />
         <Route exact path='/crafted/users/admin/add' component={AddAdminPage} />
         <Route exact path='/crafted/users/admin/update/:id' component={UpdateAdminPage} />
         <Route exact path='/crafted/users/admin/:id' component={SingleAdminPage} />
