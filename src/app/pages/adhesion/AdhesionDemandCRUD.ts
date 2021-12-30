@@ -5,7 +5,7 @@ const API_URL = process.env.REACT_APP_API_URL || 'api'
 export const BASE_URL = `${API_URL}/adhesion-demand/`
 
 export function getAdhesionDemand(adhesionDemandId: string) {
-    return axios.get<AdhesionDemandModel>(BASE_URL + adhesionDemandId);
+    return axios.get(BASE_URL + adhesionDemandId);
 }
 // Server should return AdhesionDemandModel
 export function add(adhesionDemand: {data: AdhesionDemandModel}) {
@@ -13,8 +13,8 @@ export function add(adhesionDemand: {data: AdhesionDemandModel}) {
 }
 
 // Server should return AdhesionDemandModel
-export function update(adhesionDemand: AdhesionDemandModel) {
-  return axios.put(BASE_URL + adhesionDemand.id, adhesionDemand)
+export function update(adhesionDemand: {data: AdhesionDemandModel}) {
+  return axios.put(BASE_URL + adhesionDemand.data.id, adhesionDemand)
 }
 // Server should return operation result
 export function deleteAdhesionDemand(adhesionDemandId: number) {

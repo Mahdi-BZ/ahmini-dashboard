@@ -40,12 +40,12 @@ const emptyAdhesionDemand: AdhesionDemandModel = {
     firstName: '',
     postalCode: 0,
     governorate: '',
-    birthDate: undefined,
+    birthDate: '',
     birthPlace: '',
     nationality: '',
     identityCardNature: '',
     identityCardNumber: 0,
-    identityCardDeliveryDate: undefined,
+    identityCardDeliveryDate: '',
     familtySituation: '',
     street: '',
     town: '',
@@ -61,7 +61,7 @@ const AdhesionDemandForm: React.FunctionComponent<IAdhesionDemandFormProps> = (p
 
   const applyChanges = (adhesionDemand: AdhesionDemandModel) => {
     if (action === 'Ajouter') return add({data: adhesionDemand})
-    if (action === 'Mettre à jour') return update(adhesionDemand)
+    if (action === 'Mettre à jour') return update({data: adhesionDemand})
   }
 
   const formik = useFormik({
@@ -74,7 +74,7 @@ const AdhesionDemandForm: React.FunctionComponent<IAdhesionDemandFormProps> = (p
           .then(() => {
             setLoading(false);
             formik.resetForm();
-            history.push('/crafted/registered-adhesionDemand');
+            history.push('/crafted/adhesion/demands');
           })
           .catch((e) => {
             setLoading(false)
