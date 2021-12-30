@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, {useEffect, useMemo, useState} from 'react'
 import {Button} from 'react-bootstrap-v5'
+import { useHistory } from 'react-router-dom'
+import { KTSVG } from '../../../_metronic/helpers'
 import HeaderComponent from '../../../_metronic/partials/widgets/datatable/header/HeaderComponent'
 import PaginationComponent from '../../../_metronic/partials/widgets/datatable/pagination/PaginationComponent'
 import {RegisteredWomanPagination} from './RegisteredWomanPagination'
@@ -12,6 +14,7 @@ const RegisteredWomanPage: React.FC<Props> = ({className}) => {
   const [particularsApiData, setParticulars] = useState<RegisteredWomanPagination>(null as any)
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
+  const history = useHistory()
 
   const ITEMS_PER_PAGE = 10
 
@@ -60,6 +63,18 @@ const RegisteredWomanPage: React.FC<Props> = ({className}) => {
         <div className='card-toolbar'>
           <Button onClick={() => exportData()}>Exporter la liste actuelle </Button>
         </div>
+        <div className='card-toolbar'>
+          <a
+            onClick={() => history.push('/crafted/registered-woman/add')}
+            className='btn btn-sm btn-light-primary'
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_create_app'
+            id='kt_toolbar_primary_button'
+          >
+            <KTSVG path='/media/icons/duotune/arrows/arr075.svg' className='svg-icon-2' />
+            Nouvelle Femme
+          </a>
+        </div>
       </div>
       {/* end::Header */}
       {/* begin::Body */}
@@ -74,7 +89,10 @@ const RegisteredWomanPage: React.FC<Props> = ({className}) => {
 
             <tbody>
               {particularsTableData.map((particular) => (
-                <tr key={particular.id}>
+                <tr
+                  onClick={() => history.push(`/crafted/registered-woman/${particular.id}`)}
+                  className='cursor-pointer'
+                  key={particular.id}>
                   <th scope='row'>{particular.id}</th>
                   <td>{particular.firstName}</td>
                   <td className=''>{particular.lastName}</td>

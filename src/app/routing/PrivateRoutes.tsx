@@ -6,7 +6,10 @@ import SingleAdhesionDemandPage from '../pages/adhesion/SingleAdhesionDemandPage
 import {DashboardWrapper} from '../pages/dashboard/DashboardWrapper'
 import newItemPopup from '../pages/dashboard/NewItemPopup'
 import {MenuTestPage} from '../pages/MenuTestPage'
+import AddRegisteredWomanPage from '../pages/registeredWoman/AddRegisteredWomanPage'
 import RegisteredWomanPage from '../pages/registeredWoman/RegisteredWomanPage'
+import SingleRegisteredWomanPage from '../pages/registeredWoman/SingleRegisteredWomanPage'
+import UpdateRegisteredWomanPage from '../pages/registeredWoman/UpdateRegisteredWoman'
 import DeclaredSinisterPage from '../pages/sinister/DeclaredSinisterPage'
 import PaidSinisterPage from '../pages/sinister/PaidSinisterPage'
 import SinisterPage from '../pages/sinister/SinisterPage'
@@ -48,7 +51,10 @@ export function PrivateRoutes() {
         <Route path='/crafted/users/ambassador/:id' component={SingleAmbassadorPage} />
         <Route exact path='/crafted/adhesion/demands' component={AdhesionDemandPage} />
         <Route path='/crafted/adhesion/demands/:id' component={SingleAdhesionDemandPage} />
+        <Route exact path='/crafted/registered-woman/add' component={AddRegisteredWomanPage} />
+        <Route exact path='/crafted/registered-woman/update/:id' component={UpdateRegisteredWomanPage} />
         <Route exact path='/crafted/registered-woman' component={RegisteredWomanPage} />
+        <Route exact path='/crafted/registered-woman/:id' component={SingleRegisteredWomanPage} />
         <Route exact path='/crafted/sinister' component={SinisterPage} />
         <Route exact path='/crafted/declaredsinister' component={DeclaredSinisterPage} />
         <Route exact path='/crafted/paidsinister' component={PaidSinisterPage} />
