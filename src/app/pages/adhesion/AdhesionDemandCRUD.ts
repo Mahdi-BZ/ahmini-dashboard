@@ -8,7 +8,7 @@ export function getAdhesionDemand(adhesionDemandId: string) {
     return axios.get<AdhesionDemandModel>(BASE_URL + adhesionDemandId);
 }
 // Server should return AdhesionDemandModel
-export function add(adhesionDemand: AdhesionDemandModel) {
+export function add(adhesionDemand: {data: AdhesionDemandModel}) {
   return axios.post(BASE_URL, adhesionDemand)
 }
 

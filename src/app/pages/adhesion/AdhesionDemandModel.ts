@@ -1,19 +1,19 @@
 export interface AdhesionDemandModel {
-    id: number
+    id?: number
     firstName: string;
     lastName: string;
-    birthDate: Date;
-    birthPlace: string;
+    familtySituation: string;
     nationality: string;
+    phone: number;
+    activity: string;
+    childCount: number;
     identityCardNature: string;
     identityCardNumber: number;
-    identityCardDeliveryDate: Date;
-    familtySituation: string;
-    street: string;
+    identityCardDeliveryDate: string;
+    birthDate: string;
+    birthPlace: string;
     governorate: string;
     town: string;
+    street: string;
     postalCode: number;
-    phone: number;
-    childCount: number;
-    activity: string;
 }
