@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, {useEffect, useMemo, useState} from 'react'
+import {useHistory} from 'react-router-dom'
 import HeaderComponent from '../../../_metronic/partials/widgets/datatable/header/HeaderComponent'
 import PaginationComponent from '../../../_metronic/partials/widgets/datatable/pagination/PaginationComponent'
 import {SinisterPagination} from './SinisterPagination'
@@ -12,13 +13,14 @@ const PaidSinisterPage: React.FC<Props> = ({className}) => {
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
 
+  const history = useHistory()
+
   const ITEMS_PER_PAGE = 10
 
   const headers = [
     {name: 'ID', field: 'id'},
     {name: 'Nom', field: 'name'},
     {name: 'Type', field: 'type'},
-    {name: 'Declaré par', field: 'declaredBy'},
   ]
 
   useEffect(() => {
@@ -29,6 +31,7 @@ const PaidSinisterPage: React.FC<Props> = ({className}) => {
           perPage: ITEMS_PER_PAGE,
           sort: 'desc',
           orderBy: 'id',
+          valid: 'yes',
         },
       })
       .then((e) => setApiData(e.data))
@@ -66,11 +69,20 @@ const PaidSinisterPage: React.FC<Props> = ({className}) => {
 
             <tbody>
               {particularsTableData.map((particular) => (
-                <tr key={particular.id}>
+                <tr
+                  onClick={() => history.push(`/crafted/declaredsinister/${particular.id}`)}
+                  key={particular.id}
+                  className='cursor-pointer'
+                >
                   <th scope='row'>{particular.id}</th>
-                  <td className='border-dashed border-t border-gray-200 px-3'>TODO</td>
-                  <td className='border-dashed border-t border-gray-200 px-3'>TODO</td>
-                  <td className='border-dashed border-t border-gray-200 px-3'>TODO</td>
+                  <td className='border-dashed border-t border-gray-200 px-3'>
+                    {' '}
+                    {particular.name}{' '}
+                  </td>
+                  <td className='border-dashed border-t border-gray-200 px-3'>
+                    {' '}
+                    {particular.definition}{' '}
+                  </td>
                 </tr>
               ))}
             </tbody>

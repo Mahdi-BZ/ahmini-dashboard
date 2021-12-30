@@ -14,6 +14,7 @@ import SingleRegisteredWomanPage from '../pages/registeredWoman/SingleRegistered
 import UpdateRegisteredWomanPage from '../pages/registeredWoman/UpdateRegisteredWoman'
 import DeclaredSinisterPage from '../pages/sinister/DeclaredSinisterPage'
 import PaidSinisterPage from '../pages/sinister/PaidSinisterPage'
+import SingleSinisterPage from '../pages/sinister/SingleSinisterPage'
 import SinisterPage from '../pages/sinister/SinisterPage'
 import AddAdminPage from '../pages/users/AddAdminPage'
 import AddParticularPage from '../pages/users/AddParticularPage'
@@ -58,15 +59,24 @@ export function PrivateRoutes() {
         <Route exact path='/crafted/users/ambassador/update/:id' component={UpdateAmbassadorPage} />
         <Route path='/crafted/users/ambassador/:id' component={SingleAmbassadorPage} />
         <Route exact path='/crafted/adhesion/demands/add' component={AddAdhesionDemandPage} />
-        <Route exact path='/crafted/adhesion/demands/update/:id' component={UpdateAdhesionDemandPage} />
+        <Route
+          exact
+          path='/crafted/adhesion/demands/update/:id'
+          component={UpdateAdhesionDemandPage}
+        />
         <Route exact path='/crafted/adhesion/demands' component={AdhesionDemandPage} />
         <Route path='/crafted/adhesion/demands/:id' component={SingleAdhesionDemandPage} />
         <Route exact path='/crafted/registered-woman/add' component={AddRegisteredWomanPage} />
-        <Route exact path='/crafted/registered-woman/update/:id' component={UpdateRegisteredWomanPage} />
+        <Route
+          exact
+          path='/crafted/registered-woman/update/:id'
+          component={UpdateRegisteredWomanPage}
+        />
         <Route exact path='/crafted/registered-woman' component={RegisteredWomanPage} />
         <Route exact path='/crafted/registered-woman/:id' component={SingleRegisteredWomanPage} />
         <Route exact path='/crafted/sinister' component={SinisterPage} />
         <Route exact path='/crafted/declaredsinister' component={DeclaredSinisterPage} />
+        <Route exact path='/crafted/declaredsinister/:id' component={SingleSinisterPage} />
         <Route exact path='/crafted/paidsinister' component={PaidSinisterPage} />
         <Route exact path='/crafted/newitempopup' component={newItemPopup} />
         <Route path='/apps/chat' component={ChatPage} />

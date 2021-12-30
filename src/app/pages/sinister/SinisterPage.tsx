@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, {useEffect, useMemo, useState} from 'react'
+import {useHistory} from 'react-router-dom'
 import HeaderComponent from '../../../_metronic/partials/widgets/datatable/header/HeaderComponent'
 import PaginationComponent from '../../../_metronic/partials/widgets/datatable/pagination/PaginationComponent'
 import {SinisterPagination} from './SinisterPagination'
@@ -11,6 +12,8 @@ const SinisterPage: React.FC<Props> = ({className}) => {
   const [apiData, setApiData] = useState<SinisterPagination>(null as any)
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
+
+  const history = useHistory()
 
   const ITEMS_PER_PAGE = 10
 
@@ -66,7 +69,11 @@ const SinisterPage: React.FC<Props> = ({className}) => {
 
             <tbody>
               {particularsTableData.map((particular) => (
-                <tr key={particular.id}>
+                <tr
+                  onClick={() => history.push(`/crafted/declaredsinister/${particular.id}`)}
+                  key={particular.id}
+                  className='cursor-pointer'
+                >
                   <th scope='row'>{particular.id}</th>
                   <td className='border-dashed border-t border-gray-200 px-3'>TODO</td>
                   <td className='border-dashed border-t border-gray-200 px-3'>TODO</td>

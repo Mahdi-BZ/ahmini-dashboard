@@ -77,7 +77,7 @@ export function AsideMenuMain() {
         icon='/media/icons/duotune/general/gen044.svg'
         fontIcon='bi-person'
       >
-        <AsideMenuItem to='/crafted/sinister' title='Liste des sinistres' hasBullet={true} />
+        {/* <AsideMenuItem to='/crafted/sinister' title='Liste des sinistres' hasBullet={true} /> */}
         <AsideMenuItem
           to='/crafted/declaredsinister'
           title='Liste des sinistres déclarés'
