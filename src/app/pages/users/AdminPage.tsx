@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, {useEffect, useMemo, useState} from 'react'
+import { useHistory } from 'react-router-dom'
 import {KTSVG} from '../../../_metronic/helpers'
 import HeaderComponent from '../../../_metronic/partials/widgets/datatable/header/HeaderComponent'
 import PaginationComponent from '../../../_metronic/partials/widgets/datatable/pagination/PaginationComponent'
@@ -22,7 +23,7 @@ const AdminPage: React.FC<Props> = ({className}) => {
     {name: 'Téléphone', field: 'phoneNumber'},
     {name: 'Email', field: 'email'},
   ]
-
+  const history = useHistory();
   useEffect(() => {
     axios
       .get('/admin', {
@@ -55,7 +56,7 @@ const AdminPage: React.FC<Props> = ({className}) => {
         </h3>
         <div className='card-toolbar'>
           <a
-            href='/crafted/newitempopup'
+            onClick={() => history.push('/crafted/users/admin/add')}
             className='btn btn-sm btn-light-primary'
             data-bs-toggle='modal'
             data-bs-target='#kt_modal_create_app'
@@ -79,7 +80,10 @@ const AdminPage: React.FC<Props> = ({className}) => {
 
             <tbody>
               {particularsTableData.map((particular) => (
-                <tr key={particular.id}>
+                <tr 
+                  onClick={() => history.push(`/crafted/users/admin/${particular.id}`)}
+                  className='cursor-pointer'
+                  key={particular.id}>
                   <th scope='row'>{particular.id}</th>
                   <td className='border-dashed border-t border-gray-50 py-5'>
                     {particular.firstName}
