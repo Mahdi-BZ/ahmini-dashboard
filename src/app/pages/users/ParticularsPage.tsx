@@ -4,6 +4,9 @@ import { useHistory } from 'react-router-dom'
 import {KTSVG} from '../../../_metronic/helpers'
 import HeaderComponent from '../../../_metronic/partials/widgets/datatable/header/HeaderComponent'
 import PaginationComponent from '../../../_metronic/partials/widgets/datatable/pagination/PaginationComponent'
+import DataTable from '../../shared/generic-components/dataTable'
+import Pagination from '../../shared/generic-components/Pagination'
+import TableCardHeader from '../../shared/generic-components/tableCardHeader'
 import {ParticularPagination} from './ParticularPaginationInterface'
 
 type Props = {
@@ -15,8 +18,6 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
   const [currentPage, setCurrentPage] = useState(1)
 
   const ITEMS_PER_PAGE = 10
-
-  const history = useHistory()
 
   const headers = [
     {name: 'ID', field: 'id'},
@@ -51,65 +52,23 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
-      <div className='card-header border-0 pt-5'>
-        <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Particuliers</span>
-          <span className='text-muted mt-1 fw-bold fs-7'> Liste des particuliers </span>
-        </h3>
-        <div className='card-toolbar'>
-          <a
-            onClick={() => history.push("/crafted/users/particular/add")}
-            className='btn btn-sm btn-light-primary'
-            data-bs-toggle='modal'
-            data-bs-target='#kt_modal_create_app'
-            id='kt_toolbar_primary_button'
-          >
-            <KTSVG path='/media/icons/duotune/arrows/arr075.svg' className='svg-icon-2' />
-            Nouveau particulier
-          </a>
-        </div>
-      </div>
+      <TableCardHeader name={'Particulier'} isFemale={false} />
       {/* end::Header */}
-      {/* begin::Body */}
       <div className='card-body py-3'>
-        {/* begin::Table container */}
+      {particularsApiData && 
         <div className='dataTables_wrapper dataTables_paginate table-responsive'>
-          {/* begin::Table */}
-          <table id='kt_datatable' className='table table-borderless table-striped gy-7 gs-7'>
-            {/* begin::Table head */}
-            <HeaderComponent headers={headers} />
-            {/* text-dark fw-bold text-muted d-block fs-7 */}
-
-            <tbody>
-              {particularsTableData.map((particular) => (
-                <tr
-                  onClick={() => history.push(`/crafted/users/particular/${particular.id}`)}
-                  className='cursor-pointer'
-                  key={particular.id}>
-                  <th scope='row'>{particular.id}</th>
-                  <td className='border-dashed border-t border-gray-50 py-5'>
-                    {particular.lastName}
-                  </td>
-                  <td className='border-dashed border-t border-gray-200 '>
-                    {particular.firstName}
-                  </td>
-                  <td className='border-dashed border-t border-gray-50 '>{particular.userName}</td>
-                  <td className='border-dashed border-t border-gray-200 '>{particular.email}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          <PaginationComponent
-            total={totalItems}
-            itemsPerPage={ITEMS_PER_PAGE}
-            currentPage={currentPage}
-            onPageChange={(page: React.SetStateAction<number>) => setCurrentPage(page)}
-          />
+          {/* begin::Body */}
+          <DataTable headers={headers} 
+            data={particularsTableData} />
+          {/* begin::Body */}
+          <Pagination 
+            currentPage={currentPage} 
+            totalItems={totalItems} 
+            onPageChangeEventHandler={setCurrentPage} 
+            itemsPerPage={ITEMS_PER_PAGE} />
         </div>
-        {/* end::Table container */}
+      }
       </div>
-      {/* begin::Body */}
     </div>
   )
 }
