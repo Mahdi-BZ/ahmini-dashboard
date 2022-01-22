@@ -66,7 +66,7 @@ const SingleAdminPage: React.FC<Props> = ({className}) => {
         </h3>
         <div className='card-toolbar w-25'>
           {particularsApiData && (
-            <div className='d-flex w-100 justify-content-around'>
+            <div className='d-flex w-50 justify-content-around'>
               {/* Begin Edit Button  */}
               <EditButton clickHandler={() => history.push(`/crafted/users/admin/update/${id}`)} />
               {/* End Edit Button  */}

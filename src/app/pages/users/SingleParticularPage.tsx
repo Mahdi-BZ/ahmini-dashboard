@@ -63,9 +63,9 @@ const SingleParticularPage: React.FC<Props> = ({className}) => {
           <span className='card-label fw-bolder fs-3 mb-1'>Particulaire </span>
           <span className='text-muted mt-1 fw-bold fs-7'>Informations de particulaire détailées</span>
         </h3>
-        <div className='card-toolbar' style={{width: '35%'}}>
+        <div className='card-toolbar' style={{width: '30%'}}>
           {particularsApiData && (
-            <div className='d-flex w-100 justify-content-around'>
+            <div className='d-flex w-50 justify-content-around'>
               {/* Begin Edit Button  */}
               <EditButton clickHandler={() => history.push(`/crafted/users/particular/update/${id}`)} />
               {/* End Edit Button  */}
