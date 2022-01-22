@@ -3,6 +3,7 @@ import React, {useEffect, useMemo, useState} from 'react'
 import {Button} from 'react-bootstrap-v5'
 import { useHistory } from 'react-router-dom'
 import { KTSVG } from '../../../_metronic/helpers'
+import AddButton from '../../shared/buttons/addButton'
 import DataTable from '../../shared/generic-components/dataTable'
 import Pagination from '../../shared/generic-components/Pagination'
 import {RegisteredWomanPagination} from './RegisteredWomanPagination'
@@ -70,16 +71,10 @@ const RegisteredWomanPage: React.FC<Props> = ({className}) => {
           <Button onClick={() => exportData()}>Exporter la liste actuelle </Button>
         </div>
         <div className='card-toolbar'>
-          <a
-            onClick={() => history.push('/crafted/registered-woman/add')}
-            className='btn btn-sm btn-light-primary'
-            data-bs-toggle='modal'
-            data-bs-target='#kt_modal_create_app'
-            id='kt_toolbar_primary_button'
-          >
-            <KTSVG path='/media/icons/duotune/arrows/arr075.svg' className='svg-icon-2' />
+          <AddButton 
+            clickHandler={() => history.push('/crafted/registered-woman/add')}>
             Nouvelle Femme
-          </a>
+          </AddButton>
         </div>
       </div>
       {/* end::Header */}

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { KTSVG } from '../../../_metronic/helpers/components/KTSVG';
+import AddButton from '../buttons/addButton';
 
 interface ITableCardHeaderProps {
     name: string,
@@ -24,16 +25,11 @@ const TableCardHeader: React.FunctionComponent<ITableCardHeaderProps> = (props) 
         <div className='card-toolbar'>
         </div>
         <div className='card-toolbar'>
-        <a
-            onClick={() => history.push(`${location.pathname}/add`)}
-            className='btn btn-sm btn-light-primary'
-            data-bs-toggle='modal'
-            data-bs-target='#kt_modal_create_app'
-            id='kt_toolbar_primary_button'
+        <AddButton 
+            clickHandler={() => history.push(`${location.pathname}/add`)}
         >
-            <KTSVG path='/media/icons/duotune/arrows/arr075.svg' className='svg-icon-2' />
             {props.isFemale ? 'Nouvelle': 'Nouveau'} {props.name}
-        </a>
+        </AddButton>
         </div>
     </div>
   );
