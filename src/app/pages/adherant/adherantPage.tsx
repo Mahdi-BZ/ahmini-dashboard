@@ -18,6 +18,7 @@ const AdherantPage: React.FC<Props> = ({className}) => {
   const history = useHistory()
 
   const ITEMS_PER_PAGE = 10
+  const oldDate = new Date(1900 , 1 , 1 )
 
   const headers = [
     {name: 'ID', field: 'id'},
@@ -56,6 +57,21 @@ const AdherantPage: React.FC<Props> = ({className}) => {
           <span className='card-label fw-bolder fs-3 mb-1'>Adhérants</span>
           <span className='text-muted mt-1 fw-bold fs-7'> Liste des adhérants </span>
         </h3>
+        <div className='card-toolbar'>
+            <a
+              className='btn btn-sm btn-light-primary px-3'
+              data-bs-toggle='modal'
+              data-bs-target='#kt_modal_create_app'
+              
+              id='kt_toolbar_primary_button'
+              href={`${
+                process.env.REACT_APP_API_URL
+              }/adherant/export?startDate=${oldDate.toISOString()}&endDate=${new Date().toISOString()}`}
+              download
+            >
+              download
+            </a>
+        </div>
         <div className='card-toolbar'>
           <a
             onClick={() => history.push('/crafted/adherant/add')}

@@ -55,6 +55,11 @@ export function AsideMenuMain() {
           title={`Liste des demandes d'adhèsion`}
           hasBullet={true}
         />
+        <AsideMenuItem
+          to='/crafted/adherant'
+          title={`Liste des adherants`}
+          hasBullet={true}
+        />
         {/* <AsideMenuItem to='/crafted/users/particular' title='Particular' hasBullet={true} /> */}
       </AsideMenuItemWithSub>
 

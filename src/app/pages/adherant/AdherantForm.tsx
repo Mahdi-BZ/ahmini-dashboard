@@ -29,7 +29,6 @@ const adherantSchema = Yup.object().shape({
     .max(99999999, 'Numéro de téléphone invalide') //Max telecom
     .min(20000000, 'Numéro de téléphone invalide') //Min Ooredoo
     .required('Le numéro de téléphone est obligatoire'),
-  passedBy: Yup.object({id: Yup.number().required()}).required()
 })
 
 interface IAdherantFormProps {
@@ -53,7 +52,6 @@ const emptyAdherant: AdherantModel = {
   phone: 0,
   childCount: 0,
   activity: '',
-  passedBy: {id: 0}
 }
 const AdherantForm: React.FunctionComponent<IAdherantFormProps> = (props) => {
 
@@ -108,15 +106,6 @@ const AdherantForm: React.FunctionComponent<IAdherantFormProps> = (props) => {
         <div></div>
       )}
       <div className='card-body p-9'>
-        <TextInput
-          getFieldProps={formik.getFieldProps('passedBy.id')}
-          isTouched={formik.touched.passedBy.id}
-          validationError={formik.errors.passedBy.id}
-          type={'number'}
-          name={'ambassadorId'}
-          placeHolder={"Id d'ambassadeur"}
-          label={"Id d'Ambassadeur"}
-        />
         <TextInput
           getFieldProps={formik.getFieldProps('lastName')}
           isTouched={formik.touched.lastName}
