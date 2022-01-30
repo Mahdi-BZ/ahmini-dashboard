@@ -85,7 +85,7 @@ export function AsideMenuMain() {
         />
         <AsideMenuItem
           to='/crafted/paidsinister'
-          title='Liste des sinistres payés'
+          title='Liste des sinistres validés'
           hasBullet={true}
         />
       </AsideMenuItemWithSub>

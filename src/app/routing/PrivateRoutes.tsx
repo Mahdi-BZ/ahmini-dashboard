@@ -13,7 +13,7 @@ import RegisteredWomanPage from '../pages/registeredWoman/RegisteredWomanPage'
 import SingleRegisteredWomanPage from '../pages/registeredWoman/SingleRegisteredWomanPage'
 import UpdateRegisteredWomanPage from '../pages/registeredWoman/UpdateRegisteredWoman'
 import DeclaredSinisterPage from '../pages/sinister/DeclaredSinisterPage'
-import PaidSinisterPage from '../pages/sinister/PaidSinisterPage'
+import ValidSinisterPage from '../pages/sinister/ValidSinisterPage'
 import SingleSinisterPage from '../pages/sinister/SingleSinisterPage'
 import SinisterPage from '../pages/sinister/SinisterPage'
 import AddAdminPage from '../pages/users/AddAdminPage'
@@ -79,7 +79,7 @@ export function PrivateRoutes() {
         <Route exact path='/crafted/sinister' component={SinisterPage} />
         <Route exact path='/crafted/declaredsinister' component={DeclaredSinisterPage} />
         <Route exact path='/crafted/declaredsinister/:id' component={SingleSinisterPage} />
-        <Route exact path='/crafted/paidsinister' component={PaidSinisterPage} />
+        <Route exact path='/crafted/paidsinister' component={ValidSinisterPage} />
         <Route exact path='/crafted/newitempopup' component={newItemPopup} />
         <Route path='/apps/chat' component={ChatPage} />
         <Route path='/menu-test' component={MenuTestPage} />

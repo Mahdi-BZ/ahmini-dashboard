@@ -8,7 +8,7 @@ import {SinisterPagination} from './SinisterPagination'
 type Props = {
   className: string
 }
-const PaidSinisterPage: React.FC<Props> = ({className}) => {
+const ValidSinisterPage: React.FC<Props> = ({className}) => {
   const [apiData, setApiData] = useState<SinisterPagination>(null as any)
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
@@ -51,8 +51,8 @@ const PaidSinisterPage: React.FC<Props> = ({className}) => {
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
         <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Sinistres payés</span>
-          <span className='text-muted mt-1 fw-bold fs-7'> Liste des sinistres payés</span>
+          <span className='card-label fw-bolder fs-3 mb-1'>Sinistres validés</span>
+          <span className='text-muted mt-1 fw-bold fs-7'> Liste des sinistres validés</span>
         </h3>
         <div className='card-toolbar'></div>
       </div>
@@ -75,13 +75,9 @@ const PaidSinisterPage: React.FC<Props> = ({className}) => {
                   className='cursor-pointer'
                 >
                   <th scope='row'>{particular.id}</th>
+                  <td className='border-dashed border-t border-gray-200 px-3'>{particular.name}</td>
                   <td className='border-dashed border-t border-gray-200 px-3'>
-                    {' '}
-                    {particular.name}{' '}
-                  </td>
-                  <td className='border-dashed border-t border-gray-200 px-3'>
-                    {' '}
-                    {particular.definition}{' '}
+                    {particular.definition}
                   </td>
                 </tr>
               ))}
@@ -101,4 +97,4 @@ const PaidSinisterPage: React.FC<Props> = ({className}) => {
     </div>
   )
 }
-export default PaidSinisterPage
+export default ValidSinisterPage
