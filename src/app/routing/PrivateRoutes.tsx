@@ -29,6 +29,10 @@ import SingleAdminPage from '../pages/users/SingleAdminPage'
 import SingleParticularPage from '../pages/users/SingleParticularPage'
 import UpdateAdminPage from '../pages/users/UpdateAdminPage'
 import UpdateParticularPage from '../pages/users/UpdateParticularPage'
+import AdherantPage from '../pages/adherant/adherantPage'
+import AddAdherantPage from '../pages/adherant/AddAdherantPage'
+import UpdateAdherantPage from '../pages/adherant/UpdateAdherantDemand'
+import SingleAdherantPage from '../pages/adherant/SingleAdherantPage'
 
 export function PrivateRoutes() {
   const BuilderPageWrapper = lazy(() => import('../pages/layout-builder/BuilderPageWrapper'))
@@ -68,6 +72,11 @@ export function PrivateRoutes() {
         />
         <Route exact path='/crafted/adhesion/demands' component={AdhesionDemandPage} />
         <Route path='/crafted/adhesion/demands/:id' component={SingleAdhesionDemandPage} />
+        
+        <Route exact path='/crafted/adherant' component={AdherantPage} />
+        <Route exact path='/crafted/adherant/add' component={AddAdherantPage} />
+        <Route exact path='/crafted/adherant/update/:id' component={UpdateAdherantPage} />
+        <Route exact path='/crafted/adherant/:id' component={SingleAdherantPage} />
         <Route exact path='/crafted/registered-woman/add' component={AddRegisteredWomanPage} />
         <Route
           exact

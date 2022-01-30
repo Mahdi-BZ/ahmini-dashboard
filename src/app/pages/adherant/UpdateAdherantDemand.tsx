@@ -1,11 +1,11 @@
 import * as React from 'react'
 import {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
-import {getAdhesionDemand} from './AdhesrantDemandCRUD'
+import {getAdherant} from './AdherantCRUD'
 import AdherantForm from './AdherantForm'
 import {AdherantModel} from './AdherantModel'
 
-interface IUpdateAdhesionDemandPageProps {}
+interface IUpdateAdherantPageProps {}
 function formatDate(date) {
   var d = new Date(date),
     month = '' + (d.getMonth() + 1),
@@ -18,22 +18,24 @@ function formatDate(date) {
   return [year, month, day].join('-')
 }
 
-const UpdateAdhesionDemandPage: React.FunctionComponent<IUpdateAdhesionDemandPageProps> = (
+const UpdateAdherantPage: React.FunctionComponent<IUpdateAdherantPageProps> = (
   props
 ) => {
   const {id} = useParams<{id: string}>()
-  const [adhesionDemand, setAdhesionDemand] = useState<AdherantModel>()
+  const [adherant, setAdherant] = useState<AdherantModel>()
   useEffect(() => {
-    if (!id || adhesionDemand) return
-    getAdhesionDemand(id).then((response) => {
-      const adhesionDemand = response.data.data
-      adhesionDemand.id = id
-      adhesionDemand.birthDate = formatDate(adhesionDemand.birthDate)
-      adhesionDemand.identityCardDeliveryDate = formatDate(adhesionDemand.identityCardDeliveryDate)
-      setAdhesionDemand(adhesionDemand)
+    if (!id || adherant) return
+    getAdherant(id).then((response) => {
+      const adherant: AdherantModel = response.data.data
+      adherant.id = parseInt(id)
+      adherant.birthDate = formatDate(adherant.birthDate)
+      adherant.identityCardDeliveryDate = formatDate(adherant.identityCardDeliveryDate)
+      adherant.passedBy = response.data.passedBy;
+      console.log(adherant);
+      setAdherant(adherant)
     })
   })
-  return <div>{adhesionDemand && <AdherantForm adhesionDemand={adhesionDemand} />}</div>
+  return <div>{adherant && <AdherantForm adherant={adherant} />}</div>
 }
 
-export default UpdateAdhesionDemandPage
+export default UpdateAdherantPage

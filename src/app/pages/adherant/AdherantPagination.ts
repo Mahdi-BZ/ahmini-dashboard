@@ -48,7 +48,7 @@ export interface Meta2 {
   createdDate: Date
 }
 
-export interface AdhesionDemand {
+export interface Adherant {
   id: number
   processingState: string
   data: Data
@@ -56,8 +56,8 @@ export interface AdhesionDemand {
   documents: Document[]
 }
 
-export interface AdhesionDemandPagination {
-  data: AdhesionDemand[]
+export interface AdherantPagination {
+  data: Adherant[]
   totalElements: number
   page: number
   pageNumber: number
