@@ -12,6 +12,7 @@ export interface Ambassador {
   firstName: string
   lastName: string
   roles?: any
+  governorate: string
   accountType?: any
   userName: string
   hasValidAccount: boolean

@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import {useFormik} from 'formik'
 import * as React from 'react'
 import {useState} from 'react'
-import { useHistory } from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import * as Yup from 'yup'
 import SubmitButton from '../../../shared/form-groups/SubmitButton'
 import TextInput from '../../../shared/form-groups/TextInput'
@@ -22,9 +22,10 @@ const ambassadorSchema = Yup.object().shape({
   firstName: Yup.string().required('Le prénom est obligatoire'),
   lastName: Yup.string().required('Le nom est obligatoire'),
   userName: Yup.string().required("Le nom d'utilisateur est obligatoire"),
+  governorate: Yup.string().required('le gouvernorat est obligatoire'),
   phoneNumber: Yup.number()
-    .max(99999999, "Numéro de téléphone invalide") //Max telecom
-    .min(20000000, "Numéro de téléphone invalide") //Min Ooredoo
+    .max(99999999, 'Numéro de téléphone invalide') //Max telecom
+    .min(20000000, 'Numéro de téléphone invalide') //Min Ooredoo
     .required('Le numéro de téléphone est obligatoire'),
 })
 
@@ -32,19 +33,20 @@ interface IAmbassadorFormProps {
   ambassador?: AmbassadorModel
 }
 const emptyAmbassador: AmbassadorModel = {
-    id: 0,
-    lastName: '',
-    phoneNumber: '',
-    email: '',
-    password: '',
-    firstName: '',
-    userName: '',
+  id: 0,
+  lastName: '',
+  phoneNumber: '',
+  email: '',
+  password: '',
+  firstName: '',
+  userName: '',
+  governorate: '',
 }
 const AmbassadorForm: React.FunctionComponent<IAmbassadorFormProps> = (props) => {
   const action = props.ambassador === undefined ? 'Ajouter' : 'Mettre à jour'
   const [loading, setLoading] = useState(false)
-  const initialValues = props.ambassador === undefined ? emptyAmbassador : props.ambassador;
-  const history = useHistory();
+  const initialValues = props.ambassador === undefined ? emptyAmbassador : props.ambassador
+  const history = useHistory()
 
   const applyChanges = (ambassador: AmbassadorModel) => {
     if (action === 'Ajouter') return add(ambassador)
@@ -59,59 +61,105 @@ const AmbassadorForm: React.FunctionComponent<IAmbassadorFormProps> = (props) =>
       setTimeout(() => {
         applyChanges(values)
           .then(() => {
-            setLoading(false);
-            formik.resetForm();
-            history.push('/crafted/users/ambassador');
+            setLoading(false)
+            formik.resetForm()
+            history.push('/crafted/users/ambassador')
           })
           .catch((e) => {
             setLoading(false)
             setSubmitting(false)
-            console.log(e.response.data);
-            const errors = e.response.data.errors.map(err => Object.values(err.constraints));
-            setStatus(errors);
+            console.log(e.response.data)
+            const errors = e.response.data.errors.map((err) => Object.values(err.constraints))
+            setStatus(errors)
           })
       }, 500)
     },
   })
   return (
-    <form
-      className='form w-100 bg-white rounded'
-      onSubmit={formik.handleSubmit}
-      noValidate
-    >
-    {formik.status ? (
-      <div className='mb-lg-15 alert alert-danger'>
-        <ul>
-          {formik.status.map(err => <li className='alert-text font-weight-bold'>{err}</li>)}
-        </ul>
-      </div>
-    ) : (
-      <div></div>
-    )}
+    <form className='form w-100 bg-white rounded' onSubmit={formik.handleSubmit} noValidate>
+      {formik.status ? (
+        <div className='mb-lg-15 alert alert-danger'>
+          <ul>
+            {formik.status.map((err) => (
+              <li className='alert-text font-weight-bold'>{err}</li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <div></div>
+      )}
       <div className='card-body p-9'>
-        <TextInput getFieldProps={formik.getFieldProps('lastName')} isTouched={formik.touched.lastName} 
-          validationError={formik.errors.lastName} type={'text'} name={'lastName'} 
-          placeHolder={"Nom"} label={"Nom"} />
-        <TextInput getFieldProps={formik.getFieldProps('firstName')} isTouched={formik.touched.firstName} 
-          validationError={formik.errors.firstName} type={'text'} name={'firstName'} 
-          placeHolder={"Prénom"} label={"Prénom"} />
-        <TextInput getFieldProps={formik.getFieldProps('userName')} isTouched={formik.touched.userName} 
-          validationError={formik.errors.userName} type={'text'} name={'userName'} 
-          placeHolder={"Nom d'utilisateur"} label={"Nom d'utilisateur"} />
-        <TextInput getFieldProps={formik.getFieldProps('phoneNumber')} isTouched={formik.touched.phoneNumber} 
-          validationError={formik.errors.phoneNumber} type={'number'} name={'phoneNumber'} 
-          placeHolder={'Numéro de Téléphone'} label={'Téléphone'} />
-        <TextInput getFieldProps={formik.getFieldProps('email')} isTouched={formik.touched.email} 
-          validationError={formik.errors.email} type={'text'} name={'email'} 
-          placeHolder={'Email'} label={'Email'} />
-        {action === 'Ajouter' && 
-          <TextInput getFieldProps={formik.getFieldProps('password')} isTouched={formik.touched.password} 
-          validationError={formik.errors.password} type={'text'} name={'password'} 
-          placeHolder={'Mot de passe'} label={'Mot de passe'} />
-        }
-        <SubmitButton content={action} isSubmitting={formik.isSubmitting} isValid={formik.isValid} />
+        <TextInput
+          getFieldProps={formik.getFieldProps('lastName')}
+          isTouched={formik.touched.lastName}
+          validationError={formik.errors.lastName}
+          type={'text'}
+          name={'lastName'}
+          placeHolder={'Nom'}
+          label={'Nom'}
+        />
+        <TextInput
+          getFieldProps={formik.getFieldProps('firstName')}
+          isTouched={formik.touched.firstName}
+          validationError={formik.errors.firstName}
+          type={'text'}
+          name={'firstName'}
+          placeHolder={'Prénom'}
+          label={'Prénom'}
+        />
+        <TextInput
+          getFieldProps={formik.getFieldProps('userName')}
+          isTouched={formik.touched.userName}
+          validationError={formik.errors.userName}
+          type={'text'}
+          name={'userName'}
+          placeHolder={"Nom d'utilisateur"}
+          label={"Nom d'utilisateur"}
+        />
+        <TextInput
+          getFieldProps={formik.getFieldProps('phoneNumber')}
+          isTouched={formik.touched.phoneNumber}
+          validationError={formik.errors.phoneNumber}
+          type={'number'}
+          name={'phoneNumber'}
+          placeHolder={'Numéro de Téléphone'}
+          label={'Téléphone'}
+        />
+        <TextInput
+          getFieldProps={formik.getFieldProps('email')}
+          isTouched={formik.touched.email}
+          validationError={formik.errors.email}
+          type={'text'}
+          name={'email'}
+          placeHolder={'Email'}
+          label={'Email'}
+        />
+        <TextInput
+          getFieldProps={formik.getFieldProps('governorate')}
+          isTouched={formik.touched.governorate}
+          validationError={formik.errors.governorate}
+          type={'text'}
+          name={'governorate'}
+          placeHolder={'Tunis'}
+          label={'Gouvernorat'}
+        />
+        {action === 'Ajouter' && (
+          <TextInput
+            getFieldProps={formik.getFieldProps('password')}
+            isTouched={formik.touched.password}
+            validationError={formik.errors.password}
+            type={'text'}
+            name={'password'}
+            placeHolder={'Mot de passe'}
+            label={'Mot de passe'}
+          />
+        )}
+        <SubmitButton
+          content={action}
+          isSubmitting={formik.isSubmitting}
+          isValid={formik.isValid}
+        />
       </div>
-
     </form>
   )
 }
