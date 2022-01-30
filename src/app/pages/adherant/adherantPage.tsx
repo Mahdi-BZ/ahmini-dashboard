@@ -69,7 +69,7 @@ const AdherantPage: React.FC<Props> = ({className}) => {
               }/adherant/export?startDate=${oldDate.toISOString()}&endDate=${new Date().toISOString()}`}
               download
             >
-              Export To CSV
+              Exporter Comme CSV
             </a>
         </div>
         <div className='card-toolbar'>
