@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, {useEffect, useState} from 'react'
 import {Button} from 'react-bootstrap-v5'
-import {useHistory, useParams} from 'react-router-dom'
+import {Link, useHistory, useParams} from 'react-router-dom'
 import {deleteAmbassador} from './AmbassadorCRUD'
 import {Ambassador} from './AmbassadorPaginationModal'
 
@@ -173,6 +173,13 @@ const SingleAmbassadorPage: React.FC<Props> = ({className}) => {
             <h4> Nombre D'adherantes </h4>
             <p> {adherantCount} </p>
           </div>
+
+          <Link to={`/crafted/users/ambassador/${id}/sinisters`}>
+            <h3 className=' py-4 link-primary  '>
+              Decalred Sinisters <i className='bi text-center text-primary bi-link fs-1 ml-3 '></i>
+            </h3>
+          </Link>
+          <div className='pb-8'></div>
         </div>
       </div>
       {/* begin::Body */}

@@ -21,6 +21,7 @@ import AddParticularPage from '../pages/users/AddParticularPage'
 import AdminPage from '../pages/users/AdminPage'
 import AddAmbassadorPage from '../pages/users/ambassador/AddAmbassadorPage'
 import AmbassadorPage from '../pages/users/ambassador/AmbassadorPage'
+import AmbassadorSinisterPage from '../pages/users/ambassador/AmbassadorSinistersPage'
 import SingleAmbassadorPage from '../pages/users/ambassador/SingleAmbassadorPage'
 import UpdateAmbassadorPage from '../pages/users/ambassador/UpdateAmbassadorPage'
 import ParticularsPage from '../pages/users/ParticularsPage'
@@ -57,7 +58,8 @@ export function PrivateRoutes() {
         <Route exact path='/crafted/users/ambassador' component={AmbassadorPage} />
         <Route exact path='/crafted/users/ambassador/add' component={AddAmbassadorPage} />
         <Route exact path='/crafted/users/ambassador/update/:id' component={UpdateAmbassadorPage} />
-        <Route path='/crafted/users/ambassador/:id' component={SingleAmbassadorPage} />
+        <Route path='/crafted/users/ambassador/:id' exact component={SingleAmbassadorPage} />
+        <Route path='/crafted/users/ambassador/:id/sinisters' component={AmbassadorSinisterPage} />
         <Route exact path='/crafted/adhesion/demands/add' component={AddAdhesionDemandPage} />
         <Route
           exact

@@ -36,7 +36,7 @@ const DeclaredSinisterPage: React.FC<Props> = ({className}) => {
       .then((e) => setApiData(e.data))
   }, [currentPage])
 
-  const particularsTableData = useMemo(() => {
+  const sinisterTableData = useMemo(() => {
     if (!apiData) return []
 
     const {totalElements} = apiData
@@ -67,17 +67,15 @@ const DeclaredSinisterPage: React.FC<Props> = ({className}) => {
             {/* text-dark fw-bold text-muted d-block fs-7 */}
 
             <tbody>
-              {particularsTableData.map((particular) => (
+              {sinisterTableData.map((e) => (
                 <tr
-                  onClick={() => history.push(`/crafted/declaredsinister/${particular.id}`)}
-                  key={particular.id}
+                  onClick={() => history.push(`/crafted/declaredsinister/${e.id}`)}
+                  key={e.id}
                   className='cursor-pointer'
                 >
-                  <th scope='row'>{particular.id}</th>
-                  <td className='border-dashed border-t border-gray-200 px-3'>{particular.name}</td>
-                  <td className='border-dashed border-t border-gray-200 px-3'>
-                    {particular.definition}
-                  </td>
+                  <th scope='row'>{e.id}</th>
+                  <td className='border-dashed border-t border-gray-200 px-3'>{e.name}</td>
+                  <td className='border-dashed border-t border-gray-200 px-3'>{e.definition}</td>
                 </tr>
               ))}
             </tbody>
