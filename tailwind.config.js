@@ -1,5 +1,5 @@
 module.exports = {
-  jit: true,
+  // jit: true,
   content: ['./src/**/*.tsx'],
   theme: {
     extend: {},
