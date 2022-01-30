@@ -176,7 +176,8 @@ const SingleAmbassadorPage: React.FC<Props> = ({className}) => {
 
           <Link to={`/crafted/users/ambassador/${id}/sinisters`}>
             <h3 className=' py-4 link-primary  '>
-              Decalred Sinisters <i className='bi text-center text-primary bi-link fs-1 ml-3 '></i>
+              Liste des sinistres declarés{' '}
+              <i className='bi h-full text-center text-primary bi-link fs-1 ml-3 '></i>
             </h3>
           </Link>
           <div className='pb-8'></div>
