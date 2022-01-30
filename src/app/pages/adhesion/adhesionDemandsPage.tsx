@@ -45,8 +45,6 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
     return apiData.data
   }, [apiData])
 
-  const oldDate = new Date('2/1/20')
-
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
