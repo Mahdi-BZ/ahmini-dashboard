@@ -6,10 +6,10 @@ import {useHistory} from 'react-router-dom'
 import * as Yup from 'yup'
 import SubmitButton from '../../shared/form-groups/SubmitButton'
 import TextInput from '../../shared/form-groups/TextInput'
-import {add, update} from './AdhesrantDemandCRUD'
+import {add, update} from './AdherantCRUD'
 import {AdherantModel} from './AdherantModel'
 
-const adhesionDemandSchema = Yup.object().shape({
+const adherantSchema = Yup.object().shape({
   firstName: Yup.string().required('Le prénom est obligatoire'),
   lastName: Yup.string().required('Le nom est obligatoire'),
   familtySituation: Yup.string().required('Situation Familiale obligatoire'),
@@ -29,12 +29,13 @@ const adhesionDemandSchema = Yup.object().shape({
     .max(99999999, 'Numéro de téléphone invalide') //Max telecom
     .min(20000000, 'Numéro de téléphone invalide') //Min Ooredoo
     .required('Le numéro de téléphone est obligatoire'),
+  passedBy: Yup.object({id: Yup.number().required()}).required()
 })
 
-interface IAdhesionDemandFormProps {
-  adhesionDemand?: AdherantModel
+interface IAdherantFormProps {
+  adherant?: AdherantModel,
 }
-const emptyAdhesionDemand: AdherantModel = {
+const emptyAdherant: AdherantModel = {
   id: 0,
   lastName: '',
   firstName: '',
@@ -52,30 +53,35 @@ const emptyAdhesionDemand: AdherantModel = {
   phone: 0,
   childCount: 0,
   activity: '',
+  passedBy: {id: 0}
 }
-const AdherantForm: React.FunctionComponent<IAdhesionDemandFormProps> = (props) => {
-  const action = props.adhesionDemand === undefined ? 'Ajouter' : 'Mettre à jour'
+const AdherantForm: React.FunctionComponent<IAdherantFormProps> = (props) => {
+
+  const action = props.adherant === undefined ? 'Ajouter' : 'Mettre à jour'
   const [loading, setLoading] = useState(false)
   const initialValues =
-    props.adhesionDemand === undefined ? emptyAdhesionDemand : props.adhesionDemand
+    props.adherant === undefined ? emptyAdherant : props.adherant
   const history = useHistory()
 
-  const applyChanges = (adhesionDemand: AdherantModel) => {
-    if (action === 'Ajouter') return add({data: adhesionDemand})
-    if (action === 'Mettre à jour') return update({data: adhesionDemand})
+  console.log(initialValues);
+
+  const applyChanges = (adherant: AdherantModel) => {
+    if (action === 'Ajouter') return add({data: adherant})
+    if (action === 'Mettre à jour') return update({data: adherant})
   }
 
   const formik = useFormik({
     initialValues,
-    validationSchema: adhesionDemandSchema,
+    validationSchema: adherantSchema,
     onSubmit: (values, {setStatus, setSubmitting}) => {
       setLoading(true)
+      console.log(values)
       setTimeout(() => {
         applyChanges(values)
           .then(() => {
             setLoading(false)
             formik.resetForm()
-            history.push('/crafted/adhesion/demands')
+            history.push('/crafted/adherant')
           })
           .catch((e) => {
             setLoading(false)
@@ -102,6 +108,15 @@ const AdherantForm: React.FunctionComponent<IAdhesionDemandFormProps> = (props) 
         <div></div>
       )}
       <div className='card-body p-9'>
+        <TextInput
+          getFieldProps={formik.getFieldProps('passedBy.id')}
+          isTouched={formik.touched.passedBy.id}
+          validationError={formik.errors.passedBy.id}
+          type={'number'}
+          name={'ambassadorId'}
+          placeHolder={"Id d'ambassadeur"}
+          label={"Id d'Ambassadeur"}
+        />
         <TextInput
           getFieldProps={formik.getFieldProps('lastName')}
           isTouched={formik.touched.lastName}

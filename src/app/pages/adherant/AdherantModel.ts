@@ -16,4 +16,5 @@ export interface AdherantModel {
   town: string
   street: string
   postalCode: number
+  passedBy?: {id: number}
 }
