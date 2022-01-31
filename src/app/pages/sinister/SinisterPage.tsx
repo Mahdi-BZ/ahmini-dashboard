@@ -12,6 +12,7 @@ const SinisterPage: React.FC<Props> = ({className}) => {
   const [apiData, setApiData] = useState<SinisterPagination>(null as any)
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
+  const [sortParam, setSortParam] = useState('id');
 
   const history = useHistory()
 
@@ -31,11 +32,11 @@ const SinisterPage: React.FC<Props> = ({className}) => {
           page: currentPage,
           perPage: ITEMS_PER_PAGE,
           sort: 'desc',
-          orderBy: 'id',
+          orderBy: sortParam,
         },
       })
       .then((e) => setApiData(e.data))
-  }, [currentPage])
+  }, [currentPage, sortParam])
 
   const particularsTableData = useMemo(() => {
     if (!apiData) return []
@@ -64,7 +65,7 @@ const SinisterPage: React.FC<Props> = ({className}) => {
           {/* begin::Table */}
           <table id='kt_datatable' className='table table-borderless table-striped gy-7 gs-7'>
             {/* begin::Table head */}
-            <HeaderComponent headers={headers} />
+            <HeaderComponent setSortParam={setSortParam} headers={headers} />
             {/* text-dark fw-bold text-muted d-block fs-7 */}
 
             <tbody>

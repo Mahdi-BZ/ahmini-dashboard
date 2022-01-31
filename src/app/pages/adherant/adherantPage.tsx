@@ -15,6 +15,8 @@ const AdherantPage: React.FC<Props> = ({className}) => {
   const [apiData, setApiData] = useState<AdherantPagination>(null as any)
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
+  const [sortParam, setSortParam] = useState('id');
+
   const history = useHistory()
 
   const ITEMS_PER_PAGE = 10
@@ -34,11 +36,11 @@ const AdherantPage: React.FC<Props> = ({className}) => {
           page: currentPage,
           perPage: ITEMS_PER_PAGE,
           sort: 'desc',
-          orderBy: 'id',
+          orderBy: sortParam,
         },
       })
       .then((e) => setApiData(e.data))
-  }, [currentPage])
+  }, [currentPage, sortParam])
 
   const particularsTableData = useMemo(() => {
     if (!apiData) return []
@@ -92,7 +94,7 @@ const AdherantPage: React.FC<Props> = ({className}) => {
         {apiData && (
           <div className='dataTables_wrapper dataTables_paginate table-responsive'>
             {/* begin::Body */}
-            <DataTable headers={headers} data={particularsTableData} />
+            <DataTable headers={headers} data={particularsTableData} setSortParam={setSortParam}/>
             {/* end::Body */}
             <Pagination
               currentPage={currentPage}

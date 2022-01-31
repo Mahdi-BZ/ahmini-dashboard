@@ -16,6 +16,8 @@ const AdminPage: React.FC<Props> = ({className}) => {
   const [particularsApiData, setParticulars] = useState<AdminPaginationInterface>(null as any)
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
+  const [sortParam, setSortParam] = useState('id');
+
   const ITEMS_PER_PAGE = 10
 
   const headers = [
@@ -33,11 +35,11 @@ const AdminPage: React.FC<Props> = ({className}) => {
           page: currentPage,
           perPage: ITEMS_PER_PAGE,
           sort: 'desc',
-          orderBy: 'id',
+          orderBy: sortParam,
         },
       })
       .then((e) => setParticulars(e.data))
-  }, [currentPage])
+  }, [currentPage, sortParam])
 
   const particularsTableData = useMemo(() => {
     if (!particularsApiData) return []
@@ -58,7 +60,7 @@ const AdminPage: React.FC<Props> = ({className}) => {
         <div className='dataTables_wrapper dataTables_paginate table-responsive'>
           {/* begin::Body */}
           <DataTable headers={headers} 
-            data={particularsTableData} />
+            data={particularsTableData} setSortParam={setSortParam} />
           {/* begin::Body */}
           <Pagination 
             currentPage={currentPage} 
