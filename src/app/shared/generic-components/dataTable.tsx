@@ -63,7 +63,7 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
                 {props.data.map((elem) => (
                     <tr
                     onClick={() => history.push(`${location.pathname}/${elem['id']}`)}
-                    className='cursor-pointer'
+                    className='cursor-pointer align-middle'
                     key={elem['id']}>
                     {hasProfilePic &&
                         <th scope='row'>

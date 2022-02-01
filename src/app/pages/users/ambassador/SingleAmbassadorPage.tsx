@@ -6,6 +6,7 @@ import {deleteAmbassador} from './AmbassadorCRUD'
 import DeleteButton from '../../../shared/buttons/deleteButton'
 import EditButton from '../../../shared/buttons/editButton'
 import {Ambassador} from './AmbassadorPaginationModal'
+import { GenerateImageFromObject } from '../../../../_metronic/helpers/imageHelper'
 
 type Props = {
   className: string
@@ -86,10 +87,13 @@ const SingleAmbassadorPage: React.FC<Props> = ({className}) => {
     <div className={`card ${className}`}>
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
-        <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Ambassadeur </span>
-          <span className='text-muted mt-1 fw-bold fs-7'>Informations d'ambassadeur détailées</span>
-        </h3>
+        <div className="d-flex align-items-center">
+          {particularsApiData && <GenerateImageFromObject object={particularsApiData} />}
+          <h3 className='card-title align-items-start flex-column'>
+            <span className='card-label fw-bolder fs-3 mb-1'>Ambassadeur </span>
+            <span className='text-muted mt-1 fw-bold fs-7'>Informations d'ambassadeur détailées</span>
+          </h3>
+        </div>
         <div className='card-toolbar' style={{width: '35%'}}>
           {particularsApiData && (
             <div className='d-flex w-100 justify-content-around'>

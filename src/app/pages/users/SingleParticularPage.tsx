@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, {useEffect, useState} from 'react'
 import {Button} from 'react-bootstrap-v5'
 import {useHistory, useParams} from 'react-router-dom'
+import { GenerateImageFromObject } from '../../../_metronic/helpers/imageHelper'
 import DeleteButton from '../../shared/buttons/deleteButton'
 import EditButton from '../../shared/buttons/editButton'
 import { deleteParticular } from './ParticularCRUD'
@@ -59,10 +60,13 @@ const SingleParticularPage: React.FC<Props> = ({className}) => {
     <div className={`card ${className}`}>
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
-        <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Particulaire </span>
-          <span className='text-muted mt-1 fw-bold fs-7'>Informations de particulaire détailées</span>
-        </h3>
+        <div className="d-flex align-items-center">
+          {particularsApiData && <GenerateImageFromObject object={particularsApiData} />}    
+          <h3 className='card-title align-items-start flex-column'>
+            <span className='card-label fw-bolder fs-3 mb-1'>Particulaire </span>
+            <span className='text-muted mt-1 fw-bold fs-7'>Informations de particulaire détailées</span>
+          </h3>
+        </div>
         <div className='card-toolbar' style={{width: '30%'}}>
           {particularsApiData && (
             <div className='d-flex w-50 justify-content-around'>
