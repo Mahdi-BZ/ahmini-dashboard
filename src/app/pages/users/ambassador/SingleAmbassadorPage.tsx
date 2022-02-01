@@ -36,6 +36,11 @@ const SingleAmbassadorPage: React.FC<Props> = ({className}) => {
             <h4> ID </h4>
             <p> {data.id} </p>
           </div>
+
+          <div>
+            <h4> Nom utilisateur </h4>
+            <p> {data.userName} </p>
+          </div>
           <div>
             <h4> Nom</h4>
             <p> {data.firstName} </p>

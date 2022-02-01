@@ -4,7 +4,7 @@ import {Button} from 'react-bootstrap-v5'
 import {useHistory, useParams} from 'react-router-dom'
 import DeleteButton from '../../shared/buttons/deleteButton'
 import EditButton from '../../shared/buttons/editButton'
-import { deleteParticular } from './ParticularCRUD'
+import {deleteParticular} from './ParticularCRUD'
 import {Particular} from './ParticularPaginationInterface'
 
 type Props = {
@@ -14,7 +14,7 @@ const SingleParticularPage: React.FC<Props> = ({className}) => {
   const [particularsApiData, setParticulars] = useState<Particular>(null as any)
   const [validateApi, setValidateApi] = useState(null)
   const {id} = useParams<{id: string}>()
-  const history = useHistory();
+  const history = useHistory()
 
   useEffect(() => {
     if (!id) return
@@ -30,6 +30,12 @@ const SingleParticularPage: React.FC<Props> = ({className}) => {
             <h4> ID </h4>
             <p> {data.id} </p>
           </div>
+
+          <div>
+            <h4> Nom utilisateur </h4>
+            <p> {data.userName} </p>
+          </div>
+
           <div>
             <h4> Nom</h4>
             <p> {data.firstName} </p>
@@ -50,8 +56,8 @@ const SingleParticularPage: React.FC<Props> = ({className}) => {
       )
   }
   const deleteParticularHandler = (id: number) => {
-    deleteParticular(id).then(response => {
-        history.push('/crafted/users/particular');
+    deleteParticular(id).then((response) => {
+      history.push('/crafted/users/particular')
     })
   }
 
@@ -61,17 +67,21 @@ const SingleParticularPage: React.FC<Props> = ({className}) => {
       <div className='card-header border-0 pt-5'>
         <h3 className='card-title align-items-start flex-column'>
           <span className='card-label fw-bolder fs-3 mb-1'>Particulaire </span>
-          <span className='text-muted mt-1 fw-bold fs-7'>Informations de particulaire détailées</span>
+          <span className='text-muted mt-1 fw-bold fs-7'>
+            Informations de particulaire détailées
+          </span>
         </h3>
         <div className='card-toolbar' style={{width: '30%'}}>
           {particularsApiData && (
             <div className='d-flex w-50 justify-content-around'>
               {/* Begin Edit Button  */}
-              <EditButton clickHandler={() => history.push(`/crafted/users/particular/update/${id}`)} />
+              <EditButton
+                clickHandler={() => history.push(`/crafted/users/particular/update/${id}`)}
+              />
               {/* End Edit Button  */}
               {/* Begin Delete Button  */}
-              
-            <DeleteButton clickHandler={() => deleteParticularHandler(particularsApiData.id)}/>
+
+              <DeleteButton clickHandler={() => deleteParticularHandler(particularsApiData.id)} />
               {/* End Delete Button  */}
             </div>
           )}
