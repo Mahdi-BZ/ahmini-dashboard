@@ -15,10 +15,11 @@ const AdherantPage: React.FC<Props> = ({className}) => {
   const [apiData, setApiData] = useState<AdherantPagination>(null as any)
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
+  const [startDate,setStartDate] = useState("");
+  const [endDate,setEndDate] = useState("");
   const history = useHistory()
 
   const ITEMS_PER_PAGE = 10
-  const oldDate = new Date(1900 , 1 , 1 )
 
   const headers = [
     {name: 'ID', field: 'id'},
@@ -49,6 +50,17 @@ const AdherantPage: React.FC<Props> = ({className}) => {
     return apiData.data
   }, [apiData])
 
+  const startDateHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const enteredDate = event.target.value;
+    setStartDate(enteredDate);
+    
+  };
+  const endDateHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const enteredDate = event.target.value;
+      setEndDate(enteredDate);
+      
+    };
+
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
@@ -57,21 +69,36 @@ const AdherantPage: React.FC<Props> = ({className}) => {
           <span className='card-label fw-bolder fs-3 mb-1'>Adhérants</span>
           <span className='text-muted mt-1 fw-bold fs-7'> Liste des adhérants </span>
         </h3>
-        <div className='card-toolbar'>
-            <a
-              className='btn btn-sm btn-light-primary px-3'
-              data-bs-toggle='modal'
-              data-bs-target='#kt_modal_create_app'
-              
-              id='kt_toolbar_primary_button'
-              href={`${
-                process.env.REACT_APP_API_URL
-              }/adherant/export?startDate=${oldDate.toISOString()}&endDate=${new Date().toISOString()}`}
-              download
-            >
-              Exporter Comme CSV
-            </a>
+        
+        <div className='card-toolbar align-items-center flex-row'>
+              <span className='text-muted mt-1 fw-bold fs-7' style={{marginRight:"5px"}}>Du :</span>
+              <input  type="date" name="oldDate" onInput={startDateHandler} style={{width:"50px"}} />
+             
         </div>
+        <div className='card-toolbar align-items-center flex-row'>
+              <span className='text-muted mt-1 fw-bold fs-7' style={{marginRight:"5px"}}>Au :</span>
+              <input style={{width:"50px"}} type="date" name="newDate" onInput={endDateHandler} />
+             
+        </div>
+         
+        <div className='card-toolbar'>
+              <a
+                className='btn btn-sm btn-light-primary px-3'
+                data-bs-toggle='modal'
+                data-bs-target='#kt_modal_create_app'
+                
+                id='kt_toolbar_primary_button'
+                href={`${
+                  process.env.REACT_APP_API_URL
+                }/adherant/export?startDate=${startDate}&endDate=${endDate}`}
+                download
+              >
+                Exporter Comme CSV
+              </a>
+       
+
+        </div>
+       
         <div className='card-toolbar'>
           <a
             onClick={() => history.push('/crafted/adherant/add')}
@@ -93,6 +120,7 @@ const AdherantPage: React.FC<Props> = ({className}) => {
           <div className='dataTables_wrapper dataTables_paginate table-responsive'>
             {/* begin::Body */}
             <DataTable headers={headers} data={particularsTableData} />
+         
             {/* end::Body */}
             <Pagination
               currentPage={currentPage}
