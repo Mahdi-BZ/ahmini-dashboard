@@ -14,7 +14,8 @@ export interface Particular {
   roles?: any
   accountType?: any
   userName: string
-  modificationMeta: ModificationMeta
+  modificationMeta: ModificationMeta,
+  profilePicture? : {filename: string}
 }
 
 export interface ParticularPagination {

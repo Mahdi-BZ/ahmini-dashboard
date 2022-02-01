@@ -15,8 +15,10 @@ const AdherantPage: React.FC<Props> = ({className}) => {
   const [apiData, setApiData] = useState<AdherantPagination>(null as any)
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
-  const [startDate,setStartDate] = useState("");
-  const [endDate,setEndDate] = useState("");
+  const [startDate, setStartDate] = useState('')
+  const [endDate, setEndDate] = useState('')
+  const [sortParam, setSortParam] = useState('id')
+
   const history = useHistory()
 
   const ITEMS_PER_PAGE = 10
@@ -35,11 +37,11 @@ const AdherantPage: React.FC<Props> = ({className}) => {
           page: currentPage,
           perPage: ITEMS_PER_PAGE,
           sort: 'desc',
-          orderBy: 'id',
+          orderBy: sortParam,
         },
       })
       .then((e) => setApiData(e.data))
-  }, [currentPage])
+  }, [currentPage, sortParam])
 
   const particularsTableData = useMemo(() => {
     if (!apiData) return []
@@ -51,15 +53,13 @@ const AdherantPage: React.FC<Props> = ({className}) => {
   }, [apiData])
 
   const startDateHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const enteredDate = event.target.value;
-    setStartDate(enteredDate);
-    
-  };
+    const enteredDate = event.target.value
+    setStartDate(enteredDate)
+  }
   const endDateHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-      const enteredDate = event.target.value;
-      setEndDate(enteredDate);
-      
-    };
+    const enteredDate = event.target.value
+    setEndDate(enteredDate)
+  }
 
   return (
     <div className={`card ${className}`}>
@@ -69,36 +69,33 @@ const AdherantPage: React.FC<Props> = ({className}) => {
           <span className='card-label fw-bolder fs-3 mb-1'>Adhérants</span>
           <span className='text-muted mt-1 fw-bold fs-7'> Liste des adhérants </span>
         </h3>
-        
-        <div className='card-toolbar align-items-center flex-row'>
-              <span className='text-muted mt-1 fw-bold fs-7' style={{marginRight:"5px"}}>Du :</span>
-              <input  type="date" name="oldDate" onInput={startDateHandler} style={{width:"50px"}} />
-             
-        </div>
-        <div className='card-toolbar align-items-center flex-row'>
-              <span className='text-muted mt-1 fw-bold fs-7' style={{marginRight:"5px"}}>Au :</span>
-              <input style={{width:"50px"}} type="date" name="newDate" onInput={endDateHandler} />
-             
-        </div>
-         
-        <div className='card-toolbar'>
-              <a
-                className='btn btn-sm btn-light-primary px-3'
-                data-bs-toggle='modal'
-                data-bs-target='#kt_modal_create_app'
-                
-                id='kt_toolbar_primary_button'
-                href={`${
-                  process.env.REACT_APP_API_URL
-                }/adherant/export?startDate=${startDate}&endDate=${endDate}`}
-                download
-              >
-                Exporter Comme CSV
-              </a>
-       
 
+        <div className='card-toolbar align-items-center flex-row'>
+          <span className='text-muted mt-1 fw-bold fs-7' style={{marginRight: '5px'}}>
+            Du :
+          </span>
+          <input type='date' name='oldDate' onInput={startDateHandler} style={{width: '50px'}} />
         </div>
-       
+        <div className='card-toolbar align-items-center flex-row'>
+          <span className='text-muted mt-1 fw-bold fs-7' style={{marginRight: '5px'}}>
+            Au :
+          </span>
+          <input style={{width: '50px'}} type='date' name='newDate' onInput={endDateHandler} />
+        </div>
+
+        <div className='card-toolbar'>
+          <a
+            className='btn btn-sm btn-light-primary px-3'
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_create_app'
+            id='kt_toolbar_primary_button'
+            href={`${process.env.REACT_APP_API_URL}/adherant/export?startDate=${startDate}&endDate=${endDate}`}
+            download
+          >
+            Exporter Comme CSV
+          </a>
+        </div>
+
         <div className='card-toolbar'>
           <a
             onClick={() => history.push('/crafted/adherant/add')}
@@ -119,8 +116,7 @@ const AdherantPage: React.FC<Props> = ({className}) => {
         {apiData && (
           <div className='dataTables_wrapper dataTables_paginate table-responsive'>
             {/* begin::Body */}
-            <DataTable headers={headers} data={particularsTableData} />
-         
+            <DataTable headers={headers} data={particularsTableData} setSortParam={setSortParam} />
             {/* end::Body */}
             <Pagination
               currentPage={currentPage}
@@ -131,7 +127,7 @@ const AdherantPage: React.FC<Props> = ({className}) => {
           </div>
         )}
       </div>
-        {/* end::Table container */}
+      {/* end::Table container */}
 
       {/* begin::Body */}
     </div>
