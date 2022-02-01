@@ -59,7 +59,7 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
       {particularsApiData && 
         <div className='dataTables_wrapper dataTables_paginate table-responsive'>
           {/* begin::Body */}
-          <DataTable headers={headers} setSortParam={setSortParam} 
+          <DataTable headers={headers} setSortParam={setSortParam} sortParam={sortParam}
             data={particularsTableData} />
           {/* begin::Body */}
           <Pagination 

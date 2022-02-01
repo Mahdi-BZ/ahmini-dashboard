@@ -65,7 +65,7 @@ const SinisterPage: React.FC<Props> = ({className}) => {
           {/* begin::Table */}
           <table id='kt_datatable' className='table table-borderless table-striped gy-7 gs-7'>
             {/* begin::Table head */}
-            <HeaderComponent setSortParam={setSortParam} headers={headers} />
+            <HeaderComponent sortParam={sortParam} setSortParam={setSortParam} headers={headers} />
             {/* text-dark fw-bold text-muted d-block fs-7 */}
 
             <tbody>

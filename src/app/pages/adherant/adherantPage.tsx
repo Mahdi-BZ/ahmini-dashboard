@@ -116,7 +116,7 @@ const AdherantPage: React.FC<Props> = ({className}) => {
         {apiData && (
           <div className='dataTables_wrapper dataTables_paginate table-responsive'>
             {/* begin::Body */}
-            <DataTable headers={headers} data={particularsTableData} setSortParam={setSortParam} />
+            <DataTable sortParam={sortParam} headers={headers} data={particularsTableData} setSortParam={setSortParam} />
             {/* end::Body */}
             <Pagination
               currentPage={currentPage}

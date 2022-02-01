@@ -9,7 +9,8 @@ interface IHeader {
 interface IDataTableProps {
     headers: IHeader[],
     data: object[],
-    setSortParam?: (sortParam: string) => void
+    setSortParam?: (sortParam: string) => void,
+    sortParam: string
 }
 //Finds the value of a given key in a given object
 const findVal = (object, key) => {
@@ -57,7 +58,7 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
         {/* begin::Table */}
             <table id='kt_datatable' className='table table-borderless table-striped gy-7 gs-7'>
                 {/* begin::Table head */}
-                <HeaderComponent headers={getHeaders()} setSortParam={props.setSortParam} />
+                <HeaderComponent sortParam={props.sortParam} headers={getHeaders()} setSortParam={props.setSortParam} />
                 {/* text-dark fw-bold text-muted d-block fs-7 */}
                 <tbody>
                 {props.data.map((elem) => (
