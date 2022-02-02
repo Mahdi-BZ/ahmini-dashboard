@@ -8,6 +8,7 @@ import {useHistory} from 'react-router-dom'
 import DataTable from '../../../shared/generic-components/dataTable'
 import Pagination from '../../../shared/generic-components/Pagination'
 import TableCardHeader from '../../../shared/generic-components/tableCardHeader'
+import { deleteAmbassador } from './AmbassadorCRUD'
 
 type Props = {
   className: string
@@ -17,6 +18,7 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
   const [sortParam, setSortParam] = useState('id');
+  const [flag, setFlag] = useState(false);
 
   const ITEMS_PER_PAGE = 10
 
@@ -39,7 +41,7 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
         },
       })
       .then((e) => setParticulars(e.data))
-  }, [currentPage, sortParam])
+  }, [currentPage, sortParam,flag])
 
   const particularsTableData = useMemo(() => {
     if (!particularsApiData) return []
@@ -50,6 +52,9 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
     return particularsApiData.data
   }, [particularsApiData])
 
+  const setData = () => {
+    setFlag(!flag);
+  }
 
   return (
     <div className={`card ${className}`}>
@@ -62,7 +67,7 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
         {particularsApiData && 
         <div className='dataTables_wrapper dataTables_paginate table-responsive'>
           {/* begin::Body */}
-          <DataTable headers={headers} 
+          <DataTable setData={setData} deleteAction={deleteAmbassador} headers={headers} sortParam={sortParam}
             data={particularsTableData}
             setSortParam={setSortParam} />
           {/* begin::Body */}

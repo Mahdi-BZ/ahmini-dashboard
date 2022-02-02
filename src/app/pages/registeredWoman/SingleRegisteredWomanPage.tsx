@@ -6,6 +6,7 @@ import { deleteWoman } from './WomanCRUD'
 import { Datum } from './RegisteredWomanPagination'
 import DeleteButton from '../../shared/buttons/deleteButton'
 import EditButton from '../../shared/buttons/editButton'
+import { GenerateImageFromObject } from '../../../_metronic/helpers/imageHelper'
 
 type Props = {
   className: string
@@ -72,10 +73,13 @@ const SingleRegisteredWomanPage: React.FC<Props> = ({className}) => {
     <div className={`card ${className}`}>
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
-        <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Femme </span>
-          <span className='text-muted mt-1 fw-bold fs-7'>Informations de la femme détailées</span>
-        </h3>
+        <div className="d-flex align-items-center">
+          {particularsApiData && <GenerateImageFromObject object={particularsApiData} />}      
+          <h3 className='card-title align-items-start flex-column'>
+            <span className='card-label fw-bolder fs-3 mb-1'>Femme </span>
+            <span className='text-muted mt-1 fw-bold fs-7'>Informations de la femme détailées</span>
+          </h3>
+        </div>
         <div className='card-toolbar w-25'>
           {particularsApiData && (
             <div className='d-flex w-50 justify-content-around'>

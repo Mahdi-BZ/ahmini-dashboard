@@ -7,6 +7,7 @@ import AddButton from '../../shared/buttons/addButton'
 import DataTable from '../../shared/generic-components/dataTable'
 import Pagination from '../../shared/generic-components/Pagination'
 import {RegisteredWomanPagination} from './RegisteredWomanPagination'
+import { deleteWoman } from './WomanCRUD'
 
 type Props = {
   className: string
@@ -16,6 +17,7 @@ const RegisteredWomanPage: React.FC<Props> = ({className}) => {
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
   const [sortParam, setSortParam] = useState('id');
+  const [flag, setFlag] = useState(false);
 
   const history = useHistory()
 
@@ -51,7 +53,7 @@ const RegisteredWomanPage: React.FC<Props> = ({className}) => {
         },
       })
       .then((e) => setParticulars(e.data))
-  }, [currentPage, sortParam])
+  }, [currentPage, sortParam, flag])
 
   const particularsTableData = useMemo(() => {
     if (!particularsApiData) return []
@@ -61,6 +63,12 @@ const RegisteredWomanPage: React.FC<Props> = ({className}) => {
     setTotalItems(totalElements)
     return particularsApiData.data
   }, [particularsApiData])
+
+  const setData = () => {
+    setFlag(!flag);
+  }
+
+
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
@@ -84,7 +92,7 @@ const RegisteredWomanPage: React.FC<Props> = ({className}) => {
       {particularsApiData && 
         <div className='dataTables_wrapper dataTables_paginate table-responsive'>
           {/* begin::Body */}
-          <DataTable headers={headers} setSortParam={setSortParam}
+          <DataTable setData={setData} deleteAction={deleteWoman} headers={headers} setSortParam={setSortParam} sortParam={sortParam}
             data={particularsTableData} />
           {/* begin::Body */}
           <Pagination 

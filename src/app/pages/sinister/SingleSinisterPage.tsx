@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react'
 import {Button} from 'react-bootstrap-v5'
 import {useHistory, useParams} from 'react-router-dom'
 import {createFalse} from 'typescript'
+import DeleteButton from '../../shared/buttons/deleteButton'
 import {Sinister} from './SinisterPagination'
 
 type Props = {
@@ -58,6 +59,12 @@ const SingleSinisterPage: React.FC<Props> = ({className}) => {
       )
   }
 
+  const deleteParticular = () => {
+    axios.delete(`sinister/${id}`).then(response => {
+        history.goBack();
+    })
+  }
+
   const validateApiFunc = () => {
     axios.patch(`/sinister/validate/${id}`).then((e) => setValidateApi(true))
   }
@@ -77,6 +84,7 @@ const SingleSinisterPage: React.FC<Props> = ({className}) => {
         <div className='card-toolbar' style={{width: '35%'}}>
           {particularsApiData && (
             <div className='d-flex w-100 justify-content-around'>
+            <DeleteButton clickHandler={deleteParticular}  />
               <Button
                 onClick={() =>
                   !particularsApiData?.isValid ? validateApiFunc() : unValidateApiFunc()

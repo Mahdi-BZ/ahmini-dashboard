@@ -8,6 +8,7 @@ import {Carousel} from 'react-responsive-carousel'
 import { deleteAdhesionDemand } from './AdhesionDemandCRUD'
 import DeleteButton from '../../shared/buttons/deleteButton'
 import EditButton from '../../shared/buttons/editButton'
+import { GenerateImageFromObject } from '../../../_metronic/helpers/imageHelper'
 
 type Props = {
   className: string
@@ -140,10 +141,13 @@ const SingleAdhesionDemandPage: React.FC<Props> = ({className}) => {
     <div className={`card ${className}`}>
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
-        <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Adhesion Demand </span>
-          <span className='text-muted mt-1 fw-bold fs-7'>Adhesion Demand detailed information</span>
-        </h3>
+        <div className="d-flex align-items-center">
+          {apiData && <GenerateImageFromObject object={apiData} />}      
+          <h3 className='card-title align-items-start flex-column'>
+            <span className='card-label fw-bolder fs-3 mb-1'>Adhesion Demand </span>
+            <span className='text-muted mt-1 fw-bold fs-7'>Adhesion Demand detailed information</span>
+          </h3>
+        </div>
         <div className='card-toolbar' style={{width: '35%'}}>
           {apiData && (
             <div className='d-flex w-100 justify-content-around'>

@@ -3,6 +3,7 @@ import React, {useEffect, useMemo, useState} from 'react'
 import DataTable from '../../shared/generic-components/dataTable'
 import Pagination from '../../shared/generic-components/Pagination'
 import TableCardHeader from '../../shared/generic-components/tableCardHeader'
+import { deleteAdhesionDemand } from './AdhesionDemandCRUD'
 import {AdhesionDemandPagination} from './AdhesionDemandPagination'
 
 type Props = {
@@ -13,6 +14,7 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
   const [sortParam, setSortParam] = useState('id');
+  const [flag, setFlag] = useState(false);
 
   const ITEMS_PER_PAGE = 10
 
@@ -35,7 +37,7 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
         },
       })
       .then((e) => setApiData(e.data))
-  }, [currentPage, sortParam])
+  }, [currentPage, sortParam, flag])
 
   const particularsTableData = useMemo(() => {
     if (!apiData) return []
@@ -45,6 +47,10 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
     setTotalItems(totalElements)
     return apiData.data
   }, [apiData])
+
+  const setData = () => {
+    setFlag(!flag);
+  }
 
   return (
     <div className={`card ${className}`}>
@@ -57,7 +63,7 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
         {apiData && (
           <div className='dataTables_wrapper dataTables_paginate table-responsive'>
             {/* begin::Body */}
-            <DataTable headers={headers} data={particularsTableData} setSortParam={setSortParam} />
+            <DataTable setData={setData} deleteAction={deleteAdhesionDemand} sortParam={sortParam} headers={headers} data={particularsTableData} setSortParam={setSortParam} />
             {/* begin::Body */}
             <Pagination
               currentPage={currentPage}

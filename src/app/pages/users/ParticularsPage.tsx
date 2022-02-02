@@ -7,6 +7,7 @@ import PaginationComponent from '../../../_metronic/partials/widgets/datatable/p
 import DataTable from '../../shared/generic-components/dataTable'
 import Pagination from '../../shared/generic-components/Pagination'
 import TableCardHeader from '../../shared/generic-components/tableCardHeader'
+import { deleteParticular } from './ParticularCRUD'
 import {ParticularPagination} from './ParticularPaginationInterface'
 
 type Props = {
@@ -17,6 +18,8 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
   const [sortParam, setSortParam] = useState('id');
+  const [flag, setFlag] = useState(false);
+
 
   const ITEMS_PER_PAGE = 10
 
@@ -29,6 +32,7 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
   ]
 
   useEffect(() => {
+    console.log("h");
     axios
       .get('/particular', {
         params: {
@@ -39,7 +43,7 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
         },
       })
       .then((e) => setParticulars(e.data))
-  }, [currentPage, sortParam])
+  }, [currentPage, sortParam, flag])
 
   const particularsTableData = useMemo(() => {
     if (!particularsApiData) return []
@@ -50,6 +54,10 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
     return particularsApiData.data
   }, [particularsApiData])
 
+  const setData = () => {
+    setFlag(!flag);
+  }
+
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
@@ -59,7 +67,7 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
       {particularsApiData && 
         <div className='dataTables_wrapper dataTables_paginate table-responsive'>
           {/* begin::Body */}
-          <DataTable headers={headers} setSortParam={setSortParam} 
+          <DataTable setData={setData} deleteAction={deleteParticular} headers={headers} setSortParam={setSortParam} sortParam={sortParam}
             data={particularsTableData} />
           {/* begin::Body */}
           <Pagination 

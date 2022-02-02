@@ -7,9 +7,13 @@ interface IDeleteButtonProps {
 
 const DeleteButton: React.FunctionComponent<IDeleteButtonProps> = (props) => {
   return (
-    <Button title='Supprimer' 
+    <Button
+        title='Supprimer' 
         onClick={props.clickHandler}
-        variant="danger"
+        className='btn btn-sm btn-light-danger'
+        data-bs-toggle='modal'
+        data-bs-target='#kt_modal_create_app'
+        id='kt_toolbar_primary_button'
     >
         <span className="svg-icon svg-icon-muted svg-icon-2x">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
