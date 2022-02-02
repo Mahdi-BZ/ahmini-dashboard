@@ -64,8 +64,8 @@ const SingleAdminPage: React.FC<Props> = ({className}) => {
         <div className="d-flex align-items-center">
           {particularsApiData && <GenerateImageFromObject object={particularsApiData} />}  
           <h3 className='card-title align-items-start flex-column'>
-            <span className='card-label fw-bolder fs-3 mb-1'>Admin </span>
-            <span className='text-muted mt-1 fw-bold fs-7'>Informations d'admin détailées</span>
+            <span className='card-label fw-bolder fs-3 mb-1'>Administrateur </span>
+            <span className='text-muted mt-1 fw-bold fs-7'>Informations d'administrateur détailées</span>
           </h3>
         </div>
         <div className='card-toolbar w-25'>
