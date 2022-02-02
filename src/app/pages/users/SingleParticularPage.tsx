@@ -5,7 +5,7 @@ import {useHistory, useParams} from 'react-router-dom'
 import { GenerateImageFromObject } from '../../../_metronic/helpers/imageHelper'
 import DeleteButton from '../../shared/buttons/deleteButton'
 import EditButton from '../../shared/buttons/editButton'
-import { deleteParticular } from './ParticularCRUD'
+import {deleteParticular} from './ParticularCRUD'
 import {Particular} from './ParticularPaginationInterface'
 
 type Props = {
@@ -15,7 +15,7 @@ const SingleParticularPage: React.FC<Props> = ({className}) => {
   const [particularsApiData, setParticulars] = useState<Particular>(null as any)
   const [validateApi, setValidateApi] = useState(null)
   const {id} = useParams<{id: string}>()
-  const history = useHistory();
+  const history = useHistory()
 
   useEffect(() => {
     if (!id) return
@@ -31,6 +31,12 @@ const SingleParticularPage: React.FC<Props> = ({className}) => {
             <h4> ID </h4>
             <p> {data.id} </p>
           </div>
+
+          <div>
+            <h4> Nom utilisateur </h4>
+            <p> {data.userName} </p>
+          </div>
+
           <div>
             <h4> Nom</h4>
             <p> {data.firstName} </p>
@@ -51,8 +57,8 @@ const SingleParticularPage: React.FC<Props> = ({className}) => {
       )
   }
   const deleteParticularHandler = (id: number) => {
-    deleteParticular(id).then(response => {
-        history.push('/crafted/users/particular');
+    deleteParticular(id).then((response) => {
+      history.push('/crafted/users/particular')
     })
   }
 
@@ -71,11 +77,13 @@ const SingleParticularPage: React.FC<Props> = ({className}) => {
           {particularsApiData && (
             <div className='d-flex w-50 justify-content-around'>
               {/* Begin Edit Button  */}
-              <EditButton clickHandler={() => history.push(`/crafted/users/particular/update/${id}`)} />
+              <EditButton
+                clickHandler={() => history.push(`/crafted/users/particular/update/${id}`)}
+              />
               {/* End Edit Button  */}
               {/* Begin Delete Button  */}
-              
-            <DeleteButton clickHandler={() => deleteParticularHandler(particularsApiData.id)}/>
+
+              <DeleteButton clickHandler={() => deleteParticularHandler(particularsApiData.id)} />
               {/* End Delete Button  */}
             </div>
           )}
