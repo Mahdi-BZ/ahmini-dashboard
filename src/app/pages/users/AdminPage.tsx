@@ -7,6 +7,7 @@ import PaginationComponent from '../../../_metronic/partials/widgets/datatable/p
 import DataTable from '../../shared/generic-components/dataTable'
 import Pagination from '../../shared/generic-components/Pagination'
 import TableCardHeader from '../../shared/generic-components/tableCardHeader'
+import { deleteAdmin } from './AdminCRUD'
 import {AdminPaginationInterface} from './AdminPaginationInterface'
 
 type Props = {
@@ -17,6 +18,7 @@ const AdminPage: React.FC<Props> = ({className}) => {
   const [totalItems, setTotalItems] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
   const [sortParam, setSortParam] = useState('id');
+  const [flag, setFlag] = useState(false);
 
   const ITEMS_PER_PAGE = 10
 
@@ -39,7 +41,7 @@ const AdminPage: React.FC<Props> = ({className}) => {
         },
       })
       .then((e) => setParticulars(e.data))
-  }, [currentPage, sortParam])
+  }, [currentPage, sortParam, flag])
 
   const particularsTableData = useMemo(() => {
     if (!particularsApiData) return []
@@ -50,6 +52,10 @@ const AdminPage: React.FC<Props> = ({className}) => {
     return particularsApiData.data
   }, [particularsApiData])
 
+  const setData = () => {
+    setFlag(!flag);
+  }
+
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
@@ -59,7 +65,7 @@ const AdminPage: React.FC<Props> = ({className}) => {
       {particularsApiData && 
         <div className='dataTables_wrapper dataTables_paginate table-responsive'>
           {/* begin::Body */}
-          <DataTable headers={headers} sortParam={sortParam}
+          <DataTable setData={setData} deleteAction={deleteAdmin} headers={headers} sortParam={sortParam}
             data={particularsTableData} setSortParam={setSortParam} />
           {/* begin::Body */}
           <Pagination 

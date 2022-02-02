@@ -6,6 +6,7 @@ import HeaderComponent from '../../../_metronic/partials/widgets/datatable/heade
 import PaginationComponent from '../../../_metronic/partials/widgets/datatable/pagination/PaginationComponent'
 import DataTable from '../../shared/generic-components/dataTable'
 import Pagination from '../../shared/generic-components/Pagination'
+import { deleteAdherant } from './AdherantCRUD'
 import {AdherantPagination} from './AdherantPagination'
 
 type Props = {
@@ -18,6 +19,7 @@ const AdherantPage: React.FC<Props> = ({className}) => {
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
   const [sortParam, setSortParam] = useState('id')
+  const [flag, setFlag] = useState(false);
 
   const history = useHistory()
 
@@ -41,7 +43,7 @@ const AdherantPage: React.FC<Props> = ({className}) => {
         },
       })
       .then((e) => setApiData(e.data))
-  }, [currentPage, sortParam])
+  }, [currentPage, sortParam, flag])
 
   const particularsTableData = useMemo(() => {
     if (!apiData) return []
@@ -59,6 +61,10 @@ const AdherantPage: React.FC<Props> = ({className}) => {
   const endDateHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const enteredDate = event.target.value
     setEndDate(enteredDate)
+  }
+
+  const setData = () => {
+    setFlag(!flag);
   }
 
   return (
@@ -116,7 +122,7 @@ const AdherantPage: React.FC<Props> = ({className}) => {
         {apiData && (
           <div className='dataTables_wrapper dataTables_paginate table-responsive'>
             {/* begin::Body */}
-            <DataTable sortParam={sortParam} headers={headers} data={particularsTableData} setSortParam={setSortParam} />
+            <DataTable setData={setData} deleteAction={deleteAdherant} sortParam={sortParam} headers={headers} data={particularsTableData} setSortParam={setSortParam} />
             {/* end::Body */}
             <Pagination
               currentPage={currentPage}
