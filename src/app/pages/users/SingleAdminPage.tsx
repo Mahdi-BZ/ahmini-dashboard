@@ -68,10 +68,6 @@ const SingleAdminPage: React.FC<Props> = ({className}) => {
             <span className='text-muted mt-1 fw-bold fs-7'>Informations d'admin détailées</span>
           </h3>
         </div>
-        <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Admin </span>
-          <span className='text-muted mt-1 fw-bold fs-7'>Informations d'admin détailées</span>
-        </h3>
         <div className='card-toolbar w-25'>
           {particularsApiData && (
             <div className='d-flex w-50 justify-content-around'>
