@@ -14,7 +14,10 @@ export function add(adherant: {data: AdherantModel}) {
 
 // Server should return AdherantModel
 export function update(adherant: {data: AdherantModel}) {
-  return axios.put(BASE_URL + adherant.data.id, adherant)
+  const id = adherant.data.id;
+  delete adherant.data['id'];
+
+  return axios.put(BASE_URL + id, adherant)
 }
 // Server should return operation result
 export function deleteAdherant(adherantId: number) {

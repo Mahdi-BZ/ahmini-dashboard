@@ -13,7 +13,20 @@ const UpdateRegisteredWomanPage: React.FunctionComponent<IUpdateWomanPageProps> 
   const [woman, setWoman] = useState<WomanModel>();
   useEffect(() => {
       if(!id || woman) return;
-      getWoman(id).then(response => setWoman(response.data));
+      getWoman(id).then(response => {
+        const data = response.data;
+        const woman: WomanModel = {
+          id: data.id,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          cin: data.cin,
+          postalCode: data.postalCode,
+          governorate: data.governorate,
+          womanCode: data.womanCode,
+          work: data.work
+        }
+        setWoman(woman)
+      });
   });
   return (
       <div>

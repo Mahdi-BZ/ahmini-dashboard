@@ -13,7 +13,20 @@ const UpdateAmbassadorPage: React.FunctionComponent<IUpdateAmbassadorPageProps> 
   const [ambassador, setAmbassador] = useState<AmbassadorModel>();
   useEffect(() => {
       if(!id || ambassador) return;
-      getAmbassador(id).then(response => setAmbassador(response.data));
+      getAmbassador(id).then(response => {
+        const data = response.data;
+        const ambassador: AmbassadorModel = {
+          id: data.id,
+          phoneNumber: data.phoneNumber,
+          email: data.email,
+          password: data.password,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          userName: data.userName,
+          governorate: data.governorate
+        }
+        setAmbassador(ambassador);
+      });
   });
   return (
       <div>

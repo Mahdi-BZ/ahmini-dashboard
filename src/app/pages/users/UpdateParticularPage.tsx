@@ -16,7 +16,16 @@ const UpdateParticularPage: React.FunctionComponent<IUpdateParticularPageProps> 
       getParticular(id).then(response => {
           const particular = response.data;
           particular.password = "placeholderJustSoTheFormSubmits"
-          setParticular(particular)
+          const particularToSet: ParticularModel = {
+            id: particular.id,
+            password: particular.password,
+            email: particular.email,
+            firstName: particular.firstName,
+            lastName: particular.lastName,
+            phoneNumber: particular.phoneNumber,
+            userName: particular.userName
+          }
+          setParticular(particularToSet)
         });
   });
   return (

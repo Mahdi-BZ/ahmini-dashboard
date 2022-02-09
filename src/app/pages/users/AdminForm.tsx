@@ -9,7 +9,7 @@ import TextInput from '../../shared/form-groups/TextInput'
 import {add, update} from './AdminCRUD'
 import {AdminModel} from './AdminModel'
 
-const adminSchema = Yup.object().shape({
+const createAdminSchema = Yup.object().shape({
   email: Yup.string()
     .email('Email invalide')
     .min(3, 'Minimum 3 symboles')
@@ -28,6 +28,20 @@ const adminSchema = Yup.object().shape({
   adminCreationSecret: Yup.string()
 })
 
+const updateAdminSchema = Yup.object().shape({
+  email: Yup.string()
+    .email('Email invalide')
+    .min(3, 'Minimum 3 symboles')
+    .max(50, 'Maximum 50 symboles')
+    .required("L'email est obligatoire"),
+  firstName: Yup.string().required('Le prénom est obligatoire'),
+  lastName: Yup.string().required('Le nom est obligatoire'),
+  phoneNumber: Yup.number()
+    .max(99999999, "Numéro de téléphone invalide") //Max telecom
+    .min(20000000, "Numéro de téléphone invalide") //Min Ooredoo
+    .required('Le numéro de téléphone est obligatoire'),
+})
+
 interface IAdminFormProps {
   admin?: AdminModel
 }
@@ -40,12 +54,14 @@ const emptyAdmin: AdminModel = {
     firstName: '',
 }
 const AdminForm: React.FunctionComponent<IAdminFormProps> = (props) => {
-  const action = props.admin === undefined ? 'Ajouter' : 'Mettre à jour'
+  const action = props.admin === undefined ? 'Ajouter' : 'Mettre à jour';
+  const adminSchema = action === 'Ajouter' ? createAdminSchema : updateAdminSchema;
   const [loading, setLoading] = useState(false)
   const initialValues = props.admin === undefined ? emptyAdmin : props.admin;
   const history = useHistory();
 
   const applyChanges = (admin: AdminModel) => {
+    console.log(admin);
     if (action === 'Ajouter') return add(admin)
     if (action === 'Mettre à jour') return update(admin)
   }

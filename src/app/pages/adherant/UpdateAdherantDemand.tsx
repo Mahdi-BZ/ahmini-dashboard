@@ -30,7 +30,6 @@ const UpdateAdherantPage: React.FunctionComponent<IUpdateAdherantPageProps> = (
       adherant.id = parseInt(id)
       adherant.birthDate = formatDate(adherant.birthDate)
       adherant.identityCardDeliveryDate = formatDate(adherant.identityCardDeliveryDate)
-      adherant.passedBy = response.data.passedBy;
       console.log(adherant);
       setAdherant(adherant)
     })

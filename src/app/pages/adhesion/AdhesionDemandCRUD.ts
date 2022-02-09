@@ -14,7 +14,10 @@ export function add(adhesionDemand: {data: AdhesionDemandModel}) {
 
 // Server should return AdhesionDemandModel
 export function update(adhesionDemand: {data: AdhesionDemandModel}) {
-  return axios.put(BASE_URL + adhesionDemand.data.id, adhesionDemand)
+  const id = adhesionDemand.data.id;
+  delete adhesionDemand.data['id'];
+
+  return axios.put(BASE_URL + id, adhesionDemand)
 }
 // Server should return operation result
 export function deleteAdhesionDemand(adhesionDemandId: number) {
