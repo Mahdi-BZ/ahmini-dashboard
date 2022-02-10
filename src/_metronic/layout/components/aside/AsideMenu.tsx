@@ -3,12 +3,14 @@ import {useLocation} from 'react-router'
 import clsx from 'clsx'
 import {AsideMenuMain} from './AsideMenuMain'
 import {DrawerComponent, ScrollComponent, ToggleComponent} from '../../../assets/ts/components'
+import { NavSection } from './menu.types'
 
-type Props = {
+interface IMenuProps {
+  navSection: NavSection,
   asideMenuCSSClasses: string[]
 }
 
-const AsideMenu: React.FC<Props> = ({asideMenuCSSClasses}) => {
+const AsideMenu = (props: IMenuProps) => {
   const scrollRef = useRef<HTMLDivElement | null>(null)
   const {pathname} = useLocation()
 
@@ -41,10 +43,10 @@ const AsideMenu: React.FC<Props> = ({asideMenuCSSClasses}) => {
         data-kt-menu='true'
         className={clsx(
           'menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500',
-          asideMenuCSSClasses.join(' ')
+          props.asideMenuCSSClasses.join(' ')
         )}
       >
-        <AsideMenuMain />
+        <AsideMenuMain navSection={props.navSection} />
       </div>
     </div>
   )

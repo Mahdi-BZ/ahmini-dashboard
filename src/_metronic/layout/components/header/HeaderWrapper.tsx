@@ -4,11 +4,16 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {KTSVG, toAbsoluteUrl} from '../../../helpers'
 import {useLayout} from '../../core'
+import { NavSection } from '../aside/menu.types'
 import {Header} from './Header'
 import {DefaultTitle} from './page-title/DefaultTitle'
 import {Topbar} from './Topbar'
 
-export function HeaderWrapper() {
+interface IHeaderWrapperProps {
+  setNavSection: (navItem: NavSection) => void
+}
+
+export function HeaderWrapper( props: IHeaderWrapperProps) {
   const {config, classes, attributes} = useLayout()
   const {header, aside} = config
 
@@ -59,7 +64,7 @@ export function HeaderWrapper() {
           {/* begin::Navbar */}
           {header.left === 'menu' && (
             <div className='d-flex align-items-stretch' id='kt_header_nav'>
-              <Header />
+              <Header setNavSection={props.setNavSection} />
             </div>
           )}
 

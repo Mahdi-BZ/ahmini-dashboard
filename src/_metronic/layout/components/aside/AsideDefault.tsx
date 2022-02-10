@@ -6,8 +6,12 @@ import clsx from 'clsx'
 import {useLayout} from '../../core'
 import {KTSVG, toAbsoluteUrl} from '../../../helpers'
 import {AsideMenu} from './AsideMenu'
+import { NavSection } from './menu.types'
+interface IMenuProps {
+  navSection: NavSection,
+}
 
-const AsideDefault: FC = () => {
+const AsideDefault = (props: IMenuProps) => {
   const {config, classes} = useLayout()
   const {aside} = config
 
@@ -70,7 +74,7 @@ const AsideDefault: FC = () => {
 
       {/* begin::Aside menu */}
       <div className='aside-menu flex-column-fluid'>
-        <AsideMenu asideMenuCSSClasses={classes.asideMenu} />
+        <AsideMenu asideMenuCSSClasses={classes.asideMenu} navSection={props.navSection} />
       </div>
       {/* end::Aside menu */}
 

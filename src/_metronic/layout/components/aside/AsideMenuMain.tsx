@@ -1,8 +1,17 @@
 /* eslint-disable react/jsx-no-target-blank */
 import {AsideMenuItemWithSub} from './AsideMenuItemWithSub'
 import {AsideMenuItem} from './AsideMenuItem'
+import { NavSection } from './menu.types'
+import HomeMenu from './HomeMenu'
+import AssuranceMenu from './AssuranceMenu'
+import CNSSMenu from './CNSSMenu'
+import SanadiMenu from './SanadiMenu'
 
-export function AsideMenuMain() {
+interface IMenuProps {
+  navSection: NavSection,
+}
+
+export function AsideMenuMain(props: IMenuProps) {
   return (
     <>
       <div className='menu-item'>
@@ -11,7 +20,14 @@ export function AsideMenuMain() {
         </div>
       </div>
 
-      <AsideMenuItemWithSub
+     {props.navSection == 'ACCEUIL' && <HomeMenu />}
+     {props.navSection == 'ASSURANCE' && <AssuranceMenu />}
+     {props.navSection == 'CNSS' && <CNSSMenu />}
+     {props.navSection == 'SANADI' && <SanadiMenu />}
+     
+     
+     
+     {/* <AsideMenuItemWithSub
         to='/crafted/sinister'
         title='Financement'
         icon='/media/icons/duotune/ecommerce/ecm011.svg'
@@ -20,29 +36,6 @@ export function AsideMenuMain() {
         <AsideMenuItem to='/dashboard' title='Financement' hasBullet={true} />
       </AsideMenuItemWithSub>
 
-      <AsideMenuItemWithSub
-        to='/crafted/users'
-        title='Utilisateurs'
-        icon='/media/icons/duotune/communication/com006.svg'
-        fontIcon='bi-person'
-      >
-        <AsideMenuItem
-          to='/crafted/users/admin'
-          title='Liste des administrateurs'
-          hasBullet={true}
-        />
-        <AsideMenuItem
-          to='/crafted/users/particular'
-          title='Liste des particuliers'
-          hasBullet={true}
-        />
-        <AsideMenuItem
-          to='/crafted/users/ambassador'
-          title='Liste des ambassadeurs'
-          hasBullet={true}
-        />
-        {/* <AsideMenuItem to='/crafted/users/association' title='Association' hasBullet={true} /> */}
-      </AsideMenuItemWithSub>
 
       <AsideMenuItemWithSub
         to='/crafted/adhesion'
@@ -60,7 +53,6 @@ export function AsideMenuMain() {
           title={`Liste des adherants`}
           hasBullet={true}
         />
-        {/* <AsideMenuItem to='/crafted/users/particular' title='Particular' hasBullet={true} /> */}
       </AsideMenuItemWithSub>
 
       <AsideMenuItemWithSub
@@ -74,26 +66,8 @@ export function AsideMenuMain() {
           title='Liste de femmes inscrites'
           hasBullet={true}
         />
-      </AsideMenuItemWithSub>
+      </AsideMenuItemWithSub> */}
 
-      <AsideMenuItemWithSub
-        to='/crafted/sinister'
-        title='Sinistres'
-        icon='/media/icons/duotune/general/gen044.svg'
-        fontIcon='bi-person'
-      >
-        {/* <AsideMenuItem to='/crafted/sinister' title='Liste des sinistres' hasBullet={true} /> */}
-        <AsideMenuItem
-          to='/crafted/declaredsinister'
-          title='Liste des sinistres déclarés'
-          hasBullet={true}
-        />
-        <AsideMenuItem
-          to='/crafted/paidsinister'
-          title='Liste des sinistres validés'
-          hasBullet={true}
-        />
-      </AsideMenuItemWithSub>
 
       {/* <div className='menu-item'>
         <div className='menu-content pt-8 pb-2'>

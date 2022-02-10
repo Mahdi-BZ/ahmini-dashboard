@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {AsideDefault} from './components/aside/AsideDefault'
 import {Footer} from './components/Footer'
 import {HeaderWrapper} from './components/header/HeaderWrapper'
@@ -16,9 +16,14 @@ import {
   UpgradePlan,
 } from '../partials'
 import {MenuComponent} from '../assets/ts/components'
+import { NavSection } from './components/aside/menu.types'
 
 const MasterLayout: React.FC = ({children}) => {
   const location = useLocation()
+
+  const [navSection, setNavSection] = useState<NavSection>('ACCEUIL')
+  console.log(navSection)
+
   useEffect(() => {
     setTimeout(() => {
       MenuComponent.reinitialization()
@@ -34,9 +39,9 @@ const MasterLayout: React.FC = ({children}) => {
   return (
     <PageDataProvider>
       <div className='page d-flex flex-row flex-column-fluid'>
-        <AsideDefault />
+        <AsideDefault navSection={navSection} />
         <div className='wrapper d-flex flex-column flex-row-fluid' id='kt_wrapper'>
-          <HeaderWrapper />
+          <HeaderWrapper setNavSection={setNavSection} />
 
           <div id='kt_content' className='content d-flex flex-column flex-column-fluid'>
             <Toolbar />

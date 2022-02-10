@@ -1,43 +1,43 @@
 import {MenuItem} from './MenuItem'
 import {MenuInnerWithSub} from './MenuInnerWithSub'
+import { NavSection } from '../aside/menu.types'
 
-export function MenuInner() {
+interface IMenuProps {
+  setNavSection: (navItem: NavSection) => void
+}
+
+export function MenuInner(props: IMenuProps) {
   return (
     <>
-      <MenuItem title='Acceuil' to='/dashboard' icon='/media/icons/duotune/general/gen001.svg' />
+      <MenuItem title='Acceuil' to='/dashboard' icon='/media/icons/duotune/general/gen001.svg'
+        onClickHandler={() => props.setNavSection('ACCEUIL')} />
 
-      <MenuInnerWithSub
-        isMega={true}
+      <MenuItem
         title='Ahmini assurance'
         to='/mega-menu'
         icon='/media/icons/duotune/ecommerce/ecm008.svg'
-        menuPlacement='bottom-start'
-        menuTrigger='click'
+        onClickHandler={() => props.setNavSection('ASSURANCE')}
       >
         {/* <MegaMenu /> */}
-      </MenuInnerWithSub>
+      </MenuItem>
 
-      <MenuInnerWithSub
-        isMega={true}
+      <MenuItem
         title='Ahmini CNSS'
         to='/mega-menu'
         icon='/media/icons/duotune/technology/teh010.svg'
-        menuPlacement='bottom-start'
-        menuTrigger='click'
+        onClickHandler={() => props.setNavSection('CNSS')}
       >
         {/* <MegaMenu /> */}
-      </MenuInnerWithSub>
+      </MenuItem>
 
-      <MenuInnerWithSub
-        isMega={true}
+      <MenuItem
         title='Kon Sanadi'
         to='/mega-menu'
         icon='/media/icons/duotune/finance/fin002.svg'
-        menuPlacement='bottom-start'
-        menuTrigger='click'
+        onClickHandler={() => props.setNavSection('SANADI')}
       >
         {/* <MegaMenu /> */}
-      </MenuInnerWithSub>
+      </MenuItem>
     </>
   )
 }
