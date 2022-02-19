@@ -3,6 +3,8 @@
   "version": "8.0.30",
   "private": true,
   "dependencies": {
+    "@amcharts/amcharts4": "^4.10.24",
+    "@amcharts/amcharts5": "^5.1.4",
     "@date-io/dayjs": "^2.13.1",
     "@formatjs/intl-pluralrules": "^4.0.28",
     "@formatjs/intl-relativetimeformat": "^9.1.7",
@@ -48,6 +50,7 @@
     "react-copy-to-clipboard": "^5.0.3",
     "react-datepicker": "^4.5.0",
     "react-dom": "^17.0.2",
+    "react-google-charts": "^4.0.0",
     "react-inlinesvg": "^2.3.0",
     "react-intl": "^5.20.4",
     "react-is": "^17.0.2",
