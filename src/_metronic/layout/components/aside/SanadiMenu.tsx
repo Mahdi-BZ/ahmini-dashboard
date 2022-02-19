@@ -15,8 +15,34 @@ const SanadiMenu: React.FunctionComponent<ISanadiMenuProps> = (props) => {
         >
             <AsideMenuItem
             to='/crafted/adhesion/demands'
-            title={`Liste des demandes de parrainage`}
-            icon='/media/icons/duotune/files/fil012.svg'
+            title={`Demande de parrainages`}
+            hasBullet={true}
+            />
+            <AsideMenuItem
+            to='/crafted/adhesion/demands'
+            title={`Liste des parraineurs`}
+            hasBullet={true}
+            />
+        </AsideMenuItemWithSub>
+
+        <AsideMenuItemWithSub
+            to='/crafted/adhesion/demands'
+            title='Femme Parrainé'
+            fontIcon='bi-person'
+        >
+            <AsideMenuItem
+            to='/crafted/adhesion/demands'
+            title={`Listes des femmes à parrainer`}
+            hasBullet={true}
+            />
+            <AsideMenuItem
+            to='/crafted/adhesion/demands'
+            title={`Femme parrainé CNSS`}
+            hasBullet={true}
+            />
+            <AsideMenuItem
+            to='/crafted/adhesion/demands'
+            title={`Femme parrainé ASSAURANCE`}
             hasBullet={true}
             />
         </AsideMenuItemWithSub>

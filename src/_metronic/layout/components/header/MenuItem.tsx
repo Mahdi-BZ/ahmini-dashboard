@@ -12,6 +12,7 @@ type Props = {
   hasArrow?: boolean
   hasBullet?: boolean
   onClickHandler?: () => void,
+  isActive: boolean,
 }
 
 const MenuItem: React.FC<Props> = ({
@@ -22,6 +23,7 @@ const MenuItem: React.FC<Props> = ({
   hasArrow = false,
   hasBullet = false,
   onClickHandler,
+  isActive
 }) => {
   const {pathname} = useLocation()
 
@@ -30,7 +32,7 @@ const MenuItem: React.FC<Props> = ({
       { !onClickHandler &&
         <Link
           className={clsx('menu-link py-3', {
-            active: checkIsActive(pathname, to),
+            active: isActive
           })}
           to={to}
         >
@@ -60,7 +62,7 @@ const MenuItem: React.FC<Props> = ({
       { onClickHandler &&
         <div
           className={clsx('menu-link py-3', {
-            active: checkIsActive(pathname, to),
+            active: isActive
           })}
           onClick={onClickHandler}
         >

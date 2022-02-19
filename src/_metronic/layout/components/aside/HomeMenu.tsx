@@ -11,8 +11,6 @@ const HomeMenu: React.FunctionComponent<IHomeMenuProps> = (props) => {
     <AsideMenuItemWithSub
         to='/crafted/users'
         title='Utilisateurs'
-        icon='/media/icons/duotune/communication/com006.svg'
-        fontIcon='bi-person'
     >
         <AsideMenuItemWithSub to={'/crafted/users'} title={'Administrateurs'}>
             <AsideMenuItem
@@ -44,6 +42,18 @@ const HomeMenu: React.FunctionComponent<IHomeMenuProps> = (props) => {
             <AsideMenuItem 
             to='/crafted/users/particular'
             title='Liste des particuliers'
+            hasBullet={true}
+            />
+        </AsideMenuItemWithSub>
+        <AsideMenuItemWithSub to={'/crafted/users'} title={'Associations'}>
+            <AsideMenuItem
+            to='/crafted/users/particular/add'
+            title="Demande d’inscription"
+            hasBullet={true}
+            />
+            <AsideMenuItem 
+            to='/crafted/users/particular'
+            title='Liste des Associations'
             hasBullet={true}
             />
         </AsideMenuItemWithSub>

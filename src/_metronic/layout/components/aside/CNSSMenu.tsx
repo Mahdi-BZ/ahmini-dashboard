@@ -10,13 +10,38 @@ const CNSSMenu: React.FunctionComponent<ICNSSMenuProps> = (props) => {
     <AsideMenuItemWithSub to={'/crafted/adhesion/demands'} title={'AHMINI CNSS'} >
         <AsideMenuItemWithSub
             to='/crafted/adhesion/demands'
+            title='Inscription'
+        >
+            <AsideMenuItem
+            to='/crafted/adhesion/demands'
+            title={`Demande d'inscription`}
+            hasBullet={true}
+            />
+            <AsideMenuItem
+            to='/crafted/adhesion/demands'
+            title={`Validation d'inscription`}
+            hasBullet={true}
+            />
+            <AsideMenuItem
+            to='/crafted/adhesion/demands'
+            title={`Validation d'adhèsion`}
+            hasBullet={true}
+            />
+        </AsideMenuItemWithSub>
+
+        <AsideMenuItemWithSub
+            to='/crafted/adhesion/demands'
             title='Financement'
             fontIcon='bi-person'
         >
             <AsideMenuItem
             to='/crafted/adhesion/demands'
-            title={`Liste des demandes d'adhèsion`}
-            icon='/media/icons/duotune/files/fil012.svg'
+            title={`Listes des adhésions`}
+            hasBullet={true}
+            />
+            <AsideMenuItem
+            to='/crafted/adhesion/demands'
+            title={`Le fichier financier`}
             hasBullet={true}
             />
         </AsideMenuItemWithSub>

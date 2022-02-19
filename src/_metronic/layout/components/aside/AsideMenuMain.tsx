@@ -6,6 +6,7 @@ import HomeMenu from './HomeMenu'
 import AssuranceMenu from './AssuranceMenu'
 import CNSSMenu from './CNSSMenu'
 import SanadiMenu from './SanadiMenu'
+import PaiementMenu from './PaiementMenu'
 
 interface IMenuProps {
   navSection: NavSection,
@@ -24,6 +25,7 @@ export function AsideMenuMain(props: IMenuProps) {
      {props.navSection == 'ASSURANCE' && <AssuranceMenu />}
      {props.navSection == 'CNSS' && <CNSSMenu />}
      {props.navSection == 'SANADI' && <SanadiMenu />}
+     {props.navSection == 'PAIEMENT' && <PaiementMenu />}
      
      
      
