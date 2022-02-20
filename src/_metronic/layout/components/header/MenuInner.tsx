@@ -1,43 +1,75 @@
 import {MenuItem} from './MenuItem'
 import {MenuInnerWithSub} from './MenuInnerWithSub'
+import { NavSection } from '../aside/menu.types'
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-export function MenuInner() {
+interface IMenuProps {
+  setNavSection: (navItem: NavSection) => void
+}
+
+export function MenuInner(props: IMenuProps) {
+  const [ActiveRoute, setActiveRoute] = useState('ACCEUIL');
+  const history = useHistory();
   return (
     <>
-      <MenuItem title='Acceuil' to='/dashboard' icon='/media/icons/duotune/general/gen001.svg' />
+      <MenuItem title='Acceuil' to='/dashboard' icon='/media/icons/duotune/general/gen001.svg'
+        onClickHandler={() => {
+          props.setNavSection('ACCEUIL');
+          setActiveRoute('ACCEUIL');
+          history.push('/dashboard');
+          }}
+        isActive={ActiveRoute == 'ACCEUIL'} />
 
-      <MenuInnerWithSub
-        isMega={true}
+      <MenuItem
         title='Ahmini assurance'
         to='/mega-menu'
         icon='/media/icons/duotune/ecommerce/ecm008.svg'
-        menuPlacement='bottom-start'
-        menuTrigger='click'
+        onClickHandler={() => {
+          props.setNavSection('ASSURANCE')
+          setActiveRoute('ASSURANCE');
+        }}
+        isActive={ActiveRoute == 'ASSURANCE'}
       >
         {/* <MegaMenu /> */}
-      </MenuInnerWithSub>
+      </MenuItem>
 
-      <MenuInnerWithSub
-        isMega={true}
+      <MenuItem
         title='Ahmini CNSS'
         to='/mega-menu'
         icon='/media/icons/duotune/technology/teh010.svg'
-        menuPlacement='bottom-start'
-        menuTrigger='click'
+        onClickHandler={() => {
+          props.setNavSection('CNSS');
+          setActiveRoute('CNSS');
+        }}
+        isActive={ActiveRoute == 'CNSS'}
       >
         {/* <MegaMenu /> */}
-      </MenuInnerWithSub>
+      </MenuItem>
 
-      <MenuInnerWithSub
-        isMega={true}
-        title='Kon Sanadi'
+      <MenuItem
+        title='Ahmini Sanadi'
         to='/mega-menu'
         icon='/media/icons/duotune/finance/fin002.svg'
-        menuPlacement='bottom-start'
-        menuTrigger='click'
+        onClickHandler={() => {
+          props.setNavSection('SANADI');
+          setActiveRoute('SANADI');
+        }}
+        isActive={ActiveRoute == 'SANADI'}
       >
         {/* <MegaMenu /> */}
-      </MenuInnerWithSub>
+      </MenuItem>
+      
+      <MenuItem
+        title='Ahmini Paiement'
+        to='/mega-menu'
+        icon='/media/icons/duotune/finance/fin002.svg'
+        onClickHandler={() => {
+          props.setNavSection('PAIEMENT');
+          setActiveRoute('PAIEMENT');
+        }}
+        isActive={ActiveRoute == 'PAIEMENT'}
+      ></MenuItem>
     </>
   )
 }

@@ -22,7 +22,7 @@ const AsideMenuItem: React.FC<Props> = ({
   hasBullet = false,
 }) => {
   const {pathname} = useLocation()
-  const isActive = checkIsActive(pathname, to)
+  const isActive = pathname == to
   const {config} = useLayout()
   const {aside} = config
 

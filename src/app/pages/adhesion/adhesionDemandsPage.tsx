@@ -22,7 +22,6 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
     {name: 'ID', field: 'id'},
     {name: 'nom', field: 'firstName'},
     {name: 'Prenom', field: 'lastName'},
-    {name: 'Telephone', field: 'phone'},
     {name: 'Etat de traitement', field: 'processingState'},
   ]
 

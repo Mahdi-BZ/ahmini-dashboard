@@ -14,7 +14,7 @@ interface IDataTableProps {
     setData: () => void
     setSortParam?: (sortParam: string) => void,
     sortParam: string, 
-    deleteAction(id: number): Promise<AxiosResponse<any>>
+    deleteAction?(id: number): Promise<AxiosResponse<any>>
 }
 //Finds the value of a given key in a given object
 const findVal = (object, key) => {
@@ -105,7 +105,7 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
                     }
                     <th scope='row'>{elem['id']}</th>
                     {fields.map((f,i) => <td key={i}>{findVal(elem,f)}</td>)}
-                    <td className="text-end"  onClick={(e) => {console.log(e)}} >
+                    <td className=""  onClick={(e) => {console.log(e)}} >
                         <Button className="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
                         <span className="svg-icon svg-icon-5 m-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

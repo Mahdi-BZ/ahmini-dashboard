@@ -33,6 +33,8 @@ import AdherantPage from '../pages/adherant/adherantPage'
 import AddAdherantPage from '../pages/adherant/AddAdherantPage'
 import UpdateAdherantPage from '../pages/adherant/UpdateAdherantDemand'
 import SingleAdherantPage from '../pages/adherant/SingleAdherantPage'
+import AddSinisterPage from '../pages/sinister/AddSinisterPage'
+import FemmeParraine from '../pages/CNSS/FemmeParrainée'
 
 export function PrivateRoutes() {
   const BuilderPageWrapper = lazy(() => import('../pages/layout-builder/BuilderPageWrapper'))
@@ -86,6 +88,7 @@ export function PrivateRoutes() {
         <Route exact path='/crafted/registered-woman' component={RegisteredWomanPage} />
         <Route exact path='/crafted/registered-woman/:id' component={SingleRegisteredWomanPage} />
         <Route exact path='/crafted/sinister' component={SinisterPage} />
+        <Route exact path='/crafted/sinister/add' component={AddSinisterPage} />
         <Route exact path='/crafted/declaredsinister' component={DeclaredSinisterPage} />
         <Route exact path='/crafted/declaredsinister/:id' component={SingleSinisterPage} />
         <Route exact path='/crafted/paidsinister' component={ValidSinisterPage} />
@@ -94,7 +97,12 @@ export function PrivateRoutes() {
         <Route path='/menu-test' component={MenuTestPage} />
         <Redirect from='/auth' to='/dashboard' />
         <Redirect exact from='/' to='/dashboard' />
+        {/* PLACEHOLDER ROUTES */}
+        
+        <Route exact path='/placeholder/femmeParrainee' component={FemmeParraine} />
+        
         <Redirect to='error/404' />
+
       </Switch>
     </Suspense>
   )
