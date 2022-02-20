@@ -11,7 +11,8 @@ import 'react-datepicker/dist/react-datepicker.css'
 import {AdhesionDemandPagination} from '../adhesion/AdhesionDemandPagination'
 import Chart from './BarChart'
 import PieChart from './Pie'
-import {StatisticsWidget5} from '../../../_metronic/partials/widgets'
+import {StatisticsWidget5} from '../../../_metronic/partials/widgets';
+import Map from './Map'
 // const DashboardPage: FC = () => (
 // <>
 {
@@ -189,14 +190,19 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
             title='5912'
             description='Personnes Affectées'
           />
+
         </div>
       </div>
-      <div className='card align-items-start flex-column' style={{height: 470}}>
+      <div className='card align-items-start flex-column' style={{height: 470,margin:"60px 20px"}}>
         <Chart />
       </div>
       <div className='card align-items-center flex-row'>
         <PieChart />
-        <PieChart />
+        <div className='card align-items-center flex-column'>
+          <Map />
+          <PieChart />
+        </div>
+       
       </div>
     </div>
   )
