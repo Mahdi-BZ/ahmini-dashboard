@@ -1,28 +1,28 @@
-import * as am4core from "@amcharts/amcharts4/core";
-import * as am4charts from "@amcharts/amcharts4/charts";
-import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import {useRef, useLayoutEffect} from 'react';
-am4core.useTheme(am4themes_animated);
+import React from "react";
+import { Chart } from "react-google-charts";
 
+export const data = [
+  ['City',   'Population', 'Area'],
+  ['Tunis',      2761477,    1285.31],
+  ['Ariana',     1324110,    181.76],
   
-  export default function Map() {
-    
-    const chart = useRef(null);
+];
 
-  useLayoutEffect(() => {
-    let x = am4core.create("chartdiv", am4charts.XYChart);
+export const options = {
+  region: 'TN', // Africa
+  displayMode: 'markers',
+  colorAxis: {colors: ['green', 'blue']}
+ 
+};
 
-    // ...
-    chart.current = x;
-
-    return () => {
-      x.dispose();
-    };
-  }, []);
-
+export function Map() {
   return (
-    <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
+    <Chart
+      chartType="GeoChart"
+      width="100%"
+      height="400px"
+      data={data}
+      options={options}
+    />
   );
-    
-  }
-  
+}

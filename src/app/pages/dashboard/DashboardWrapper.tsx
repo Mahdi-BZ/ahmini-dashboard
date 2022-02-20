@@ -12,7 +12,9 @@ import {AdhesionDemandPagination} from '../adhesion/AdhesionDemandPagination'
 import Chart from './BarChart'
 import PieChart from './Pie'
 import {StatisticsWidget5} from '../../../_metronic/partials/widgets';
-import Map from './Map'
+import { Map } from './Map'
+import { Donut } from './Doughnut'
+import { Bubble } from './Bubble'
 // const DashboardPage: FC = () => (
 // <>
 {
@@ -194,17 +196,36 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
         </div>
       </div>
       <div className='card align-items-start flex-column' style={{height: 470,margin:"60px 20px"}}>
+        <h3>Evolution Des Inscriptions</h3>
         <Chart />
       </div>
-      <div className='card align-items-center flex-row'>
-        <PieChart />
-        <div className='card align-items-center flex-column'>
-          <Map />
-          <PieChart />
+        <div className='card align-items-start flex-row'>
+          <div className='card align-items-center flex-column'>
+            <h3 style={{marginBottom:"20px"}}>Répartition Des Adhérents Par Ville</h3>
+            <PieChart />
+          </div>
+          <div style={{marginLeft:"50px"}} className='card align-items-center flex-column'>
+              <h3 style={{marginBottom:"70px"}}>Répartition Des Adhérents Par Région</h3>
+              <Map />
+          </div>
+        </div>
+        <div style={{alignSelf:"center"}} className='card align-items-center flex-row'>
+         
+
+      
+            <div style={{marginTop:"50px"}} className='card align-items-center flex-column'>
+              <h3>Répartition Des Adhérents Par Etat Civil</h3>
+              <div style={{marginTop:"10px"}}> <Donut /> </div>
+              
+            </div>
+           
+            
+        </div>
+          
         </div>
        
-      </div>
-    </div>
+ 
+   
   )
 }
 const DashboardWrapper: FC = () => {
