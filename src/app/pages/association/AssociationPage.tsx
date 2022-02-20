@@ -4,15 +4,15 @@ import { useEffect, useMemo, useState } from 'react';
 import DataTable from '../../shared/generic-components/dataTable';
 import Pagination from '../../shared/generic-components/Pagination';
 import TableCardHeader from '../../shared/generic-components/tableCardHeader';
-import { deleteAdmin } from '../users/AdminCRUD';
 import { AdminPaginationInterface } from '../users/AdminPaginationInterface';
+import { AssociationPagination } from './AssociationPagination';
 
 interface IAssociationPageProps {
     className: string,
 }
 
 const AssociationPage: React.FunctionComponent<IAssociationPageProps> = (props) => {
-    const [particularsApiData, setParticulars] = useState<AdminPaginationInterface>(null as any)
+    const [particularsApiData, setParticulars] = useState<AssociationPagination>(null as any)
     const [totalItems, setTotalItems] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
     const [sortParam, setSortParam] = useState('id');
@@ -22,15 +22,15 @@ const AssociationPage: React.FunctionComponent<IAssociationPageProps> = (props) 
   
     const headers = [
       {name: 'ID', field: 'id'},
-      {name: 'Nom', field: 'firstName'},
-      {name: 'Prènom', field: 'lastName'},
-      {name: 'Téléphone', field: 'phoneNumber'},
-      {name: 'Email', field: 'email'},
+      {name: 'Nom', field: 'associationName'},
+      {name: 'SECTEUR', field: 'sector'},
+      {name: 'FAX', field: 'faxNumber'},
+      {name: 'RESPONSABLE', field: 'responsible'},
     ]
     
     useEffect(() => {
       axios
-        .get('/admin', {
+        .get('/association', {
           params: {
             page: currentPage,
             perPage: ITEMS_PER_PAGE,
@@ -63,7 +63,7 @@ const AssociationPage: React.FunctionComponent<IAssociationPageProps> = (props) 
         {particularsApiData && 
           <div className='dataTables_wrapper dataTables_paginate table-responsive'>
             {/* begin::Body */}
-            <DataTable setData={setData} deleteAction={deleteAdmin} headers={headers} sortParam={sortParam}
+            <DataTable setData={setData} headers={headers} sortParam={sortParam}
               data={particularsTableData} setSortParam={setSortParam} />
             {/* begin::Body */}
             <Pagination 
