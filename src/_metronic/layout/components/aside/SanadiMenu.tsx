@@ -31,12 +31,12 @@ const SanadiMenu: React.FunctionComponent<ISanadiMenuProps> = (props) => {
             fontIcon='bi-person'
         >
             <AsideMenuItem
-            to='/placeholder/femmeParrainee'
+            to='/placeholder/femme-a-parainee'
             title={`Listes des femmes à parrainer`}
             hasBullet={true}
             />
             <AsideMenuItem
-            to='/crafted/adhesion/demands'
+            to='/placeholder/femme-parainee-cnss'
             title={`Femme parrainé CNSS`}
             hasBullet={true}
             />

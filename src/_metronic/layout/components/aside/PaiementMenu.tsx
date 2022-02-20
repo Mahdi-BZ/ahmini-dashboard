@@ -9,32 +9,32 @@ const PaiementMenu: React.FunctionComponent<IPaiementMenuProps> = (props) => {
   return (
     <AsideMenuItemWithSub to={'/crafted/paiment'} title={'AHMINI ASSUARANCE'} >
         <AsideMenuItemWithSub
-            to='/crafted/adhesion/demands'
+            to=''
             title='Paiement CNSS'
         >
             <AsideMenuItem
-            to='/crafted/adhesion/demands'
+            to='/placeholder/femme-payee-3-mois'
             title={`Liste des femmes payés/ 3mois`}
             hasBullet={true}
             />
             <AsideMenuItem
-            to='/crafted/adhesion/demands'
+            to='/placeholder/femme-non-payee-3-mois'
             title={`Liste des femmes non payé/3mois`}
             hasBullet={true}
             />
         </AsideMenuItemWithSub>
 
         <AsideMenuItemWithSub
-            to='/crafted/registered-woman'
+            to=''
             title='Paiement Assurance'
         >
             <AsideMenuItem
-            to='/crafted/registered-woman'
+            to='/placeholder/femme-payee-mois'
             title='Listes des femmes payés/mois'
             hasBullet={true}
             />
             <AsideMenuItem
-            to='/crafted/registered-woman'
+            to='/placeholder/femme-non-payee-mois'
             title='Listes des femmes non payés/mois'
             hasBullet={true}
             />
