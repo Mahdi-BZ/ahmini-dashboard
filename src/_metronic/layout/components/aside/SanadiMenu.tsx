@@ -9,7 +9,7 @@ const SanadiMenu: React.FunctionComponent<ISanadiMenuProps> = (props) => {
   return (
     <AsideMenuItemWithSub to={'/crafted/adhesion/demands'} title={'AHMINI SANADI'} >
         <AsideMenuItemWithSub
-            to='/crafted/adhesion/demands'
+            to=''
             title='Inscription'
             fontIcon='bi-person'
         >
@@ -26,12 +26,12 @@ const SanadiMenu: React.FunctionComponent<ISanadiMenuProps> = (props) => {
         </AsideMenuItemWithSub>
 
         <AsideMenuItemWithSub
-            to='/crafted/adhesion/demands'
+            to=''
             title='Femme Parrainé'
             fontIcon='bi-person'
         >
             <AsideMenuItem
-            to='/crafted/adhesion/demands'
+            to='/placeholder/femmeParrainee'
             title={`Listes des femmes à parrainer`}
             hasBullet={true}
             />

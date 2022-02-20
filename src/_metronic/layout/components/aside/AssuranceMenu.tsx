@@ -9,11 +9,11 @@ const AssuranceMenu: React.FunctionComponent<IAssuranceMenuProps> = (props) => {
   return (
     <AsideMenuItemWithSub to={'/crafted/sinister'} title={'AHMINI ASSUARANCE'} >
         <AsideMenuItemWithSub
-            to='/crafted/adhesion/demands'
+            to=''
             title='Inscription'
         >
             <AsideMenuItem
-            to='/crafted/adhesion/demands'
+            to='/crafted/adhesion/demands/add'
             title={`Demande d'inscription`}
             hasBullet={true}
             />
@@ -23,14 +23,14 @@ const AssuranceMenu: React.FunctionComponent<IAssuranceMenuProps> = (props) => {
             hasBullet={true}
             />
             <AsideMenuItem
-            to='/crafted/adhesion/demands'
+            to='/crafted/adherant'
             title={`Validation d'adhèsion`}
             hasBullet={true}
             />
         </AsideMenuItemWithSub>
 
         <AsideMenuItemWithSub
-            to='/crafted/registered-woman'
+            to=''
             title='Financement'
         >
             <AsideMenuItem
@@ -46,7 +46,7 @@ const AssuranceMenu: React.FunctionComponent<IAssuranceMenuProps> = (props) => {
         </AsideMenuItemWithSub>
 
         <AsideMenuItemWithSub
-            to='/crafted/registered-woman'
+            to=''
             title='Paiement'
         >
             <AsideMenuItem
@@ -67,13 +67,13 @@ const AssuranceMenu: React.FunctionComponent<IAssuranceMenuProps> = (props) => {
         </AsideMenuItemWithSub>
 
         <AsideMenuItemWithSub
-            to='/crafted/sinister'
+            to=''
             title='Sinistres'
         >
             {/* <AsideMenuItem to='/crafted/sinister' title='Liste des sinistres' hasBullet={true} /> */}
             
             <AsideMenuItem
-            to='/crafted/paidsinister'
+            to='/crafted/sinister/add'
             title='Demande de sinistre'
             hasBullet={true}
             />

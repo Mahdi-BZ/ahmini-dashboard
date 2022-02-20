@@ -69,7 +69,7 @@ const SinisterPage: React.FC<Props> = ({className}) => {
             {/* text-dark fw-bold text-muted d-block fs-7 */}
 
             <tbody>
-              {particularsTableData.map((particular) => (
+            React.  {particularsTableData.map((particular) => (
                 <tr
                   onClick={() => history.push(`/crafted/declaredsinister/${particular.id}`)}
                   key={particular.id}

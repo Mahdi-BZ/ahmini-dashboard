@@ -7,13 +7,13 @@ interface ICNSSMenuProps {
 
 const CNSSMenu: React.FunctionComponent<ICNSSMenuProps> = (props) => {
   return (
-    <AsideMenuItemWithSub to={'/crafted/adhesion/demands'} title={'AHMINI CNSS'} >
+    <AsideMenuItemWithSub to={''} title={'AHMINI CNSS'} >
         <AsideMenuItemWithSub
-            to='/crafted/adhesion/demands'
+            to=''
             title='Inscription'
         >
             <AsideMenuItem
-            to='/crafted/adhesion/demands'
+            to='/crafted/adhesion/demands/add'
             title={`Demande d'inscription`}
             hasBullet={true}
             />
@@ -23,14 +23,14 @@ const CNSSMenu: React.FunctionComponent<ICNSSMenuProps> = (props) => {
             hasBullet={true}
             />
             <AsideMenuItem
-            to='/crafted/adhesion/demands'
+            to='/crafted/adherant'
             title={`Validation d'adhèsion`}
             hasBullet={true}
             />
         </AsideMenuItemWithSub>
 
         <AsideMenuItemWithSub
-            to='/crafted/adhesion/demands'
+            to=''
             title='Financement'
             fontIcon='bi-person'
         >
@@ -40,7 +40,7 @@ const CNSSMenu: React.FunctionComponent<ICNSSMenuProps> = (props) => {
             hasBullet={true}
             />
             <AsideMenuItem
-            to='/crafted/adhesion/demands'
+            to='/crafted/adherant'
             title={`Le fichier financier`}
             hasBullet={true}
             />
