@@ -14,12 +14,12 @@ const SanadiMenu: React.FunctionComponent<ISanadiMenuProps> = (props) => {
             fontIcon='bi-person'
         >
             <AsideMenuItem
-            to='/crafted/adhesion/demands'
+            to='/crafted/sponsorship/request'
             title={`Demande de parrainages`}
             hasBullet={true}
             />
             <AsideMenuItem
-            to='/crafted/adhesion/demands'
+            to='/crafted/sponsorship/request/admin'
             title={`Liste des parraineurs`}
             hasBullet={true}
             />
