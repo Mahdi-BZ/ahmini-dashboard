@@ -35,6 +35,9 @@ import UpdateAdherantPage from '../pages/adherant/UpdateAdherantDemand'
 import SingleAdherantPage from '../pages/adherant/SingleAdherantPage'
 import AddSinisterPage from '../pages/sinister/AddSinisterPage'
 import FemmeParraine from '../pages/CNSS/FemmeParrainée'
+import SponsorshipRequestPage from '../pages/sponsorship/SponsorshipRequestPage'
+import AddSponsorshipRequestPage from '../pages/sponsorship/AddSponsorshipRequestPage'
+import SingleSponsorshipRequestPage from '../pages/sponsorship/SingleSponsorshipRequestPage'
 
 export function PrivateRoutes() {
   const BuilderPageWrapper = lazy(() => import('../pages/layout-builder/BuilderPageWrapper'))
@@ -87,6 +90,11 @@ export function PrivateRoutes() {
         />
         <Route exact path='/crafted/registered-woman' component={RegisteredWomanPage} />
         <Route exact path='/crafted/registered-woman/:id' component={SingleRegisteredWomanPage} />
+        <Route exact path='/crafted/sponsorship/request' component={SponsorshipRequestPage} />
+        <Route exact path='/crafted/sponsorship/request/admin' component={SponsorshipRequestPage} />
+        <Route exact path='/crafted/sponsorship/request/add' component={AddSponsorshipRequestPage} />
+        <Route exact path='/crafted/sponsorship/request/admin/add' component={AddSponsorshipRequestPage} />
+        <Route exact path='/crafted/sponsorship/request/:id' component={SingleSponsorshipRequestPage} />
         <Route exact path='/crafted/sinister' component={SinisterPage} />
         <Route exact path='/crafted/sinister/add' component={AddSinisterPage} />
         <Route exact path='/crafted/declaredsinister' component={DeclaredSinisterPage} />
