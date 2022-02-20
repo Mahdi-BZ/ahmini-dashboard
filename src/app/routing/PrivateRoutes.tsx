@@ -34,13 +34,22 @@ import AddAdherantPage from '../pages/adherant/AddAdherantPage'
 import UpdateAdherantPage from '../pages/adherant/UpdateAdherantDemand'
 import SingleAdherantPage from '../pages/adherant/SingleAdherantPage'
 import AddSinisterPage from '../pages/sinister/AddSinisterPage'
-import FemmeParraine from '../pages/CNSS/FemmeParrainée'
 import AssociationPage from '../pages/association/AssociationPage'
 import AddAssociationPage from '../pages/association/AddAssociationPage'
 import SingleAssociationPage from '../pages/association/SingleAssociationPage'
 import SponsorshipRequestPage from '../pages/sponsorship/SponsorshipRequestPage'
 import AddSponsorshipRequestPage from '../pages/sponsorship/AddSponsorshipRequestPage'
 import SingleSponsorshipRequestPage from '../pages/sponsorship/SingleSponsorshipRequestPage'
+import FemmePayeeParainee from '../pages/Placeholders/FemmePayeeParainee'
+import FichierFinancier from '../pages/Placeholders/FichierFinancier'
+import FemmeSuspendu from '../pages/Placeholders/FemmeSuspendu'
+import FemmePayeeMois from '../pages/Placeholders/FemmePayeeMois'
+import FemmePayee3Mois from '../pages/Placeholders/FemmePayee3Mois'
+import FemmeParaineeCNSS from '../pages/Placeholders/FemmeParaineeCNSS'
+import FemmeParaineeASSURANCE from '../pages/Placeholders/FemmeParaineeASSURANCE'
+import FemmeNonPayeeMois from '../pages/Placeholders/FemmeNonPayeeMois'
+import FemmeNonPayee3Mois from '../pages/Placeholders/FemmeNonPayee3Mois'
+import FemmeAParainee from '../pages/Placeholders/FemmeAParainee'
 
 export function PrivateRoutes() {
   const BuilderPageWrapper = lazy(() => import('../pages/layout-builder/BuilderPageWrapper'))
@@ -113,7 +122,16 @@ export function PrivateRoutes() {
         <Redirect exact from='/' to='/dashboard' />
         {/* PLACEHOLDER ROUTES */}
         
-        <Route exact path='/placeholder/femmeParrainee' component={FemmeParraine} />
+        <Route exact path='/placeholder/femme-payee-parrainee' component={FemmePayeeParainee} />
+        <Route exact path='/placeholder/fichier-financier' component={FichierFinancier} />
+        <Route exact path='/placeholder/femme-suspendu' component={FemmeSuspendu} />
+        <Route exact path='/placeholder/femme-payee-mois' component={FemmePayeeMois} />
+        <Route exact path='/placeholder/femme-payee-3-mois' component={FemmePayee3Mois} />
+        <Route exact path='/placeholder/femme-parainee-cnss' component={FemmeParaineeCNSS} />
+        <Route exact path='/placeholder/femme-parainee-assurance' component={FemmeParaineeASSURANCE} />
+        <Route exact path='/placeholder/femme-non-payee-mois' component={FemmeNonPayeeMois} />
+        <Route exact path='/placeholder/femme-non-payee-3-mois' component={FemmeNonPayee3Mois} />
+        <Route exact path='/placeholder/femme-a-parainee' component={FemmeAParainee} />
         
         <Redirect to='error/404' />
 

@@ -54,7 +54,18 @@ const DeclaredSinisterPage: React.FC<Props> = ({className}) => {
           <span className='card-label fw-bolder fs-3 mb-1'>Sinistres déclarés</span>
           <span className='text-muted mt-1 fw-bold fs-7'> Liste des sinistres déclarés</span>
         </h3>
-        <div className='card-toolbar'></div>
+        <div className='card-toolbar'>
+          <a
+            className='btn btn-sm btn-light-primary px-3'
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_create_app'
+            id='kt_toolbar_primary_button'
+            href={``}
+            download
+          >
+            Exporter Comme CSV
+          </a>
+        </div>
       </div>
       {/* end::Header */}
       {/* begin::Body */}

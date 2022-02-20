@@ -9,12 +9,13 @@ import PaginationComponent from '../../../_metronic/partials/widgets/datatable/p
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import {AdhesionDemandPagination} from '../adhesion/AdhesionDemandPagination'
-import Chart from './BarChart'
+import BarChart from './BarChart'
 import PieChart from './Pie'
-import {StatisticsWidget5} from '../../../_metronic/partials/widgets';
+import {ChartsWidget7, StatisticsWidget5} from '../../../_metronic/partials/widgets';
 import { Map } from './Map'
 import { Donut } from './Doughnut'
 import { Bubble } from './Bubble'
+import { Chart } from 'react-google-charts'
 // const DashboardPage: FC = () => (
 // <>
 {
@@ -128,6 +129,30 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
     {name: 'Etat de traitement', field: 'processingState'},
   ]
 
+  const googlePieChartData = [
+    ["Ville", "Nombre Adhérents"],
+    ["Tunis", 12],
+    ["Ariana", 19],
+    ["Mannouba", 3],
+    ["Sousse", 5],
+    ["Sfax", 2],
+    ["Ben Arous", 3],
+  ];
+
+  const googleGeoChartData = [
+    ['City',   'Population', 'Area'],
+    ['Tunis',      2761477,    1285.31],
+    ['Ariana',     1324110,    181.76],
+    ['Bizert',    959574,     117.27],
+  ]
+
+  const googleLineChartData = [
+    ['Mois',   'Femme Parainée'],
+    ['Janvier',      10 ],
+    ['Fevrier',     22   ],
+    ['Mars',    39],
+  ]
+
   useEffect(() => {
     axios
       .get('/adhesion-demand', {
@@ -156,8 +181,8 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
         <div className='col-xl-3'>
           <StatisticsWidget5
             className='card-xl-stretch mb-xl-8'
-            svgIcon='/media/icons/duotune/ecommerce/ecm004.svg'
-            color='dark'
+            svgIcon='/media/icons/duotune/general/gen032.svg'
+            color='success'
             iconColor='white'
             title='+3956'
             description='Adhérentes'
@@ -166,18 +191,18 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
         <div className='col-xl-3'>
           <StatisticsWidget5
             className='card-xl-stretch mb-xl-8'
-            svgIcon='/media/icons/duotune/ecommerce/ecm002.svg'
+            svgIcon='/media/icons/duotune/graphs/gra007.svg'
             color='info'
             iconColor='white'
             title='4'
-            description='CNSS'
+            description='Affiliées CNSS'
           />
         </div>
         <div className='col-xl-3'>
           <StatisticsWidget5
             className='card-xl-stretch mb-xl-8'
-            svgIcon='/media/icons/duotune/ecommerce/ecm007.svg'
-            color='warning'
+            svgIcon='/media/icons/duotune/finance/fin006.svg'
+            color='danger'
             iconColor='white'
             title='3947'
             description='En Attente'
@@ -186,7 +211,7 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
         <div className='col-xl-3'>
           <StatisticsWidget5
             className='card-xl-stretch mb-xl-8'
-            svgIcon='/media/icons/duotune/ecommerce/ecm008.svg'
+            svgIcon='/media/icons/duotune/graphs/gra005.svg'
             color='primary'
             iconColor='white'
             title='5912'
@@ -197,31 +222,52 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
       </div>
       <div className='card align-items-start flex-column' style={{height: 470,margin:"60px 20px"}}>
         <h3>Evolution Des Inscriptions</h3>
-        <Chart />
+        <BarChart />
       </div>
         <div className='card align-items-start flex-row'>
-          <div className='card align-items-center flex-column'>
+          <div className='card align-items-center flex-column' style={{width: "50%"}}>
             <h3 style={{marginBottom:"20px"}}>Répartition Des Adhérents Par Ville</h3>
-            <PieChart />
+            <Chart
+              chartType="PieChart"
+              data={googlePieChartData}
+              width={"100%"}
+              height={"500px"}
+            />
           </div>
           <div style={{marginLeft:"50px"}} className='card align-items-center flex-column'>
-              <h3 style={{marginBottom:"70px"}}>Répartition Des Adhérents Par Région</h3>
-              <Map />
+              <h3 style={{marginBottom:"10px"}}>Répartition Des Adhérents Par Région</h3>
+              <Chart
+              chartType="GeoChart"
+              data={googleGeoChartData}
+              options= {{
+                region: 'TN',
+                displayMode: 'markers',
+                colorAxis: {colors: ['gray', 'black']}
+              }}
+              width={"100%"}
+              height={"500px"}
+            />
           </div>
         </div>
-        <div style={{alignSelf:"center"}} className='card align-items-center flex-row'>
-         
-
-      
-            <div style={{marginTop:"50px"}} className='card align-items-center flex-column'>
+        <div className='card align-items-center flex-row'>
+            <div style={{width: "50%", height: "400px"}} className='card align-items-center flex-column'>
               <h3>Répartition Des Adhérents Par Etat Civil</h3>
               <div style={{marginTop:"10px"}}> <Donut /> </div>
-              
             </div>
-           
+            <div style={{marginTop:"50px", height: "400px"}} className='card align-items-center flex-column'>
+              <h3>Nombre de Femme Parrainée par Mois</h3>
+              <Chart
+              chartType="LineChart"
+              data={googleLineChartData}
+              options= {{
+                curveType: 'function',
+                legend: {position: "bottom"}
+              }}
+              width={"100%"}
+            />
+          </div>
             
         </div>
-          
         </div>
        
  

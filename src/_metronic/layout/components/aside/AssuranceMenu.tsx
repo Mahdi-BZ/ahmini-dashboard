@@ -34,12 +34,12 @@ const AssuranceMenu: React.FunctionComponent<IAssuranceMenuProps> = (props) => {
             title='Financement'
         >
             <AsideMenuItem
-            to='/crafted/registered-woman'
+            to='/placeholder/femme-payee-parrainee'
             title='Listes des femmes payés/parrainé'
             hasBullet={true}
             />
             <AsideMenuItem
-            to='/crafted/registered-woman'
+            to='/placeholder/fichier-financier'
             title='Le fichier financier'
             hasBullet={true}
             />
@@ -50,17 +50,17 @@ const AssuranceMenu: React.FunctionComponent<IAssuranceMenuProps> = (props) => {
             title='Paiement'
         >
             <AsideMenuItem
-            to='/crafted/registered-woman'
+            to='/placeholder/femme-payee-mois'
             title='Liste de femmes payées / mois'
             hasBullet={true}
             />
             <AsideMenuItem
-            to='/crafted/registered-woman'
+            to='/placeholder/femme-non-payee-mois'
             title='Listes des femmes non payé plus de mois'
             hasBullet={true}
             />
             <AsideMenuItem
-            to='/crafted/registered-woman'
+            to='/placeholder/femme-suspendu'
             title='Liste des femmes suspendu'
             hasBullet={true}
             />
