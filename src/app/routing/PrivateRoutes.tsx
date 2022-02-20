@@ -35,6 +35,9 @@ import UpdateAdherantPage from '../pages/adherant/UpdateAdherantDemand'
 import SingleAdherantPage from '../pages/adherant/SingleAdherantPage'
 import AddSinisterPage from '../pages/sinister/AddSinisterPage'
 import FemmeParraine from '../pages/CNSS/FemmeParrainée'
+import AssociationPage from '../pages/association/AssociationPage'
+import AddAssociationPage from '../pages/association/AddAssociationPage'
+import SingleAssociationPage from '../pages/association/SingleAssociationPage'
 
 export function PrivateRoutes() {
   const BuilderPageWrapper = lazy(() => import('../pages/layout-builder/BuilderPageWrapper'))
@@ -61,6 +64,9 @@ export function PrivateRoutes() {
         <Route exact path='/crafted/users/admin/update/:id' component={UpdateAdminPage} />
         <Route exact path='/crafted/users/admin/:id' component={SingleAdminPage} />
         <Route exact path='/crafted/users/admin' component={AdminPage} />
+        <Route exact path='/crafted/users/association' component={AssociationPage} />
+        <Route exact path='/crafted/users/association/add' component={AddAssociationPage} />
+        <Route exact path='/crafted/users/association/:id' component={SingleAssociationPage} />
         <Route exact path='/crafted/users/ambassador' component={AmbassadorPage} />
         <Route exact path='/crafted/users/ambassador/add' component={AddAmbassadorPage} />
         <Route exact path='/crafted/users/ambassador/update/:id' component={UpdateAmbassadorPage} />

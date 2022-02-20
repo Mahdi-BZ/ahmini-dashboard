@@ -51,7 +51,7 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
 
     const getHeaders = () => {
         const temp = props.headers;
-        if(temp.findIndex(e => e.name == 'Actions') === -1)
+        if(temp.findIndex(e => e.name == 'Actions') === -1 && props.deleteAction)
             temp.push({name: 'Actions', field: 'actions'})
 
         if(hasProfilePic && (temp.findIndex(e => e.name == 'Photo') === -1)) 
@@ -105,7 +105,8 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
                     }
                     <th scope='row'>{elem['id']}</th>
                     {fields.map((f,i) => <td key={i}>{findVal(elem,f)}</td>)}
-                    <td className=""  onClick={(e) => {console.log(e)}} >
+                    { props.deleteAction &&
+                        <td className=""  onClick={(e) => {console.log(e)}} >
                         <Button className="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
                         <span className="svg-icon svg-icon-5 m-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -120,7 +121,8 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
                                 <p onClick={() => deleteElem(elem['id'])} className="menu-link px-3">Delete</p>
                             </div>
                         </div>
-                    </td>
+                        </td>
+                    }
                     </tr>
                 ))}
                 </tbody>

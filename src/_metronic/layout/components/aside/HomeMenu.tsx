@@ -47,12 +47,12 @@ const HomeMenu: React.FunctionComponent<IHomeMenuProps> = (props) => {
         </AsideMenuItemWithSub>
         <AsideMenuItemWithSub to={'/crafted/users'} title={'Associations'}>
             <AsideMenuItem
-            to='/crafted/users/particular/add'
+            to='/crafted/users/association/add'
             title="Demande d’inscription"
             hasBullet={true}
             />
             <AsideMenuItem 
-            to='/crafted/users/particular'
+            to='/crafted/users/association'
             title='Liste des Associations'
             hasBullet={true}
             />
