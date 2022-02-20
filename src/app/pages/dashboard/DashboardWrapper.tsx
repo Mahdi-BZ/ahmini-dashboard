@@ -9,7 +9,12 @@ import PaginationComponent from '../../../_metronic/partials/widgets/datatable/p
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import {AdhesionDemandPagination} from '../adhesion/AdhesionDemandPagination'
-
+import Chart from './BarChart'
+import PieChart from './Pie'
+import {StatisticsWidget5} from '../../../_metronic/partials/widgets';
+import { Map } from './Map'
+import { Donut } from './Doughnut'
+import { Bubble } from './Bubble'
 // const DashboardPage: FC = () => (
 // <>
 {
@@ -147,71 +152,80 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
 
   return (
     <div className={`card ${className}`}>
-      {/* begin::Header */}
-      <div className='card-header border-0 pt-5'>
-        <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Demandes d'adhèsion</span>
-          <span className='text-muted mt-1 fw-bold fs-7'> Liste des demandes d'adhèsion </span>
-        </h3>
-        <div className='card-toolbar'></div>
-      </div>
-      {/* end::Header */}
-      {/* begin::Body */}
-      <div className='card-body py-3'>
-        <div className='d-flex flex-row' style={{marginBottom: '10px'}}>
-          <div className='p-2'>Start Date</div>
-          <div className='p-2'>
-            <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-          </div>
-          <div className='p-2'>End Date</div>
-          <div className='p-2'>
-            <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
-          </div>
-        </div>
-
-        {/* begin::Table container */}
-        <div className='dataTables_wrapper dataTables_paginate table-responsive'>
-          {/* begin::Table */}
-          <table id='kt_datatable' className='table table-borderless table-striped gy-7 gs-7'>
-            {/* begin::Table head */}
-            <HeaderComponent headers={headers} />
-            {/* text-dark fw-bold text-muted d-block fs-7 */}
-
-            <tbody>
-              {particularsTableData.map((e) => (
-                <tr
-                  style={{cursor: 'pointer'}}
-                  onClick={() => history.push(`/crafted/adhesion/demands/${e.id}`)}
-                  key={e.id}
-                >
-                  <th scope='row'>{e.id}</th>
-                  <td className='border-dashed border-t border-gray-50 py-5'>{e.data.firstName}</td>
-                  <td className='border-dashed border-t border-gray-200'>{e.data.lastName}</td>
-                  <td className='border-dashed border-t border-gray-50'>{e.data.phone}</td>
-                  <td className='border-dashed border-t border-gray-200'>{e.processingState}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          <PaginationComponent
-            total={totalItems}
-            itemsPerPage={ITEMS_PER_PAGE}
-            currentPage={currentPage}
-            onPageChange={(page: React.SetStateAction<number>) => setCurrentPage(page)}
+      <div className='row g-5 g-xl-8' style={{margin:"20px"}}>
+        <div className='col-xl-3'>
+          <StatisticsWidget5
+            className='card-xl-stretch mb-xl-8'
+            svgIcon='/media/icons/duotune/ecommerce/ecm004.svg'
+            color='dark'
+            iconColor='white'
+            title='+3956'
+            description='Adhérentes'
           />
         </div>
-        {/* end::Table container */}
-      </div>
-      <div className='d-flex flex-row-reverse' style={{margin: '10px'}}>
-        <div className='p-2'>
-          <button type='button' className='btn btn-primary btn-sm'>
-            Export
-          </button>
+        <div className='col-xl-3'>
+          <StatisticsWidget5
+            className='card-xl-stretch mb-xl-8'
+            svgIcon='/media/icons/duotune/ecommerce/ecm002.svg'
+            color='info'
+            iconColor='white'
+            title='4'
+            description='CNSS'
+          />
+        </div>
+        <div className='col-xl-3'>
+          <StatisticsWidget5
+            className='card-xl-stretch mb-xl-8'
+            svgIcon='/media/icons/duotune/ecommerce/ecm007.svg'
+            color='warning'
+            iconColor='white'
+            title='3947'
+            description='En Attente'
+          />
+        </div>
+        <div className='col-xl-3'>
+          <StatisticsWidget5
+            className='card-xl-stretch mb-xl-8'
+            svgIcon='/media/icons/duotune/ecommerce/ecm008.svg'
+            color='primary'
+            iconColor='white'
+            title='5912'
+            description='Personnes Affectées'
+          />
+
         </div>
       </div>
-      {/* begin::Body */}
-    </div>
+      <div className='card align-items-start flex-column' style={{height: 470,margin:"60px 20px"}}>
+        <h3>Evolution Des Inscriptions</h3>
+        <Chart />
+      </div>
+        <div className='card align-items-start flex-row'>
+          <div className='card align-items-center flex-column'>
+            <h3 style={{marginBottom:"20px"}}>Répartition Des Adhérents Par Ville</h3>
+            <PieChart />
+          </div>
+          <div style={{marginLeft:"50px"}} className='card align-items-center flex-column'>
+              <h3 style={{marginBottom:"70px"}}>Répartition Des Adhérents Par Région</h3>
+              <Map />
+          </div>
+        </div>
+        <div style={{alignSelf:"center"}} className='card align-items-center flex-row'>
+         
+
+      
+            <div style={{marginTop:"50px"}} className='card align-items-center flex-column'>
+              <h3>Répartition Des Adhérents Par Etat Civil</h3>
+              <div style={{marginTop:"10px"}}> <Donut /> </div>
+              
+            </div>
+           
+            
+        </div>
+          
+        </div>
+       
+ 
+   
   )
 }
 const DashboardWrapper: FC = () => {
