@@ -50,6 +50,8 @@ import FemmeParaineeASSURANCE from '../pages/Placeholders/FemmeParaineeASSURANCE
 import FemmeNonPayeeMois from '../pages/Placeholders/FemmeNonPayeeMois'
 import FemmeNonPayee3Mois from '../pages/Placeholders/FemmeNonPayee3Mois'
 import FemmeAParainee from '../pages/Placeholders/FemmeAParainee'
+import SponsoredWomanPage from '../pages/registeredWoman/SponsoredWomanPage'
+import NonSponsoredWomanPage from '../pages/registeredWoman/NonSponsoredWoman'
 
 export function PrivateRoutes() {
   const BuilderPageWrapper = lazy(() => import('../pages/layout-builder/BuilderPageWrapper'))
@@ -104,6 +106,8 @@ export function PrivateRoutes() {
           component={UpdateRegisteredWomanPage}
         />
         <Route exact path='/crafted/registered-woman' component={RegisteredWomanPage} />
+        <Route exact path='/crafted/registered-woman/sponsored' component={SponsoredWomanPage} />
+        <Route exact path='/crafted/registered-woman/non-sponsored' component={NonSponsoredWomanPage} />
         <Route exact path='/crafted/registered-woman/:id' component={SingleRegisteredWomanPage} />
         <Route exact path='/crafted/sponsorship/request' component={SponsorshipRequestPage} />
         <Route exact path='/crafted/sponsorship/request/admin' component={SponsorshipRequestPage} />

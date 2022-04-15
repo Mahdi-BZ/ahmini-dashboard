@@ -37,7 +37,7 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
     const location = useLocation();
     const history = useHistory();
 
-    const fields = props.headers.map(h => h.field).filter(f => f !== 'id');
+    const fields = props.headers.map(h => h.field);
     const redText = "fs-3 bg-light-danger text-danger";
     const blueText = "fs-3 bg-light-primary text-primary";
     const yellowText = "fs-3 bg-light-warning text-warning";
@@ -103,7 +103,6 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
                             </div>
                         </th>
                     }
-                    <th scope='row'>{elem['id']}</th>
                     {fields.map((f,i) => <td key={i}>{findVal(elem,f)}</td>)}
                     { props.deleteAction &&
                         <td className=""  onClick={(e) => {console.log(e)}} >
