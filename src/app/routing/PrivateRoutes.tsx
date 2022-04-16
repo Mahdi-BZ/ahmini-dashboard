@@ -107,6 +107,8 @@ export function PrivateRoutes() {
         />
         <Route exact path='/crafted/registered-woman' component={RegisteredWomanPage} />
         <Route exact path='/crafted/registered-woman/sponsored' component={SponsoredWomanPage} />
+        <Route exact path='/crafted/registered-woman/sponsored/update/:id' component={UpdateAdherantPage} />
+        <Route exact path='/crafted/registered-woman/sponsored/:id' component={SingleAdherantPage} />
         <Route exact path='/crafted/registered-woman/non-sponsored' component={NonSponsoredWomanPage} />
         <Route exact path='/crafted/registered-woman/:id' component={SingleRegisteredWomanPage} />
         <Route exact path='/crafted/sponsorship/request' component={SponsorshipRequestPage} />

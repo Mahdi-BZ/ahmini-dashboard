@@ -2,8 +2,11 @@ import clsx from 'clsx'
 import {useFormik} from 'formik'
 import * as React from 'react'
 import {useState} from 'react'
+import { shallowEqual, useSelector } from 'react-redux'
 import {useHistory} from 'react-router-dom'
 import * as Yup from 'yup'
+import { RootState } from '../../../setup'
+import { UserModel } from '../../modules/auth/models/UserModel'
 import SubmitButton from '../../shared/form-groups/SubmitButton'
 import TextInput from '../../shared/form-groups/TextInput'
 import {add, update} from './AdherantCRUD'
@@ -12,6 +15,7 @@ import {AdherantModel} from './AdherantModel'
 const adherantSchema = Yup.object().shape({
   firstName: Yup.string().required('Le prénom est obligatoire'),
   lastName: Yup.string().required('Le nom est obligatoire'),
+  clientCodeAhmini: Yup.string().required('Le code client est obligatoire'),
   familtySituation: Yup.string().required('Situation Familiale obligatoire'),
   nationality: Yup.string().required('La nationalité est obligatoire'),
   childCount: Yup.number(),
@@ -52,6 +56,7 @@ const emptyAdherant: AdherantModel = {
   phone: 0,
   childCount: 0,
   activity: '',
+  clientCodeAhmini: ''
 }
 const AdherantForm: React.FunctionComponent<IAdherantFormProps> = (props) => {
 
@@ -63,8 +68,20 @@ const AdherantForm: React.FunctionComponent<IAdherantFormProps> = (props) => {
 
   console.log(initialValues);
 
+ 
+
   const applyChanges = (adherant: AdherantModel) => {
-    if (action === 'Ajouter') return add({data: adherant})
+    if (action === 'Ajouter') {
+       
+      const persistObjStr = localStorage.getItem("persist:v100-demo1-auth");
+      const persistObj = JSON.parse(persistObjStr);
+      const user = JSON.parse(persistObj.user);
+      const passedBy = {
+        id: user.data[0].id,
+      }
+      adherant.passedBy = passedBy;
+      return add({data: adherant});
+    }
     if (action === 'Mettre à jour') return update({data: adherant})
   }
 
@@ -79,7 +96,7 @@ const AdherantForm: React.FunctionComponent<IAdherantFormProps> = (props) => {
           .then(() => {
             setLoading(false)
             formik.resetForm()
-            history.push('/crafted/adherant')
+            history.goBack();
           })
           .catch((e) => {
             setLoading(false)
@@ -249,6 +266,15 @@ const AdherantForm: React.FunctionComponent<IAdherantFormProps> = (props) => {
           name={'postalCode'}
           placeHolder={'Code Postal'}
           label={'Code Postal'}
+        />
+        <TextInput
+          getFieldProps={formik.getFieldProps('clientCodeAhmini')}
+          isTouched={formik.touched.clientCodeAhmini}
+          validationError={formik.errors.clientCodeAhmini}
+          type={'text'}
+          name={'clientCodeAhmini'}
+          placeHolder={'Code Client'}
+          label={'Code Client'}
         />
 
         <SubmitButton
