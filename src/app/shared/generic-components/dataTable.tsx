@@ -55,7 +55,7 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
 
     const getHeaders = () => {
         const temp = props.headers;
-        if(temp.findIndex(e => e.name == 'Actions') === -1 && props.deleteAction)
+        if(temp.findIndex(e => e.name === 'Actions') === -1 && props.deleteAction)
             temp.push({name: 'Actions', field: 'actions'})
 
         if(hasProfilePic && (temp.findIndex(e => e.name == 'Photo') === -1)) 
@@ -76,7 +76,7 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
         props.deleteAction(id).then(r => props.setData())
     }
 
-    const cannotNav = (e:any) => e.target.tagName == 'BUTTON' || e.target.tagName == 'svg' || e.target.tagName == 'P';
+    const cannotNav = (e:any) => e.target.tagName === 'BUTTON' || e.target.tagName === 'svg' || e.target.tagName == 'P';
 
     return (
         <>
@@ -107,7 +107,12 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
                             </div>
                         </th>
                     }
-                    {fields.map((f,i) => <td key={i}>{findVal(elem,f)}</td>)}
+                    {fields.map((f,i) => {
+                        if(f === 'hasValidAccount')
+                            return (<td key={i}>{findVal(elem,f) ? 'Validé':'Non Validé'}</td>)
+                        
+                        return <td key={i}>{findVal(elem,f)}</td>
+                    })}
                     { props.deleteAction &&
                         <td className=""  onClick={(e) => {console.log(e)}} >
                         <Button className="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
