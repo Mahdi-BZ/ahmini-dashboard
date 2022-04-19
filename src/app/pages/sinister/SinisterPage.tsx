@@ -22,6 +22,7 @@ const SinisterPage: React.FC<Props> = ({className}) => {
     {name: 'ID', field: 'id'},
     {name: 'Nom', field: 'name'},
     {name: 'Type', field: 'type'},
+    {name: 'État', field: 'isValid'},
     {name: 'Declaré par', field: 'declaredBy'},
   ]
 
@@ -76,9 +77,6 @@ const SinisterPage: React.FC<Props> = ({className}) => {
                   className='cursor-pointer'
                 >
                   <th scope='row'>{particular.id}</th>
-                  <td className='border-dashed border-t border-gray-200 px-3'>TODO</td>
-                  <td className='border-dashed border-t border-gray-200 px-3'>TODO</td>
-                  <td className='border-dashed border-t border-gray-200 px-3'>TODO</td>
                 </tr>
               ))}
             </tbody>

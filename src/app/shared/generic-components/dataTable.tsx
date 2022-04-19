@@ -14,7 +14,8 @@ interface IDataTableProps {
     setData: () => void
     setSortParam?: (sortParam: string) => void,
     sortParam: string, 
-    deleteAction?(id: number): Promise<AxiosResponse<any>>
+    deleteAction?(id: number): Promise<AxiosResponse<any>>,
+    hasEdit?: boolean
 }
 //Finds the value of a given key in a given object
 const findVal = (object, key) => {
@@ -48,6 +49,9 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
     const setColor = (string) => colors[string?.charCodeAt(0)%colors.length];
 
     const hasProfilePic = props.headers.map(h => h.field).includes('lastName');
+    const showEdit = props.hasEdit !== undefined ? props.hasEdit : true;
+    console.log(showEdit);
+    console.log(props.hasEdit);
 
     const getHeaders = () => {
         const temp = props.headers;
@@ -113,9 +117,11 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
                             </svg>
                         </span></Button>
                         <div className="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                            <div className="menu-item px-3">
-                                <p onClick={() => goToEditPage(elem['id'])} className="menu-link px-3">Edit</p>
-                            </div>
+                            {  showEdit &&
+                                <div className="menu-item px-3">
+                                    <p onClick={() => goToEditPage(elem['id'])} className="menu-link px-3">Edit</p>
+                                </div>
+                            }
                             <div className="menu-item px-3" >
                                 <p onClick={() => deleteElem(elem['id'])} className="menu-link px-3">Delete</p>
                             </div>

@@ -22,6 +22,8 @@ const ValidSinisterPage: React.FC<Props> = ({className}) => {
     {name: 'ID', field: 'id'},
     {name: 'Nom', field: 'name'},
     {name: 'Type', field: 'type'},
+    {name: 'État', field: 'isValid'},
+    {name: 'Paiement', field: 'payed'},
   ]
 
   useEffect(() => {
@@ -79,6 +81,12 @@ const ValidSinisterPage: React.FC<Props> = ({className}) => {
                   <td className='border-dashed border-t border-gray-200 px-3'>{particular.name}</td>
                   <td className='border-dashed border-t border-gray-200 px-3'>
                     {particular.definition}
+                  </td>
+                  <td className='border-dashed border-t border-gray-200 px-3'>
+                    {particular.isValid ? 'Validé' : 'Non Validé'}
+                  </td>
+                  <td className='border-dashed border-t border-gray-200 px-3'>
+                    {particular.payed ? 'Payé' : 'Non Payé'}
                   </td>
                 </tr>
               ))}

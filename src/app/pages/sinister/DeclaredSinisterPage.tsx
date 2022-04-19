@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, {useEffect, useMemo, useState} from 'react'
+import { Button } from 'react-bootstrap-v5'
 import {useHistory} from 'react-router-dom'
 import HeaderComponent from '../../../_metronic/partials/widgets/datatable/header/HeaderComponent'
 import PaginationComponent from '../../../_metronic/partials/widgets/datatable/pagination/PaginationComponent'
@@ -22,6 +23,8 @@ const DeclaredSinisterPage: React.FC<Props> = ({className}) => {
     {name: 'ID', field: 'id'},
     {name: 'Nom', field: 'name'},
     {name: 'Type', field: 'type'},
+    {name: 'État', field: 'isValid'},
+    {name: 'Paiement', field: 'payed'},
   ]
 
   useEffect(() => {
@@ -55,16 +58,13 @@ const DeclaredSinisterPage: React.FC<Props> = ({className}) => {
           <span className='text-muted mt-1 fw-bold fs-7'> Liste des sinistres déclarés</span>
         </h3>
         <div className='card-toolbar'>
-          <a
+          <Button
             className='btn btn-sm btn-light-primary px-3'
-            data-bs-toggle='modal'
-            data-bs-target='#kt_modal_create_app'
             id='kt_toolbar_primary_button'
-            href={``}
-            download
+            style={{display: "none"}}
           >
             Exporter Comme CSV
-          </a>
+          </Button>
         </div>
       </div>
       {/* end::Header */}
@@ -88,6 +88,12 @@ const DeclaredSinisterPage: React.FC<Props> = ({className}) => {
                   <th scope='row'>{e.id}</th>
                   <td className='border-dashed border-t border-gray-200 px-3'>{e.name}</td>
                   <td className='border-dashed border-t border-gray-200 px-3'>{e.definition}</td>
+                  <td className='border-dashed border-t border-gray-200 px-3'>
+                    {e.isValid ? 'Validé' : 'Non Validé'}
+                  </td>
+                  <td className='border-dashed border-t border-gray-200 px-3'>
+                    {e.payed ? 'Payé' : 'Non Payé'}
+                  </td>
                 </tr>
               ))}
             </tbody>

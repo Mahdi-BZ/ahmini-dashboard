@@ -5,6 +5,7 @@ import {useHistory, useParams} from 'react-router-dom'
 import { GenerateImageFromObject } from '../../../_metronic/helpers/imageHelper'
 import DeleteButton from '../../shared/buttons/deleteButton'
 import EditButton from '../../shared/buttons/editButton'
+import { deleteAss } from './AssociationCRUD'
 import { AssociationModel } from './AssociationModel'
 
 type Props = {
@@ -19,6 +20,8 @@ const SingleAssociationPage: React.FC<Props> = ({className}) => {
     if (!id) return
     axios.get(`/association/${id}`).then((e) => setAssociations(e.data))
   }, [id,])
+
+  const deleteAssociation = (id: number) => deleteAss(id).then(() => history.push('/crafted/users/association'))
 
   const Cmp: React.FC<{data: AssociationModel}> = ({data}) => {
     if (!data) return null
@@ -73,7 +76,16 @@ const SingleAssociationPage: React.FC<Props> = ({className}) => {
             <span className='text-muted mt-1 fw-bold fs-7'>Informations de l'association détailées</span>
           </h3>
         </div>
-        <div className='card-toolbar' style={{width: '30%'}}>
+        <div className='card-toolbar' style={{width: '35%'}}>
+          {associationsApiData && (
+            <div className='d-flex w-100 justify-content-around'>
+              {/* End Edit Button  */}
+              {/* Begin Delete Button  */}
+
+              <DeleteButton clickHandler={() => deleteAssociation(associationsApiData.id)} />
+              {/* End Delete Button  */}
+            </div>
+          )}
         </div>
       </div>
       {/* end::Header */}

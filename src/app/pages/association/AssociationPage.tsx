@@ -5,6 +5,7 @@ import DataTable from '../../shared/generic-components/dataTable';
 import Pagination from '../../shared/generic-components/Pagination';
 import TableCardHeader from '../../shared/generic-components/tableCardHeader';
 import { AdminPaginationInterface } from '../users/AdminPaginationInterface';
+import { deleteAss } from './AssociationCRUD';
 import { AssociationPagination } from './AssociationPagination';
 
 interface IAssociationPageProps {
@@ -57,14 +58,15 @@ const AssociationPage: React.FunctionComponent<IAssociationPageProps> = (props) 
     return (
       <div className={`card ${props.className}`}>
         {/* begin::Header */}
-        <TableCardHeader name={'Association'} isFemale={true} />
+        <TableCardHeader name={'Association'} isFemale={true}/>
         {/* end::Header */}
         <div className='card-body py-3'>
         {particularsApiData && 
           <div className='dataTables_wrapper dataTables_paginate table-responsive'>
             {/* begin::Body */}
             <DataTable setData={setData} headers={headers} sortParam={sortParam}
-              data={particularsTableData} setSortParam={setSortParam} />
+              data={particularsTableData} setSortParam={setSortParam}
+              deleteAction={deleteAss} hasEdit={false}/>
             {/* begin::Body */}
             <Pagination 
               currentPage={currentPage} 
