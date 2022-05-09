@@ -44,18 +44,6 @@ const FemmeSuspendu: React.FC<Props> = ({className}) => {
           <span className='text-muted mt-1 fw-bold fs-7'>Liste des Femme Suspendu</span>
         </h3>
 
-        <div className='card-toolbar'>
-          <a
-            className='btn btn-sm btn-light-primary px-3'
-            data-bs-toggle='modal'
-            data-bs-target='#kt_modal_create_app'
-            id='kt_toolbar_primary_button'
-            href={``}
-            download
-          >
-            Exporter Comme CSV
-          </a>
-        </div>
       </div>
       {/* end::Header */}
       <div className='card-body py-3'>

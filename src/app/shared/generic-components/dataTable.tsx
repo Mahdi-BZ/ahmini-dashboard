@@ -50,8 +50,6 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
 
     const hasProfilePic = props.headers.map(h => h.field).includes('lastName');
     const showEdit = props.hasEdit !== undefined ? props.hasEdit : true;
-    console.log(showEdit);
-    console.log(props.hasEdit);
 
     const getHeaders = () => {
         const temp = props.headers;
@@ -60,7 +58,6 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
 
         if(hasProfilePic && (temp.findIndex(e => e.name == 'Photo') === -1)) 
             temp.unshift({name: 'Photo', field: 'profileImage'})
-        console.log(temp);
         return temp;
     }
 
@@ -114,7 +111,7 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
                         return <td key={i}>{findVal(elem,f)}</td>
                     })}
                     { props.deleteAction &&
-                        <td className=""  onClick={(e) => {console.log(e)}} >
+                        <td className="">
                         <Button className="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
                         <span className="svg-icon svg-icon-5 m-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

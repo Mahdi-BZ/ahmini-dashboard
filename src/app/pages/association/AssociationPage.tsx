@@ -58,7 +58,7 @@ const AssociationPage: React.FunctionComponent<IAssociationPageProps> = (props) 
     return (
       <div className={`card ${props.className}`}>
         {/* begin::Header */}
-        <TableCardHeader name={'Association'} isFemale={true}/>
+        <TableCardHeader hasAdd name={'Association'} isFemale={true}/>
         {/* end::Header */}
         <div className='card-body py-3'>
         {particularsApiData && 

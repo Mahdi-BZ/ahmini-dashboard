@@ -91,8 +91,7 @@ const AdherantPage: React.FC<Props> = ({className}) => {
         <div className='card-toolbar'>
           <a
             className='btn btn-sm btn-light-primary px-3'
-            data-bs-toggle='modal'
-            data-bs-target='#kt_modal_create_app'
+            
             id='kt_toolbar_primary_button'
             href={`${process.env.REACT_APP_API_URL}/adherant/export?startDate=${startDate}&endDate=${endDate}`}
             download
@@ -105,8 +104,7 @@ const AdherantPage: React.FC<Props> = ({className}) => {
           <a
             onClick={() => history.push('/crafted/adherant/add')}
             className='btn btn-sm btn-light-primary'
-            data-bs-toggle='modal'
-            data-bs-target='#kt_modal_create_app'
+            
             id='kt_toolbar_primary_button'
           >
             <KTSVG path='/media/icons/duotune/arrows/arr075.svg' className='svg-icon-2' />

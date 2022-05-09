@@ -2,7 +2,7 @@ import axios from 'axios'
 import { SponsorshipRequestModel } from './SponsorshipRequestModel'
 
 const API_URL = process.env.REACT_APP_API_URL || 'api'
-export const REGISTER_URL = `${API_URL}/sponsorship-request/create`
+export const REGISTER_URL = `${API_URL}/sponsorship-request/single`
 export const BASE_URL = `${API_URL}/sponsorship-request/`
 
 export function add(sponsorshipRequest: SponsorshipRequestModel) {

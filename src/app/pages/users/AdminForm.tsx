@@ -61,7 +61,6 @@ const AdminForm: React.FunctionComponent<IAdminFormProps> = (props) => {
   const history = useHistory();
 
   const applyChanges = (admin: AdminModel) => {
-    console.log(admin);
     if (action === 'Ajouter') return add(admin)
     if (action === 'Mettre à jour') return update(admin)
   }
@@ -82,9 +81,8 @@ const AdminForm: React.FunctionComponent<IAdminFormProps> = (props) => {
           .catch((e) => {
             setLoading(false)
             setSubmitting(false)
-            console.log(e.response.data);
+            
             const errors = e.response.data.errors.map(err => Object.values(err.constraints));
-            console.log(errors);
             setStatus(errors);
           })
       }, 500)

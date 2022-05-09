@@ -39,7 +39,6 @@ const NonSponsoredWomanPage: React.FC<Props> = ({className}) => {
         .get('/sponsorship-request/list/nonSponsored')
         .then((e) => {
           const data = e.data.data.map(d => d.data);
-          console.log(data);
           setParticulars(data)})
     }, [currentPage, sortParam, flag])
   

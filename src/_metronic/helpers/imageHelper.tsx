@@ -31,8 +31,6 @@ export const GenerateImageFromObject = (object) => {
 
     const colors = [redText, blueText, yellowText, purpleText, greenText]
     const setColor = (string) => colors[string?.charCodeAt(0)%colors.length];
-    console.log(object);
-    console.log(findVal(object,"lastName"));
     return (
             <div className='symbol symbol-circle symbol-70px overflow-hidden me-3'>
                 <div 

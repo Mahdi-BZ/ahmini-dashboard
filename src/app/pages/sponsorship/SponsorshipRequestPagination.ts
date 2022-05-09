@@ -14,7 +14,7 @@
     id: number,
     governorate: string,
     womenCount: number,
-    processingState: string
+    adherants: {id: number, data: {clientCodeAhmini: string, firstName: string, lastName: string}},
     meta: Meta
   }
   

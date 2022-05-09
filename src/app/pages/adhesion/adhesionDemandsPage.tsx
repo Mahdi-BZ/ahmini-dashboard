@@ -54,7 +54,7 @@ const AdhesionDemandPage: React.FC<Props> = ({className}) => {
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
-      <TableCardHeader name={"Demandes d'adhèsion"} isFemale={true} />
+      <TableCardHeader hasAdd name={"Demandes d'adhèsion"} isFemale={true} />
       {/* end::Header */}
       {/* begin::Body */}
       <div className='card-body py-3'>

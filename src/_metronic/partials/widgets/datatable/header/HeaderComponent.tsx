@@ -8,7 +8,6 @@ type Props = {
   sortParam?: string,
 }
 const HeaderComponent: React.FC<Props> = (props) => {
-  console.log(props.setSortParam);
   return (
     <thead>
       <tr className='fw-bold fs-6 text-gray-800 border-bottom border-gray-200'>

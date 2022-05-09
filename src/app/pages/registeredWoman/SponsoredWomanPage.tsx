@@ -44,7 +44,7 @@ const SponsoredWomanPage: React.FC<Props> = ({className}) => {
           return adherant;
         });
         setTotalItems(e.data.totalElements)
-        console.log(data);
+       
         setParticulars(data)})
   }, [currentPage, sortParam, flag])
 
@@ -92,18 +92,6 @@ const SponsoredWomanPage: React.FC<Props> = ({className}) => {
           <input style={{width: '50px'}} type='date' name='newDate' onInput={endDateHandler} />
         </div>
 
-        <div className='card-toolbar'>
-          <a
-            className='btn btn-sm btn-light-primary px-3'
-            data-bs-toggle='modal'
-            data-bs-target='#kt_modal_create_app'
-            id='kt_toolbar_primary_button'
-            href={`${process.env.REACT_APP_API_URL}/adherant/export?startDate=${startDate}&endDate=${endDate}`}
-            download
-          >
-            Exporter Comme CSV
-          </a>
-        </div>
 
         <div className='card-toolbar'>
           <AddButton 

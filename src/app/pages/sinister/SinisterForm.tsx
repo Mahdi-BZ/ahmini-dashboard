@@ -59,7 +59,7 @@ const SinisterForm: React.FunctionComponent<ISinisterFormProps> = (props) => {
           .catch((e) => {
             setLoading(false)
             setSubmitting(false)
-            console.log(e.response.data);
+            
           })
       }, 500)
     },

@@ -1,13 +1,6 @@
-import axios from 'axios'
-import React, {useEffect, useMemo, useState} from 'react'
-import { useHistory } from 'react-router-dom'
-import {KTSVG} from '../../../_metronic/helpers'
-import HeaderComponent from '../../../_metronic/partials/widgets/datatable/header/HeaderComponent'
-import PaginationComponent from '../../../_metronic/partials/widgets/datatable/pagination/PaginationComponent'
-import AddButton from '../../shared/buttons/addButton'
+import React, {useState} from 'react'
 import DataTable from '../../shared/generic-components/dataTable'
 import Pagination from '../../shared/generic-components/Pagination'
-import SimpleTableCardHeader from '../../shared/generic-components/simpleTableCardHeader'
 
 type Props = {
   className: string
@@ -50,18 +43,6 @@ const FichierFinancier: React.FC<Props> = ({className}) => {
           <span className='card-label fw-bolder fs-3 mb-1'>Fichier Financier</span>
         </h3>
 
-        <div className='card-toolbar'>
-          <a
-            className='btn btn-sm btn-light-primary px-3'
-            data-bs-toggle='modal'
-            data-bs-target='#kt_modal_create_app'
-            id='kt_toolbar_primary_button'
-            href={``}
-            download
-          >
-            Exporter Comme CSV
-          </a>
-        </div>
       </div>
       {/* end::Header */}
       <div className='card-body py-3'>

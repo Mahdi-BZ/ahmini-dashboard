@@ -59,7 +59,7 @@ const AmbassadorPage: React.FC<Props> = ({className}) => {
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
-      <TableCardHeader name={'Ambassadeur'} isFemale={false} />
+      <TableCardHeader hasAdd name={'Ambassadeur'} isFemale={false} />
       {/* end::Header */}
       {/* begin::Body */}
       <div className='card-body py-3'>

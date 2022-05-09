@@ -35,7 +35,7 @@ const FemmeParaineeASSURANCE: React.FC<Props> = ({className}) => {
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
-      <TableCardHeader name={'Femmes Parrainées'} isFemale={true} />
+      <TableCardHeader hasAdd={false} name={'Femmes Parrainées'} isFemale={true} />
       {/* end::Header */}
       <div className='card-body py-3'>
       {particularsApiData && 
