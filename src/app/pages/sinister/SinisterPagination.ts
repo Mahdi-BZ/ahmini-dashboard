@@ -19,7 +19,8 @@ export interface Sinister {
   definition: string
   modifcationMeta: ModifcationMeta
   type: Type
-  declaredBy: DeclaredBy
+  declaredBy: DeclaredBy,
+  payed: boolean
 }
 
 export interface DeclaredBy {

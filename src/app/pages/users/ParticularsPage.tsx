@@ -32,7 +32,6 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
   ]
 
   useEffect(() => {
-    console.log("h");
     axios
       .get('/particular', {
         params: {
@@ -61,7 +60,7 @@ const ParticularsPage: React.FC<Props> = ({className}) => {
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
-      <TableCardHeader name={'Particulier'} isFemale={false} />
+      <TableCardHeader hasAdd name={'Particulier'} isFemale={false} />
       {/* end::Header */}
       <div className='card-body py-3'>
       {particularsApiData && 

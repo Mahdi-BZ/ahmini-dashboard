@@ -14,7 +14,8 @@ interface IDataTableProps {
     setData: () => void
     setSortParam?: (sortParam: string) => void,
     sortParam: string, 
-    deleteAction?(id: number): Promise<AxiosResponse<any>>
+    deleteAction?(id: number): Promise<AxiosResponse<any>>,
+    hasEdit?: boolean
 }
 //Finds the value of a given key in a given object
 const findVal = (object, key) => {
@@ -37,7 +38,7 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
     const location = useLocation();
     const history = useHistory();
 
-    const fields = props.headers.map(h => h.field).filter(f => f !== 'id');
+    const fields = props.headers.map(h => h.field);
     const redText = "fs-3 bg-light-danger text-danger";
     const blueText = "fs-3 bg-light-primary text-primary";
     const yellowText = "fs-3 bg-light-warning text-warning";
@@ -48,15 +49,15 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
     const setColor = (string) => colors[string?.charCodeAt(0)%colors.length];
 
     const hasProfilePic = props.headers.map(h => h.field).includes('lastName');
+    const showEdit = props.hasEdit !== undefined ? props.hasEdit : true;
 
     const getHeaders = () => {
         const temp = props.headers;
-        if(temp.findIndex(e => e.name == 'Actions') === -1 && props.deleteAction)
+        if(temp.findIndex(e => e.name === 'Actions') === -1 && props.deleteAction)
             temp.push({name: 'Actions', field: 'actions'})
 
         if(hasProfilePic && (temp.findIndex(e => e.name == 'Photo') === -1)) 
             temp.unshift({name: 'Photo', field: 'profileImage'})
-        console.log(temp);
         return temp;
     }
 
@@ -72,7 +73,7 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
         props.deleteAction(id).then(r => props.setData())
     }
 
-    const cannotNav = (e:any) => e.target.tagName == 'BUTTON' || e.target.tagName == 'svg' || e.target.tagName == 'P';
+    const cannotNav = (e:any) => e.target.tagName === 'BUTTON' || e.target.tagName === 'svg' || e.target.tagName == 'P';
 
     return (
         <>
@@ -103,10 +104,14 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
                             </div>
                         </th>
                     }
-                    <th scope='row'>{elem['id']}</th>
-                    {fields.map((f,i) => <td key={i}>{findVal(elem,f)}</td>)}
+                    {fields.map((f,i) => {
+                        if(f === 'hasValidAccount')
+                            return (<td key={i}>{findVal(elem,f) ? 'Validé':'Non Validé'}</td>)
+                        
+                        return <td key={i}>{findVal(elem,f)}</td>
+                    })}
                     { props.deleteAction &&
-                        <td className=""  onClick={(e) => {console.log(e)}} >
+                        <td className="">
                         <Button className="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
                         <span className="svg-icon svg-icon-5 m-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -114,9 +119,11 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
                             </svg>
                         </span></Button>
                         <div className="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                            <div className="menu-item px-3">
-                                <p onClick={() => goToEditPage(elem['id'])} className="menu-link px-3">Edit</p>
-                            </div>
+                            {  showEdit &&
+                                <div className="menu-item px-3">
+                                    <p onClick={() => goToEditPage(elem['id'])} className="menu-link px-3">Edit</p>
+                                </div>
+                            }
                             <div className="menu-item px-3" >
                                 <p onClick={() => deleteElem(elem['id'])} className="menu-link px-3">Delete</p>
                             </div>

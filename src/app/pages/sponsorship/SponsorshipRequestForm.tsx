@@ -13,7 +13,7 @@ interface ISponsorshipRequestFormProps {
 }
 const sponsorshipRequestSchema = Yup.object().shape({
     governorate: Yup.string().required("La governorate est obligatoire"),
-    womanCount: Yup.number().required("Le code de la femme est obligatoire"),
+    womenCount: Yup.number().required("Le nombre des la femme est obligatoire"),
   })
 
   const emptySponsorshipRequest: SponsorshipRequestModel = {
@@ -45,7 +45,7 @@ const SponsorshipRequestForm: React.FunctionComponent<ISponsorshipRequestFormPro
           .catch((e) => {
             setLoading(false)
             setSubmitting(false)
-            console.log(e.response.data);
+            
             setStatus('erreur');
           })
       }, 500)
@@ -57,15 +57,6 @@ const SponsorshipRequestForm: React.FunctionComponent<ISponsorshipRequestFormPro
       onSubmit={formik.handleSubmit}
       noValidate
     >
-    {formik.status ? (
-      <div className='mb-lg-15 alert alert-danger'>
-        <ul>
-          {formik.status.map(err => <li className='alert-text font-weight-bold'>{err}</li>)}
-        </ul>
-      </div>
-    ) : (
-      <div></div>
-    )}
       <div className='card-body p-9'>
         <TextInput getFieldProps={formik.getFieldProps('governorate')} isTouched={formik.touched.governorate} 
           validationError={formik.errors.governorate} type={'text'} name={'governorate'} 
@@ -74,7 +65,7 @@ const SponsorshipRequestForm: React.FunctionComponent<ISponsorshipRequestFormPro
           validationError={formik.errors.womenCount} type={'number'} name={'womenCount'} 
           placeHolder={'Nombre Des Femmes'} label={'Nombre Des Femmes'} />
     
-        <SubmitButton content={'Ajouter'} isSubmitting={formik.isSubmitting} isValid={formik.isValid} />
+        <SubmitButton content={'Ajouter'} isSubmitting={formik.isSubmitting} isValid={formik.isValid}/>
       </div>
     </form>
   )

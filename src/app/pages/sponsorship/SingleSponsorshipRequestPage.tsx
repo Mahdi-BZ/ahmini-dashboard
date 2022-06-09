@@ -9,6 +9,7 @@ import { deleteSponsorshipRequest } from './SponsorshipRequestCRUD'
 import DeleteButton from '../../shared/buttons/deleteButton'
 import EditButton from '../../shared/buttons/editButton'
 import { GenerateImageFromObject } from '../../../_metronic/helpers/imageHelper'
+import { KTSVG } from '../../../_metronic/helpers'
 
 type Props = {
   className: string
@@ -18,11 +19,10 @@ const SingleSponsorshipRequestPage: React.FC<Props> = ({className}) => {
   const [validateApi, setValidateApi] = useState(null)
   const {id} = useParams<{id: string}>()
   const history = useHistory()
-  console.log(apiData)
 
   useEffect(() => {
     if (!id) return
-    axios.get(`/adhesion-demand/${id}`).then((e) => setParticulars(e.data))
+    axios.get(`/sponsorship-request/${id}`).then((e) => setParticulars(e.data))
   }, [id, validateApi])
 
   const Cmp: React.FC<{data: SponsorshipRequest}> = ({data}) => {
@@ -34,11 +34,17 @@ const SingleSponsorshipRequestPage: React.FC<Props> = ({className}) => {
             <h4> ID </h4>
             <p> {data.id} </p>
 
-            <h4> State </h4>
-            <p> {data.processingState} </p>
+            <h4> Governorate </h4>
+            <p> {data.governorate} </p>
 
             <h4> Nombre des femmes </h4>
             <p> {data.womenCount} </p>
+
+            <h4> Nom d'adherant </h4>
+            <p> {data.adherants.data.lastName} </p>
+
+            <h4> Prenom d'adherant </h4>
+            <p> {data.adherants.data.firstName} </p>
 
 
             {/* <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))'}}>
@@ -66,7 +72,7 @@ const SingleSponsorshipRequestPage: React.FC<Props> = ({className}) => {
 
   const deleteParticular = (AdhesionId: number) => {
     deleteSponsorshipRequest(AdhesionId).then(response => {
-      history.push('/crafted/adhesion/demands');
+      history.push('/crafted/sponsorship/request');
     })
   }
 
@@ -84,9 +90,14 @@ const SingleSponsorshipRequestPage: React.FC<Props> = ({className}) => {
         <div className='card-toolbar' style={{width: '35%'}}>
           {apiData && (
             <div className='d-flex w-100 justify-content-around'>
-            {/* Begin Edit Button  */}
-            <EditButton clickHandler={() => history.push(`/crafted/adhesion/demands/update/${id}`)}/>
-            {/* End Edit Button  */}
+              <Button
+                onClick={() => history.push(`/crafted/adherant/${apiData.adherants.id}`)}
+                className='btn btn-sm btn-light-primary'
+                id='kt_toolbar_primary_button'
+              >
+                <KTSVG path='/media/icons/duotune/arrows/arr075.svg' className='svg-icon-2' />
+                Acceder à la page d'adherant associé
+            </Button>
             <DeleteButton clickHandler={() => deleteParticular(apiData.id)}/>
             </div>
           )}

@@ -8,3 +8,8 @@ export const REGISTER_URL = `${API_URL}/association/register`
 export function add(association: AssociationModel){
     return axios.post(REGISTER_URL,association);
 }
+
+export function deleteAss(assId: number)
+{
+    return axios.delete(`${BASE_URL}${assId}`)
+}

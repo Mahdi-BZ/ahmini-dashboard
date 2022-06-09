@@ -9,6 +9,7 @@ export function getAdherant(adherantId: string) {
 }
 // Server should return AdherantModel
 export function add(adherant: {data: AdherantModel}) {
+  
   return axios.post(BASE_URL+`/${adherant.data.passedBy.id}`, adherant)
 }
 

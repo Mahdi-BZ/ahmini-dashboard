@@ -31,17 +31,17 @@ const SanadiMenu: React.FunctionComponent<ISanadiMenuProps> = (props) => {
             fontIcon='bi-person'
         >
             <AsideMenuItem
-            to='/placeholder/femme-a-parainee'
+            to='/crafted/registered-woman/non-sponsored'
             title={`Listes des femmes à parrainer`}
             hasBullet={true}
             />
             <AsideMenuItem
-            to='/placeholder/femme-parainee-cnss'
+            to='/crafted/registered-woman/sponsored'
             title={`Femme parrainé CNSS`}
             hasBullet={true}
             />
             <AsideMenuItem
-            to='/crafted/adhesion/demands'
+            to='/crafted/registered-woman/sponsored'
             title={`Femme parrainé ASSAURANCE`}
             hasBullet={true}
             />

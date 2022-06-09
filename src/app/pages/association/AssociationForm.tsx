@@ -70,7 +70,6 @@ const AssociationForm: React.FunctionComponent<IAssociationFormProps> = (props) 
           .catch((e) => {
             setLoading(false)
             setSubmitting(false)
-            console.log(e.response.data);
             setStatus(['Erreur']);
           })
       }, 500)

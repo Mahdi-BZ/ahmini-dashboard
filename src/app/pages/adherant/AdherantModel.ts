@@ -1,7 +1,8 @@
 export interface AdherantModel {
   id?: number
   firstName: string
-  lastName: string
+  lastName: string,
+  clientCodeAhmini: string,
   familtySituation: string
   nationality: string
   phone: number

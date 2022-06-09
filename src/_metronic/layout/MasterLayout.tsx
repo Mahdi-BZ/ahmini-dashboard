@@ -22,7 +22,6 @@ const MasterLayout: React.FC = ({children}) => {
   const location = useLocation()
 
   const [navSection, setNavSection] = useState<NavSection>('ACCEUIL')
-  console.log(navSection)
 
   useEffect(() => {
     setTimeout(() => {
@@ -42,9 +41,7 @@ const MasterLayout: React.FC = ({children}) => {
         <AsideDefault navSection={navSection} />
         <div className='wrapper d-flex flex-column flex-row-fluid' id='kt_wrapper'>
           <HeaderWrapper setNavSection={setNavSection} />
-
           <div id='kt_content' className='content d-flex flex-column flex-column-fluid'>
-            <Toolbar />
             <div className='post d-flex flex-column-fluid' id='kt_post'>
               <Content>{children}</Content>
             </div>

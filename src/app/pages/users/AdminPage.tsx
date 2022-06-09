@@ -59,7 +59,7 @@ const AdminPage: React.FC<Props> = ({className}) => {
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
-      <TableCardHeader name={'Administrateur'} isFemale={false} />
+      <TableCardHeader hasAdd name={'Administrateur'} isFemale={false} />
       {/* end::Header */}
       <div className='card-body py-3'>
       {particularsApiData && 

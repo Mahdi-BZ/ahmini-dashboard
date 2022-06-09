@@ -6,6 +6,7 @@ import AddButton from '../buttons/addButton';
 interface ITableCardHeaderProps {
     name: string,
     isFemale: boolean,
+    hasAdd: boolean
 }
 
 const TableCardHeader: React.FunctionComponent<ITableCardHeaderProps> = (props) => {
@@ -24,13 +25,15 @@ const TableCardHeader: React.FunctionComponent<ITableCardHeaderProps> = (props) 
         </h3>
         <div className='card-toolbar'>
         </div>
-        <div className='card-toolbar'>
-        <AddButton 
-            clickHandler={() => history.push(`${location.pathname}/add`)}
-        >
-            {props.isFemale ? 'Nouvelle': 'Nouveau'} {props.name}
-        </AddButton>
-        </div>
+        {props.hasAdd &&
+            <div className='card-toolbar'>
+                <AddButton 
+                    clickHandler={() => history.push(`${location.pathname}/add`)}
+                >
+                    {props.isFemale ? 'Nouvelle': 'Nouveau'} {props.name}
+                </AddButton>
+            </div>
+        }
     </div>
   );
 };

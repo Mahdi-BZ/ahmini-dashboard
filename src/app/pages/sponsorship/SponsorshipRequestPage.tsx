@@ -26,7 +26,7 @@ const SponsorshipRequestPage: React.FC<Props> = ({className}) => {
   const headers = [
     {name: 'ID', field: 'id'},
     {name: 'Governorate', field: 'governorate'},
-    {name: 'Etat de traitement', field: 'processingState'},
+    {name: 'Nombres des femmes', field: 'womenCount'},
   ]
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const SponsorshipRequestPage: React.FC<Props> = ({className}) => {
           orderBy: sortParam,
         },
       })
-      .then((e) => {console.log(e.data);setParticulars(e.data)})
+      .then((e) => setParticulars(e.data))
   }, [currentPage, sortParam, flag])
 
   const particularsTableData = useMemo(() => {
@@ -54,17 +54,20 @@ const SponsorshipRequestPage: React.FC<Props> = ({className}) => {
   const setData = () => {
     setFlag(!flag);
   }
+  const deleteSponsorship = (id: number) => {
+    deleteSponsorshipRequest(id).then(resp => setFlag(!flag));
+  }
 
 
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
-      <TableCardHeader name={'Demandes de parrainages'} isFemale={false} />
+      <TableCardHeader hasAdd={false} name={'Demandes de parrainages'} isFemale={false} />
       {particularsApiData && 
         <div className='dataTables_wrapper dataTables_paginate table-responsive'>
           {/* begin::Body */}
           <DataTable setData={setData} deleteAction={deleteSponsorshipRequest} headers={headers} setSortParam={setSortParam} sortParam={sortParam}
-            data={particularsTableData} />
+            data={particularsTableData} hasEdit={false}/>
           {/* begin::Body */}
           <Pagination 
             currentPage={currentPage} 

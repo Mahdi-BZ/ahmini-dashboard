@@ -66,7 +66,7 @@ const ParticularForm: React.FunctionComponent<IParticularFormProps> = (props) =>
           .catch((e) => {
             setLoading(false)
             setSubmitting(false)
-            console.log(e.response.data);
+            
             const errors = e.response.data.errors.map(err => Object.values(err.constraints));
             setStatus(errors);
           })

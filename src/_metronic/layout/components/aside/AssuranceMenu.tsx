@@ -34,7 +34,7 @@ const AssuranceMenu: React.FunctionComponent<IAssuranceMenuProps> = (props) => {
             title='Financement'
         >
             <AsideMenuItem
-            to='/placeholder/femme-payee-parrainee'
+            to='/crafted/registered-woman/sponsored'
             title='Listes des femmes payés/parrainé'
             hasBullet={true}
             />

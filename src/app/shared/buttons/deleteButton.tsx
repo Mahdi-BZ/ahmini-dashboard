@@ -11,8 +11,6 @@ const DeleteButton: React.FunctionComponent<IDeleteButtonProps> = (props) => {
         title='Supprimer' 
         onClick={props.clickHandler}
         className='btn btn-sm btn-light-danger'
-        data-bs-toggle='modal'
-        data-bs-target='#kt_modal_create_app'
         id='kt_toolbar_primary_button'
     >
         <span className="svg-icon svg-icon-muted svg-icon-2x">

@@ -18,7 +18,6 @@ const SingleAdherantPage: React.FC<Props> = ({className}) => {
   const [validateApi, setValidateApi] = useState(null)
   const {id} = useParams<{id: string}>()
   const history = useHistory()
-  console.log(apiData)
 
   useEffect(() => {
     if (!id) return
